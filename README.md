@@ -194,7 +194,7 @@ Non-intrusive integration, directly in the animation you want to add the effect 
 #### Animator Controller
 
 | property name | params | usage |
-| --- | :---: | --- | --- |
+| --- | :---: | --- |
 | ls_repeat | `NSTimeInterval, NSInteger` | `view.ls_repeat(time, count)` |
 | ls_thenAfter | `NSTimeInterval` | `view.ls_thenAfter(time)` |
 | ls_animate | `NSTimeInterval` | `view.ls_animate(time)` |
