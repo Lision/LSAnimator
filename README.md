@@ -1,10 +1,218 @@
 ![](logo.png)
 
+# Animations maked by LSAnimator
+
+![](Rources/demo.gif)
+
 
 # LSAnimator
 
-Easy to read and write non-intrusive multi-chain animation kits，is inspired by JHChainableAnimations.
+Easy to read and write non-invasive multi-chain animation framework, inspired by JHChainableAnimations.
 
+When I started using the JHChainableAnimations chain animation framework, I felt like that is great.
+
+I think it uses the concept of DSL (Domain Specific Language), the official complex animation API (including UIView and CACoreAnimation) into their own DSL language. This makes it seem to be streamlined and efficient in dealing with animations, so I have kept all of its advantages as a single-chain animation as much as possible.
+
+But its shortcomings as a single-chain animation framework is also obvious. JHChainableAnimations is more powerless when the animation interaction is a bit more complicated, and there are multiple animations that are independent of each other (there are precedence sequences that can be placed in an animation chain and some are independent).
+
+The following comparison of single-chain animation and multi-chain animation differences:
+
+#### Single-chain animation
+
+| code | animation |
+| ---- | --------- |
+| `_animatorView.ls_moveX(80).ls_animate(1);` | ![](Rources/demo_01.gif) |
+| `_animatorView.ls_increWidth(20).ls_bounce.ls_animateWithRepeat(0.5, 3);` | ![](Rources/demo_02.gif) |
+| `_animatorView.ls_scale(2).ls_background([UIColor orangeColor]).ls_cornerRadius(20).ls_thenAfter(0.5).ls_moveY(40).ls_bounce.ls_animate(0.5);` | ![](Rources/demo_03.gif) |
+
+You may have noticed that in the third single-chain animation above, the animation that changed the background color and the animated size are placed in the same node as the chain. If your company's animation interaction designer allows you to change the size of the time after a few minutes began to change the color, and change the color length of time independent of the size and displacement of the animation chain. So sorry to tell you that single-chain animation can not achieve the above-mentioned animation interactive effect.
+
+So I was done on the basis of JHChainableAnimations multi-chain animation framework LSAnimator.
+
+#### Multi-chain animation
+
+![](Rources/demo_04.gif)
+
+
+``` objc
+_animatorView.ls_scale(2).ls_cornerRadius(20).ls_thenAfter(0.5).ls_moveY(40).ls_bounce.ls_animate(0.5);
+    _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).ls_animate(0.8);
+```
+
+As shown above, you can separate the logically unrelated animations (the example above is an animated change backgrounColor) into another animation chain to implement complex animation interaction requirements.
+
+# Install
+
+### CocoaPods
+
+1. Add `pod 'LSAnimator'` to Podfile
+2. Execute `pod install` or` pod update`
+3. Import `<LSAnimator / LSAnimator.h>`
+
+### Manual installation
+
+1. Download all files in the LSAnimator folder
+2. Add (drag and drop) the source file to your project
+3. Import the corresponding header file `UIView + LSAnimator.h`
+
+# Usage
+
+Non-intrusive integration, directly in the animation you want to add the effect of `UIView` above the following API can be written animation.
+
+### Multi-chain animation properties
+
+#### Sets the animation of the target value
+
+| property name | params | usage |
+| --- | :---: | --- |
+| ls_frame | `CGRect` | `view.ls_frame(rect)` |
+| ls_bounds | `CGRect` | `view.ls_bounds(rect)` |
+| ls_size | `CGSize` | `view.ls_size(size)` |
+| ls_origin | `CGPoint` | `view.ls_origin(point)` |
+| ls_center | `CGPoint` | `view.ls_center(point)` |
+| ls_x | `CGFloat` | `view.ls_x(float)` |
+| ls_y | `CGFloat` | `view.ls_y(float)` |
+| ls_width | `CGFloat` | `view.ls_width(float)` |
+| ls_height | `CGFloat` | `view.ls_height(float)` |
+| ls_opacity | `CGFloat` | `view.ls_opacity(float)` |
+| ls_background | `UIColor` | `view.ls_background(color)` |
+| ls_borderColor | `UIColor` | `view.ls_borderColor(color)` |
+| ls_borderWidth | `CGFloat ` | `view.ls_borderWidth(float)` |
+| ls_cornerRadius | `CGFloat ` | `view.ls_cornerRadius(float)` |
+| ls_scale | `CGFloat ` | `view.ls_scale(float)` |
+| ls_scaleX | `CGFloat ` | `view.ls_scaleX(float)` |
+| ls_scaleY | `CGFloat ` | `view.ls_scaleY(float)` |
+| ls_anchor | `CGPoint ` | `view.ls_anchor(point)` |
+
+#### Incremental animation
+
+| property name | params | usage |
+| --- | :---: | --- |
+| ls_moveX | `CGFloat` | `view.ls_moveX(float)` |
+| ls_moveY | `CGFloat` | `view.ls_moveY(float)` |
+| ls_moveXY | `CGPoint` | `view.ls_moveXY(point)` |
+| ls_movePolar | `CGFloat，CGFloat` | `view.ls_movePolar(radius, angle)` |
+| ls_increWidth | `CGFloat` | `view.ls_increWidth(float)` |
+| ls_increHeight | `CGFloat` | `view.ls_increHeight(float)` |
+| ls_increSize | `CGSize` | `view. ls_increSize(size)` |
+
+#### Transform animation
+
+| property name | params | usage |
+| --- | :---: | --- |
+| ls_transformIdentity | --- | `view.ls_transformIdentity ` |
+| ls_rotate | `CGFloat` | `view.ls_rotate(float) ` |
+| ls_rotateX | `CGFloat` | `view.ls_rotateX(float) ` |
+| ls_rotateY | `CGFloat` | `view.ls_rotateY(float) ` |
+| ls_rotateZ | `CGFloat` | `view.ls_rotateZ(float) ` |
+| ls_transformX | `CGFloat` | `view.ls_transformX(float) ` |
+| ls_transformY | `CGFloat` | `view.ls_transformY(float) ` |
+| ls_transformZ | `CGFloat` | `view.ls_transformZ(float) ` |
+| ls_transformXY | `CGPoint` | `view.ls_transformXY(point) ` |
+| ls_transformScaleX | `CGFloat` | `view.ls_transformScaleX(float) ` |
+| ls_transformScaleY | `CGFloat` | `view.ls_transformScaleY(float) ` |
+| ls_transformScale | `CGFloat` | `view.ls_transformScale(float) ` |
+
+#### BezierPath
+
+| property name | params | usage |
+| --- | --- | --- |
+| ls_moveOnPath | `UIBezierPath` | `view.ls_moveOnPath(path) ` |
+| ls_moveAndRotateOnPath | `UIBezierPath` | `view.ls_moveAndRotateOnPath(path) ` |
+| ls_moveAndReverseRotateOnPath | `UIBezierPath` | `view.ls_moveAndReverseRotateOnPath(path) ` |
+
+#### AnchorPoint
+
+| property name | params | usage |
+| --- | :---: | --- |
+| ls_anchorDefault | --- | `view.ls_anchorDefault` |
+| ls_anchorCenter | --- | `view.ls_anchorCenter` |
+| ls_anchorTop | --- | `view.ls_anchorTop` |
+| ls_anchorBottom | --- | `view.ls_anchorBottom` |
+| ls_anchorLeft | --- | `view.ls_anchorLeft` |
+| ls_anchorRight | --- | `view.ls_anchorRight` |
+| ls_anchorTopLeft | --- | `view.ls_anchorTopLeft` |
+| ls_anchorTopRight | --- | `view.ls_anchorTopRight` |
+| ls_anchorBottomLeft | --- | `view.ls_anchorBottomLeft` |
+| ls_anchorBottomRight | --- | `view.ls_anchorBottomRight` |
+
+#### Animation curve
+
+![](Rources/animation_curves.png)
+
+| property name | params | usage |
+| --- | :---: | --- |
+| ls_easeIn | --- | `view.ls_easeIn` |
+| ls_easeOut | --- | `view.ls_easeOut` |
+| ls_easeInOut | --- | `view.ls_easeInOut` |
+| ls_easeBack | --- | `view.ls_easeBack` |
+| ls_spring | --- | `view.ls_spring` |
+| ls_bounce | --- | `view.ls_bounce` |
+| ls_easeInQuad | --- | `view.ls_easeInQuad` |
+| ls_easeOutQuad | --- | `view.ls_easeOutQuad` |
+| ls_easeInOutQuad | --- | `view.ls_easeInOutQuad` |
+| ls_easeInCubic | --- | `view.ls_easeInCubic` |
+| ls_easeOutCubic | --- | `view.ls_easeOutCubic` |
+| ls_easeInOutCubic | --- | `view.ls_easeInOutCubic` |
+| ls_easeInQuart | --- | `view.ls_easeInQuart` |
+| ls_easeOutQuart | --- | `view.ls_easeOutQuart` |
+| ls_easeInOutQuart | --- | `view.ls_easeInOutQuart` |
+| ls_easeInSine | --- | `view.ls_easeInSine` |
+| ls_easeOutSine | --- | `view.ls_easeOutSine` |
+| ls_easeInOutSine | --- | `view.ls_easeInOutSine` |
+| ls_easeInExpo | --- | `view.ls_easeInExpo` |
+| ls_easeOutExpo | --- | `view.ls_easeOutExpo` |
+| ls_easeInOutExpo | --- | `view.ls_easeInOutExpo` |
+| ls_easeInCirc | --- | `view.ls_easeInCirc` |
+| ls_easeOutCirc | --- | `view.ls_easeOutCirc` |
+| ls_easeInOutCirc | --- | `view.ls_easeInOutCirc` |
+| ls_easeInElastic | --- | `view.ls_easeInElastic` |
+| ls_easeOutElastic | --- | `view.ls_easeOutElastic` |
+| ls_easeInOutElastic | --- | `view.ls_easeInOutElastic` |
+| ls_easeInBack | --- | `view.ls_easeInBack` |
+| ls_easeOutBack | --- | `view.ls_easeOutBack` |
+| ls_easeInOutBack | --- | `view.ls_easeInOutBack` |
+| ls_easeInBounce | --- | `view.ls_easeInBounce` |
+| ls_easeOutBounce | --- | `view.ls_easeOutBounce` |
+| ls_easeInOutBounce | --- | `view.ls_easeInOutBounce` |
+
+#### Hooks
+
+| property name | params | usage |
+| --- | :---: | --- |
+| ls_preAnimationBlock | `Block` | `view.ls_preAnimationBlock(block)` |
+| ls_postAnimationBlock | `Block ` | `view.ls_postAnimationBlock(block)` |
+| ls_theFinalCompletion | `Block ` | `view.ls_theFinalCompletion(block)` |
+
+#### Delay
+
+| property name | params | usage |
+| --- | :---: | --- |
+| ls_delay | `NSTimeInterval` | `view.ls_delay(time)` |
+| ls_wait | `NSTimeInterval` | `view.ls_wait(time)` |
+
+#### Animator Controller
+
+| property name | params | usage |
+| --- | :---: | --- | --- |
+| ls_repeat | `NSTimeInterval, NSInteger` | `view.ls_repeat(time, count)` |
+| ls_thenAfter | `NSTimeInterval` | `view.ls_thenAfter(time)` |
+| ls_animate | `NSTimeInterval` | `view.ls_animate(time)` |
+| ls_animateWithRepeat | `NSTimeInterval, NSInteger` | `view. ls_animateWithRepeat(time, count)` |
+| ls_animateWithCompletion | `NSTimeInterval, Block` | `view.ls_animateWithCompletion(time, block)` |
+
+# System Requirements
+
+Currently supports iOS 7.0 (including 7.0).
+
+# License
+
+LSAnimator uses the MIT license, see the LICENSE file for details.
+
+
+# 用 LSAnimator 制作的动画效果
+
+![](Rources/demo.gif)
 
 # LSAnimator 动画师
 
@@ -16,7 +224,7 @@ Easy to read and write non-intrusive multi-chain animation kits，is inspired by
 
 #### 单链式动画
 
-| code | animation |
+| 代码 | 动画效果 |
 | ---- | --------- |
 | `_animatorView.ls_moveX(80).ls_animate(1);` | ![](Rources/demo_01.gif) |
 | `_animatorView.ls_increWidth(20).ls_bounce.ls_animateWithRepeat(0.5, 3);` | ![](Rources/demo_02.gif) |
@@ -173,7 +381,7 @@ _animatorView.ls_scale(2).ls_cornerRadius(20).ls_thenAfter(0.5).ls_moveY(40).ls_
 | ls_easeOutBounce | --- | `view.ls_easeOutBounce` |
 | ls_easeInOutBounce | --- | `view.ls_easeInOutBounce` |
 
-#### Hooks
+#### 钩子
 
 | 属性名称 | 参数 | 用法 | 描述 |
 | --- | :---: | --- | --- |
@@ -181,14 +389,14 @@ _animatorView.ls_scale(2).ls_cornerRadius(20).ls_thenAfter(0.5).ls_moveY(40).ls_
 | ls_postAnimationBlock | `Block ` | `view.ls_postAnimationBlock(block)` | 设置在当前动画节点执行动画之后执行的 block |
 | ls_theFinalCompletion | `Block ` | `view.ls_theFinalCompletion(block)` | 设置当前 view 所有动画链执行完毕之后的 block |
 
-#### Delay
+#### 延时
 
 | 属性名称 | 参数 | 用法 | 描述 |
 | --- | :---: | --- | --- |
 | ls_delay | `NSTimeInterval` | `view.ls_delay(time)` | 设置当前节点的动画 delay |
 | ls_wait | `NSTimeInterval` | `view.ls_wait(time)` | 同上，只是书写方便 |
 
-#### Animator Controls
+#### 动画师控制器
 
 | 属性名称 | 参数 | 用法 | 描述 |
 | --- | :---: | --- | --- |
