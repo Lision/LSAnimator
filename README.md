@@ -36,7 +36,7 @@ So I was done on the basis of JHChainableAnimations multi-chain animation framew
 
 ``` objc
 _animatorView.ls_scale(2).ls_cornerRadius(20).ls_thenAfter(0.5).ls_moveY(40).ls_bounce.ls_animate(0.5);
-    _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).ls_animate(0.8);
+_animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).ls_animate(0.8);
 ```
 
 As shown above, you can separate the logically unrelated animations (the example above is an animated change backgrounColor) into another animation chain to implement complex animation interaction requirements.
@@ -241,7 +241,7 @@ LSAnimator uses the MIT license, see the LICENSE file for details.
 
 ``` objc
 _animatorView.ls_scale(2).ls_cornerRadius(20).ls_thenAfter(0.5).ls_moveY(40).ls_bounce.ls_animate(0.5);
-    _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).ls_animate(0.8);
+_animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).ls_animate(0.8);
 ```
 
 如上所示，可以把逻辑上不相关的动画（上面例子是改变颜色的动画）独立出来放到另一个动画链去执行，以实现复杂的动画交互需求。
