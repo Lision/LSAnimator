@@ -7,13 +7,11 @@
 
 # LSAnimator
 
-Easy to read and write non-invasive multi-chain animation framework, inspired by JHChainableAnimations.
+Easy to read and write non-invasive multi-chain animation framework, it is inspired by JHChainableAnimations.
 
-When I started using the JHChainableAnimations chain animation framework, I felt like that is great.
+I think JHChainableAnimations uses the concept of DSL (Domain Specific Language). It translation the official complex animation API (including UIView and CACoreAnimation) into their own DSL language. This make it seem to be streamlined and efficient in dealing with animations, so I have kept all of its advantages as a single-chain animation framework as much as possible.
 
-I think it uses the concept of DSL (Domain Specific Language), the official complex animation API (including UIView and CACoreAnimation) into their own DSL language. This makes it seem to be streamlined and efficient in dealing with animations, so I have kept all of its advantages as a single-chain animation as much as possible.
-
-But its shortcomings as a single-chain animation framework is also obvious. JHChainableAnimations is more powerless when the animation interaction is a bit more complicated, and there are multiple animations that are independent of each other (there are precedence sequences that can be placed in an animation chain and some are independent).
+But it's shortcomings as a single-chain animation framework is also obvious. JHChainableAnimations is more powerless when the animation interaction is a bit more complicated. If there are multiple animations Which are independent of each other, JHChainableAnimations can not complete the task.
 
 The following comparison of single-chain animation and multi-chain animation differences:
 
@@ -25,7 +23,9 @@ The following comparison of single-chain animation and multi-chain animation dif
 | `_animatorView.ls_increWidth(20).ls_bounce.ls_animateWithRepeat(0.5, 3);` | ![](Rources/demo_02.gif) |
 | `_animatorView.ls_scale(2).ls_background([UIColor orangeColor]).ls_cornerRadius(20).ls_thenAfter(0.5).ls_moveY(40).ls_bounce.ls_animate(0.5);` | ![](Rources/demo_03.gif) |
 
-You may have noticed that in the third single-chain animation above, the animation that changed the background color and the animated size are placed in the same node as the chain. If your company's animation interaction designer allows you to change the size of the time after a few minutes began to change the color, and change the color length of time independent of the size and displacement of the animation chain. So sorry to tell you that single-chain animation can not achieve the above-mentioned animation interactive effect.
+You may have noticed that in the third single-chain animation above, the animation that changed the background color and the animated size are placed in the same node as the chain. 
+
+If your company's animation interaction designer requires the animation that changed the background color independent of the other animations. So sorry to tell you that single-chain animation can not Complete the requirements.
 
 So I was done on the basis of JHChainableAnimations multi-chain animation framework LSAnimator.
 
