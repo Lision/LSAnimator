@@ -14,6 +14,10 @@ I think JHChainableAnimations uses the concept of DSL (Domain Specific Language)
 
 But it's shortcomings as a single-chain animation framework is also obvious. JHChainableAnimations is more powerless when the animation interaction is a bit more complicated. If there are multiple animations Which are independent of each other, JHChainableAnimations can not complete the task.
 
+### Features
+- [x] Multi-chain Animation
+- [x] Non-intrusive
+
 The following comparison of single-chain animation and multi-chain animation differences:
 
 #### Single-chain animation
