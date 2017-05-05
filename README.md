@@ -1,9 +1,10 @@
 ![](logo.png)
 
-# Animations maked by LSAnimator
-
-![](Rources/demo.gif)
-
+![language](https://img.shields.io/badge/Language-Objective--C-8E44AD.svg)
+![Version](https://img.shields.io/badge/Pod-%20v1.0.0%20-96281B.svg)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
+![Platform](https://img.shields.io/badge/platform-%20iOS%20-lightgrey.svg)
 
 # LSAnimator
 
@@ -36,10 +37,11 @@ So I was done on the basis of JHChainableAnimations multi-chain animation framew
 
 ``` objc
 _animatorView.ls_scale(2).ls_cornerRadius(20).ls_thenAfter(0.5).ls_moveY(40).ls_bounce.ls_animate(0.5);
+
 _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).ls_animate(0.8);
 ```
 
-As shown above, you can separate the logically unrelated animations (the example above is an animated change backgrounColor) into another animation chain to implement complex animation interaction requirements.
+As shown above, you can see the animation to change the background color throughout the whole animation and it is independent of other animations.
 
 # Install
 
@@ -210,9 +212,6 @@ Currently supports iOS 7.0 (including 7.0).
 LSAnimator uses the MIT license, see the LICENSE file for details.
 
 
-# 用 LSAnimator 制作的动画效果
-
-![](Rources/demo.gif)
 
 # LSAnimator 动画师
 
