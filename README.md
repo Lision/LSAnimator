@@ -215,6 +215,18 @@ Currently supports iOS 7.0 (including 7.0).
 
 LSAnimator uses the MIT license, see the LICENSE file for details.
 
+# Contributors
+
+If you think LSAnimator is worthy of attention and want to become a contributor, you may wish to join us.
+
+LSAnimator core member group (QQ group): 163013540
+
+# ContactInfo
+
+If you have any ideas and suggestions about LSAnimator, please to send me an E-mail, and I will reply you as soon as possible within 24 hours.
+
+My E-mail address: lisionmail@gmail.com
+
 
 
 # LSAnimator 动画师
@@ -222,6 +234,10 @@ LSAnimator uses the MIT license, see the LICENSE file for details.
 易于阅读和写入的非侵入式可多链式动画框架，灵感来源于 JHChainableAnimations。
 
 在我初尝 JHChainableAnimations 链式动画框架时对它的感觉非常赞，我认为它使用了 DSL(Domain Specific Language) 的概念，将官方繁杂的动画 API (包含 UIView 和 CACoreAnimation) 转为了自己的 DSL 语言。这使得它在处理动画这一指定领域变得精简而高效，所以我尽可能的保留了其作为单链动画的所有优点。不过其作为单链式动画框架的缺点也是显而易见的，当动画交互稍微复杂，存在多个动画相互独立（某些动画之间有先后次序可以放入一个动画链而某些独立其外）时 JHChainableAnimations 就显得比较无力了。
+
+### 新特性
+- [x] **多链式动画**
+- [x] **非侵入式**
 
 下面对比一下单链式动画和多链式动画的差异：
 
@@ -416,3 +432,15 @@ _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).
 # 许可证
 
 LSAnimator 使用 MIT 许可证，详情见 LICENSE 文件。
+
+# 贡献者
+
+如果你觉得 LSAnimator 值得关注，并且想要变成贡献者，不妨加入我们。
+
+LSAnimator 核心成员群（QQ 群）：163013540
+
+# 联系我
+
+如果有任何关于 LSAnimator 的想法和建议，都欢迎你给我发 E-mail，我会尽可能的在 24 小时内回复你。
+
+我的 E-mail 地址：lisionmail@gmail.com
