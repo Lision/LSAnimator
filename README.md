@@ -6,6 +6,8 @@
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
 ![Platform](https://img.shields.io/badge/platform-%20iOS%20-lightgrey.svg)
 
+# Introduction（中文介绍在下面）
+
 # LSAnimator
 
 Easy to read and write non-invasive multi-chain animation framework, it is inspired by JHChainableAnimations.
@@ -228,6 +230,7 @@ If you have any ideas and suggestions about LSAnimator, please to send me an E-m
 My E-mail address: lisionmail@gmail.com
 
 
+# 中文介绍
 
 # LSAnimator 动画师
 
@@ -264,6 +267,8 @@ _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).
 ```
 
 如上所示，可以把逻辑上不相关的动画（上面例子是改变颜色的动画）独立出来放到另一个动画链去执行，以实现复杂的动画交互需求。
+
+# [LSAnimator 对比 JHChainableAnimations 的文章](http://blog-lision.com/2017/05/04/LSAnimatorVSJHChainableAnimations/)
 
 # 安装
 
