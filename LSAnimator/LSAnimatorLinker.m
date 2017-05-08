@@ -114,7 +114,18 @@
     }
     self.ls_animationgroup.beginTime = CACurrentMediaTime() + self.animationDelay;
     self.ls_animationgroup.animations = self.ls_animations;
-    [self.view.layer addAnimation:self.ls_animationgroup forKey:animationKey];
+    
+    // change 
+    if ([self.view isKindOfClass:[UIView class]]) {
+        [((UIView *)self.view).layer addAnimation:self.ls_animationgroup forKey:animationKey];
+    }
+    
+    if ([self.view isKindOfClass:[CALayer class]]) {
+        [((CALayer *)self.view) addAnimation:self.ls_animationgroup forKey:animationKey];
+    }
+    
+    
+    
 }
 
 - (void)ls_executeCompletionActions {

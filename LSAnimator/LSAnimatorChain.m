@@ -16,11 +16,11 @@
 
 @implementation LSAnimatorChain
 
-+ (instancetype)chainWithView:(UIView *)view {
++ (instancetype)chainWithView:(id)view {
     return [[self alloc] initWithView:view];
 }
 
-- (instancetype)initWithView:(UIView *)view {
+- (instancetype)initWithView:(id)view {
     if (self = [super init]) {
         _view = view;
     }

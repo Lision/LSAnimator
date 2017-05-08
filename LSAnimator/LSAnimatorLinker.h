@@ -16,12 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @class LSAnimatorChain;
 
 typedef void (^LSAnimatorLinkerBlock)();
-typedef void (^LSAnimationCalculationAction)(__weak UIView *view, __weak LSAnimatorChain *animatorChain);
-typedef void (^LSAnimationCompletionAction)(__weak UIView *view);
+typedef void (^LSAnimationCalculationAction)(__weak id view, __weak LSAnimatorChain *animatorChain);
+typedef void (^LSAnimationCompletionAction)(__weak id view);
 
 @interface LSAnimatorLinker : NSObject <NSCopying>
 
-@property (nonatomic, weak) UIView *view;
+@property (nonatomic, weak) id view;
 @property (nonatomic, weak) LSAnimatorChain *animatorChain;
 @property (nonatomic, assign) NSTimeInterval animationDelay;
 @property (nonatomic, assign) NSTimeInterval animationDuration;
@@ -32,8 +32,8 @@ typedef void (^LSAnimationCompletionAction)(__weak UIView *view);
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-+ (instancetype)linkerWithView:(UIView *)view andAnimatorChain:(LSAnimatorChain *)animatorChain;
-- (instancetype)initWithView:(UIView *)view andAnimatorChain:(LSAnimatorChain *)animatorChain;
++ (instancetype)linkerWithView:(id)view andAnimatorChain:(LSAnimatorChain *)animatorChain;
+- (instancetype)initWithView:(id)view andAnimatorChain:(LSAnimatorChain *)animatorChain;
 
 - (void)ls_addAnimation:(LSKeyframeAnimation *)animation;
 - (void)ls_addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock;

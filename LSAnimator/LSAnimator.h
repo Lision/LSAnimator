@@ -15,5 +15,6 @@ FOUNDATION_EXPORT double LSAnimatorVersionNumber;
 FOUNDATION_EXPORT const unsigned char LSAnimatorVersionString[];
 
 #import <LSAnimator/UIView+LSAnimator.h>
+#import <LSAnimator/CALayer+LSAnimator.h>
 
 
