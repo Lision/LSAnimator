@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "LSAnimatorBlocks.h"
 
-// the UIView Categroy
 @interface UIView (LSAnimator)
 
 #pragma mark - Animations
