@@ -8,6 +8,7 @@
 
 #import "LSAnimatorLinker.h"
 
+
 @interface LSAnimatorLinker ()
 
 @property (strong, nonatomic) CAAnimationGroup *ls_animationgroup;
@@ -114,14 +115,28 @@
     }
     self.ls_animationgroup.beginTime = CACurrentMediaTime() + self.animationDelay;
     self.ls_animationgroup.animations = self.ls_animations;
-    [self.view.layer addAnimation:self.ls_animationgroup forKey:animationKey];
+    
+    // change 
+    if ([self.view isKindOfClass:[UIView class]]) {
+        [((UIView *)self.view).layer addAnimation:self.ls_animationgroup forKey:animationKey];
+    }
+    
+    if ([self.view isKindOfClass:[CALayer class]]) {
+        [((CALayer *)self.view) addAnimation:self.ls_animationgroup forKey:animationKey];
+    }
+    
+    
+    
 }
 
 - (void)ls_executeCompletionActions {
     NSTimeInterval delay = MAX(self.ls_animationgroup.beginTime - CACurrentMediaTime(), 0.0);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         for (LSAnimationCompletionAction action in self.ls_animationCompletionActions) {
+            [CATransaction begin];
+            [CATransaction setDisableActions:YES];
             action(self.view);
+            [CATransaction commit];
         }
     });
 }
