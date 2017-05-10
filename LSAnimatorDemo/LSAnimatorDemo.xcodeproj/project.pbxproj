@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F4FF99D1EBF23CB001FA32C /* CALayer+LSAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */; };
 		BCC82D381EB98056004C5554 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D371EB98056004C5554 /* main.m */; };
 		BCC82D3B1EB98056004C5554 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D3A1EB98056004C5554 /* AppDelegate.m */; };
 		BCC82D3E1EB98056004C5554 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D3D1EB98056004C5554 /* ViewController.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F4FF99B1EBF23CB001FA32C /* CALayer+LSAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+LSAnimator.h"; sourceTree = "<group>"; };
+		9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LSAnimator.m"; sourceTree = "<group>"; };
 		BCC82D331EB98056004C5554 /* LSAnimatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSAnimatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC82D371EB98056004C5554 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCC82D391EB98056004C5554 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				BCC82D571EB98248004C5554 /* LSKeyframeAnimationFunctions.h */,
 				BCC82D581EB98248004C5554 /* UIView+LSAnimator.h */,
 				BCC82D591EB98248004C5554 /* UIView+LSAnimator.m */,
+				9F4FF99B1EBF23CB001FA32C /* CALayer+LSAnimator.h */,
+				9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */,
 			);
 			name = LSAnimator;
 			path = ../LSAnimator;
@@ -143,7 +148,7 @@
 		BCC82D2B1EB98056004C5554 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Lision;
 				TargetAttributes = {
 					BCC82D321EB98056004C5554 = {
@@ -193,6 +198,7 @@
 				BCC82D5C1EB98248004C5554 /* LSKeyframeAnimation.m in Sources */,
 				BCC82D3E1EB98056004C5554 /* ViewController.m in Sources */,
 				BCC82D5E1EB98248004C5554 /* UIView+LSAnimator.m in Sources */,
+				9F4FF99D1EBF23CB001FA32C /* CALayer+LSAnimator.m in Sources */,
 				BCC82D5A1EB98248004C5554 /* LSAnimatorChain.m in Sources */,
 				BCC82D3B1EB98056004C5554 /* AppDelegate.m in Sources */,
 				BCC82D381EB98056004C5554 /* main.m in Sources */,
@@ -239,6 +245,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -286,6 +293,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -350,6 +358,7 @@
 				BCC82D4C1EB98056004C5554 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
