@@ -8,7 +8,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "LSAnimatorBlocks.h"
+
 @interface CALayer (LSAnimator)
+
 #pragma mark - Animations
 // Properties
 // Affects views position and bounds
@@ -16,9 +18,7 @@
 - (LSCAAnimatorRect)ls_bounds;
 - (LSCAAnimatorSize)ls_size;
 - (LSCAAnimatorPoint)ls_origin;
-
-- (LSCAAnimatorPoint)ls_position;
-
+- (LSCAAnimatorPoint)ls_center;
 - (LSCAAnimatorFloat)ls_x;
 - (LSCAAnimatorFloat)ls_y;
 - (LSCAAnimatorFloat)ls_width;
@@ -145,6 +145,5 @@
 
 #pragma mark - Multi-chain
 - (CALayer *)ls_concurrent;
-
 
 @end

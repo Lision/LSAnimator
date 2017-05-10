@@ -8,6 +8,7 @@
 
 #import "LSAnimatorLinker.h"
 
+
 @interface LSAnimatorLinker ()
 
 @property (strong, nonatomic) CAAnimationGroup *ls_animationgroup;
@@ -132,7 +133,10 @@
     NSTimeInterval delay = MAX(self.ls_animationgroup.beginTime - CACurrentMediaTime(), 0.0);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         for (LSAnimationCompletionAction action in self.ls_animationCompletionActions) {
+            [CATransaction begin];
+            [CATransaction setDisableActions:YES];
             action(self.view);
+            [CATransaction commit];
         }
     });
 }

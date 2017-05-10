@@ -45,6 +45,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 - (CGPoint)ls_newPositionFromNewOrigin:(CGPoint)newOrigin;
 - (CGPoint)ls_newPositionFromNewCenter:(CGPoint)newCenter;
 
+- (UIColor *)ls_colorWithCGColor:(CGColorRef)cgColor;
+
 - (void)ls_animateWithAnimatorChain:(LSAnimatorChain *)animatorChain;
 
 @end
@@ -159,9 +161,13 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return newPosition;
 }
 
+- (UIColor *)ls_colorWithCGColor:(CGColorRef)cgColor {
+    const CGFloat *components = CGColorGetComponents(cgColor);
+    return [UIColor colorWithRed:components[0] green:components[1] blue:components[2] alpha:components[3]];
+}
+
 - (void)ls_animateWithAnimatorChain:(LSAnimatorChain *)animatorChain {
     [CATransaction begin];
-    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
     [CATransaction setDisableActions:YES];
     [CATransaction setCompletionBlock:^{
         [self removeAnimationForKey:LSAnimatorChainAnimationKey([self.ls_animatorChains indexOfObject:animatorChain])];
@@ -204,29 +210,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 @implementation CALayer (LSAnimator)
 
-
-#pragma mark - Animator Kinds
-
-
-- (LSCAAnimatorPoint)ls_position {
-    LSCAAnimatorPoint animator = LSCAAnimatorPoint(x, y) {
-        [self ls_addAnimationCalculationAction:^(__weak CALayer *weakSelf, __weak LSAnimatorChain *animatorChain) {
-            LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
-            CGPoint newPosition = [weakSelf ls_newPositionFromNewCenter:CGPointMake(x, y)];
-            positionAnimation.fromValue = [NSValue valueWithCGPoint:weakSelf.position];
-            positionAnimation.toValue = [NSValue valueWithCGPoint:newPosition];
-            [weakSelf ls_addAnimation:positionAnimation withAnimatorChain:animatorChain];
-        }];
-        [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
-            weakSelf.position = CGPointMake(x, y);
-        }];
-        
-        return self;
-    };
-    return animator;
-}
-
-
+#pragma mark - Animations
 - (LSCAAnimatorRect)ls_frame {
     LSCAAnimatorRect animator = LSCAAnimatorRect(rect) {
         return self.ls_origin(rect.origin.x, rect.origin.y).ls_bounds(rect);
@@ -254,7 +238,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect bounds = CGRectMake(0, 0, width, height);
             weakSelf.bounds = bounds;
-            weakSelf.bounds = bounds;
         }];
         
         return self;
@@ -280,6 +263,24 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         return self;
     };
     
+    return animator;
+}
+
+- (LSCAAnimatorPoint)ls_center {
+    LSCAAnimatorPoint animator = LSCAAnimatorPoint(x, y) {
+        [self ls_addAnimationCalculationAction:^(__weak CALayer *weakSelf, __weak LSAnimatorChain *animatorChain) {
+            LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
+            CGPoint newPosition = [weakSelf ls_newPositionFromNewCenter:CGPointMake(x, y)];
+            positionAnimation.fromValue = [NSValue valueWithCGPoint:weakSelf.position];
+            positionAnimation.toValue = [NSValue valueWithCGPoint:newPosition];
+            [weakSelf ls_addAnimation:positionAnimation withAnimatorChain:animatorChain];
+        }];
+        [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
+            weakSelf.position = CGPointMake(x, y);
+        }];
+        
+        return self;
+    };
     return animator;
 }
 
@@ -385,12 +386,11 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     LSCAAnimatorColor animator = LSCAAnimatorColor(color) {
         [self ls_addAnimationCalculationAction:^(__weak CALayer *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *colorAnimation = [weakSelf ls_basicAnimationForKeyPath:@"backgroundColor"];
-            colorAnimation.fromValue = (__bridge id)(weakSelf.backgroundColor);
+            colorAnimation.fromValue = [self ls_colorWithCGColor:weakSelf.backgroundColor];
             colorAnimation.toValue = color;
             [weakSelf ls_addAnimation:colorAnimation withAnimatorChain:animatorChain];
         }];
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
-            weakSelf.backgroundColor = color.CGColor;
             weakSelf.backgroundColor = color.CGColor;
         }];
         
@@ -469,7 +469,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect rect = CGRectMake(0, 0, MAX(weakSelf.bounds.size.width*f, 0), MAX(weakSelf.bounds.size.height*f, 0));
             weakSelf.bounds = rect;
-            weakSelf.bounds = rect;
         }];
         
         return self;
@@ -490,7 +489,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect rect = CGRectMake(0, 0, MAX(weakSelf.bounds.size.width*f, 0), weakSelf.bounds.size.height);
             weakSelf.bounds = rect;
-            weakSelf.bounds = rect;
         }];
         
         return self;
@@ -510,7 +508,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         }];
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect rect = CGRectMake(0, 0, weakSelf.bounds.size.width, MAX(weakSelf.bounds.size.height*f, 0));
-            weakSelf.bounds = rect;
             weakSelf.bounds = rect;
         }];
         
@@ -905,6 +902,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
+
+#pragma mark - Bezier Paths
 - (LSCAAnimatorBezierPath)ls_moveOnPath {
     LSCAAnimatorBezierPath animator = LSCAAnimatorBezierPath(path) {
         [self ls_addAnimationCalculationAction:^(__weak CALayer *weakSelf, __weak LSAnimatorChain *animatorChain) {
@@ -961,6 +960,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
+
+#pragma mark - Anchor
 - (CALayer *)ls_anchorDefault {
     return self.ls_anchorCenter;
 }
@@ -1019,7 +1020,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-#pragma mark - Animator Effects
+
+#pragma mark - Animation Effect Functions
 - (CALayer *)ls_easeIn {
     return self.ls_easeInQuad;
 }
@@ -1284,6 +1286,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
+
 #pragma mark - Blocks
 - (LSCAAnimatorBlock)ls_preAnimationBlock {
     LSCAAnimatorBlock animator = LSCAAnimatorBlock(block) {
@@ -1313,6 +1316,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
+
+#pragma mark - Animator Delay
 - (LSCAAnimatorTimeInterval)ls_delay {
     LSCAAnimatorTimeInterval animator = LSCAAnimatorTimeInterval(t) {
         [[self.ls_animatorChains lastObject] ls_updateCurrentTurnLinkerAnimationsDelay:t];
@@ -1330,6 +1335,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     
     return animator;
 }
+
 
 #pragma mark - Animator Controls
 - (LSCAAnimatorRepeatAnimation)ls_repeat {
@@ -1382,6 +1388,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
+
+#pragma mark - Multi-chain
 - (CALayer *)ls_concurrent {
     [self.ls_animatorChains addObject:[LSAnimatorChain chainWithView:self]];
     
