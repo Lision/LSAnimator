@@ -368,12 +368,12 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     LSCAAnimatorFloat animator = LSCAAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak CALayer *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *opacityAnimation = [weakSelf ls_basicAnimationForKeyPath:@"opacity"];
-            opacityAnimation.fromValue = @(weakSelf.opaque);
+            opacityAnimation.fromValue = @(weakSelf.opacity);
             opacityAnimation.toValue = @(f);
             [weakSelf ls_addAnimation:opacityAnimation withAnimatorChain:animatorChain];
         }];
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
-            weakSelf.opaque = f;
+            weakSelf.opacity = f;
         }];
         
         return self;

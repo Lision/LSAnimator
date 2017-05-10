@@ -32,7 +32,7 @@
     
     
     _layer = [CALayer layer];
-    _layer.frame = CGRectMake(50, 50, 20, 20);
+    _layer.frame = CGRectMake(100, 100, 20, 20);
     _layer.backgroundColor = [UIColor redColor].CGColor;
 //    _layer.position = CGPointMake(self.view.center.x, self.view.center.y - 20);
 
@@ -64,13 +64,12 @@
     });
 
     
-//    layer 动画执行 的时候 也执行了隐式动画
     _layer.ls_increWidth(20).ls_bounce.ls_repeat(0.5, 3).ls_increHeight(60).ls_spring.ls_thenAfter(1).ls_cornerRadius(40).ls_thenAfter(1.5).ls_wait(0.2).ls_y(_animatorBtn.frame.origin.y - 80).ls_postAnimationBlock(^{
         sender.ls_moveY(sender.bounds.size.height).ls_animate(0.2);
     }).ls_thenAfter(0.2).ls_moveY(-60).ls_easeOut.ls_thenAfter(0.2).ls_moveY(109).ls_bounce.ls_animate(1);
     _layer.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(1.5).ls_animate(1);
     _layer.ls_theFinalCompletion(^{
-        _layer.ls_cornerRadius(0).ls_bounds(CGRectMake(0, 0, 20, 20)).ls_position(self.view.center.x, self.view.center.y - 20).ls_animate(0.5);
+        _layer.ls_cornerRadius(0).ls_bounds(CGRectMake(0, 0, 20, 20)).ls_center(self.view.center.x, self.view.center.y - 20).ls_animate(0.5);
         sender.ls_moveY(-sender.bounds.size.height).ls_animateWithCompletion(0.5, ^{
             sender.enabled = YES;
         });
