@@ -20,13 +20,13 @@
 
 @implementation LSAnimatorLinker
 
-+ (instancetype)linkerWithView:(UIView *)view andAnimatorChain:(LSAnimatorChain *)animatorChain {
-    return [[self alloc] initWithView:view andAnimatorChain:animatorChain];
++ (instancetype)linkerWithLayer:(CALayer *)layer andAnimatorChain:(LSAnimatorChain *)animatorChain {
+    return [[self alloc] initWithLayer:layer andAnimatorChain:animatorChain];
 }
 
-- (instancetype)initWithView:(UIView *)view andAnimatorChain:(LSAnimatorChain *)animatorChain {
+- (instancetype)initWithLayer:(CALayer *)layer andAnimatorChain:(LSAnimatorChain *)animatorChain {
     if (self = [super init]) {
-        _view = view;
+        _layer = layer;
         _animatorChain = animatorChain;
     }
     
@@ -34,7 +34,7 @@
 }
 
 - (id)copyWithZone:(nullable NSZone *)zone {
-    typeof(self) copySelf = [[self.class allocWithZone:zone] initWithView:self.view andAnimatorChain:self.animatorChain];
+    typeof(self) copySelf = [[self.class allocWithZone:zone] initWithLayer:self.layer andAnimatorChain:self.animatorChain];
     copySelf.animationDelay = self.animationDelay;
     copySelf.animationDuration = self.animationDuration;
     copySelf.beforelinkerBlock = [self.beforelinkerBlock copy];
@@ -102,12 +102,12 @@
     }
     
     if (self.anchorCalculationAction) {
-        self.anchorCalculationAction(self.view, self.animatorChain);
+        self.anchorCalculationAction(self.layer, self.animatorChain);
     }
     
     self.ls_animationgroup.duration = self.animationDuration;
     for (LSAnimationCalculationAction action in self.ls_animationCalculationActions) {
-        action(self.view, self.animatorChain);
+        action(self.layer, self.animatorChain);
     }
     for (LSKeyframeAnimation *animation in self.ls_animations) {
         animation.duration = self.ls_animationgroup.duration;
@@ -115,18 +115,7 @@
     }
     self.ls_animationgroup.beginTime = CACurrentMediaTime() + self.animationDelay;
     self.ls_animationgroup.animations = self.ls_animations;
-    
-    // change 
-    if ([self.view isKindOfClass:[UIView class]]) {
-        [((UIView *)self.view).layer addAnimation:self.ls_animationgroup forKey:animationKey];
-    }
-    
-    if ([self.view isKindOfClass:[CALayer class]]) {
-        [((CALayer *)self.view) addAnimation:self.ls_animationgroup forKey:animationKey];
-    }
-    
-    
-    
+    [self.layer addAnimation:self.ls_animationgroup forKey:animationKey];
 }
 
 - (void)ls_executeCompletionActions {
@@ -135,7 +124,7 @@
         for (LSAnimationCompletionAction action in self.ls_animationCompletionActions) {
             [CATransaction begin];
             [CATransaction setDisableActions:YES];
-            action(self.view);
+            action(self.layer);
             [CATransaction commit];
         }
     });

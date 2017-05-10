@@ -69,7 +69,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 - (NSMutableArray<LSAnimatorChain *> *)ls_animatorChains {
     NSMutableArray<LSAnimatorChain *> *ls_animatorChains = objc_getAssociatedObject(self, @selector(ls_animatorChains));
     if (!ls_animatorChains) {
-        ls_animatorChains = [NSMutableArray arrayWithObject:[LSAnimatorChain chainWithView:self]];
+        ls_animatorChains = [NSMutableArray arrayWithObject:[LSAnimatorChain chainWithLayer:self]];
         [self setLs_animatorChains:ls_animatorChains];
     }
     
@@ -163,6 +163,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 - (UIColor *)ls_colorWithCGColor:(CGColorRef)cgColor {
     const CGFloat *components = CGColorGetComponents(cgColor);
+    if (!components) return nil;
+    
     return [UIColor colorWithRed:components[0] green:components[1] blue:components[2] alpha:components[3]];
 }
 
@@ -182,7 +184,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     if ([animatorChain ls_isEmptiedAfterTryToRemoveCurrentTurnLinker]) {
         [self.ls_animatorChains removeObject:animatorChain];
         if (!self.ls_animatorChains.count) {
-            [self.ls_animatorChains addObject:[LSAnimatorChain chainWithView:self]];
+            [self.ls_animatorChains addObject:[LSAnimatorChain chainWithLayer:self]];
             
             if (self.ls_finalCompleteBlock) {
                 LSAnimatorCompleteBlock finalCompleteBlock = self.ls_finalCompleteBlock;
@@ -266,7 +268,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSCAAnimatorPoint)ls_center {
+- (LSCAAnimatorPoint)ls_position {
     LSCAAnimatorPoint animator = LSCAAnimatorPoint(x, y) {
         [self ls_addAnimationCalculationAction:^(__weak CALayer *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
@@ -335,7 +337,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect bounds = CGRectMake(0, 0, f, weakSelf.frame.size.height);
             weakSelf.bounds = bounds;
-            weakSelf.bounds = bounds;
         }];
         
         return self;
@@ -354,7 +355,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         }];
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect bounds = CGRectMake(0, 0, weakSelf.frame.size.width, f);
-            weakSelf.bounds = bounds;
             weakSelf.bounds = bounds;
         }];
         
@@ -611,7 +611,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect bounds = CGRectMake(0, 0, MAX(weakSelf.bounds.size.width+f, 0), weakSelf.bounds.size.height);
             weakSelf.bounds = bounds;
-            weakSelf.bounds = bounds;
         }];
         
         return self;
@@ -631,7 +630,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect bounds = CGRectMake(0, 0, weakSelf.bounds.size.width, MAX(weakSelf.bounds.size.height+f, 0));
             weakSelf.bounds = bounds;
-            weakSelf.bounds = bounds;
         }];
         
         return self;
@@ -650,7 +648,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         }];
         [self ls_addAnimationCompletionAction:^(__weak CALayer *weakSelf) {
             CGRect bounds = CGRectMake(0, 0, MAX(weakSelf.bounds.size.width+width, 0), MAX(weakSelf.bounds.size.height+height, 0));
-            weakSelf.bounds = bounds;
             weakSelf.bounds = bounds;
         }];
         
@@ -1391,7 +1388,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 #pragma mark - Multi-chain
 - (CALayer *)ls_concurrent {
-    [self.ls_animatorChains addObject:[LSAnimatorChain chainWithView:self]];
+    [self.ls_animatorChains addObject:[LSAnimatorChain chainWithLayer:self]];
     
     return self;
 }

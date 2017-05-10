@@ -18,14 +18,14 @@ typedef void (^LSAnimatorChainCompleteBlock)();
 
 @interface LSAnimatorChain : NSObject
 
-@property (nonatomic, weak) id view;
+@property (nonatomic, weak) CALayer *layer;
 @property (nonatomic, copy) LSAnimatorChainCompleteBlock completeBlock;
 
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-+ (instancetype)chainWithView:(id)view;
-- (instancetype)initWithView:(id)view;
++ (instancetype)chainWithLayer:(CALayer *)layer;
+- (instancetype)initWithLayer:(CALayer *)layer;
 
 - (void)ls_updateAnchorWithAction:(LSAnimationCalculationAction)action;
 

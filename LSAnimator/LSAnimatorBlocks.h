@@ -64,6 +64,7 @@ typedef void (^LSCAAnimatorAnimationWithCompletion)(NSTimeInterval duration, voi
 #define LSCAAnimatorAnimationWithCompletion(duration,completion) ^void (NSTimeInterval duration, void(^completion)())
 
 
+#pragma mark - UIView Blocks
 typedef UIView * (^LSAnimatorRect)(CGRect rect);
 #define LSAnimatorRect(rect) ^UIView * (CGRect rect)
 

@@ -16,13 +16,13 @@
 
 @implementation LSAnimatorChain
 
-+ (instancetype)chainWithView:(id)view {
-    return [[self alloc] initWithView:view];
++ (instancetype)chainWithLayer:(CALayer *)layer {
+    return [[self alloc] initWithLayer:layer];
 }
 
-- (instancetype)initWithView:(id)view {
+- (instancetype)initWithLayer:(CALayer *)layer {
     if (self = [super init]) {
-        _view = view;
+        _layer = layer;
     }
     
     return self;
@@ -30,7 +30,7 @@
 
 - (NSMutableArray<LSAnimatorLinker *> *)ls_animatorLinkers {
     if (!_ls_animatorLinkers) {
-        _ls_animatorLinkers = [NSMutableArray arrayWithObject:[LSAnimatorLinker linkerWithView:self.view andAnimatorChain:self]];
+        _ls_animatorLinkers = [NSMutableArray arrayWithObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
     }
     
     return _ls_animatorLinkers;
@@ -66,7 +66,7 @@
 
 - (void)ls_thenAfter:(NSTimeInterval)time {
     [self ls_updateCurrentTurnLinkerAnimationsDuration:time];
-    [self.ls_animatorLinkers addObject:[LSAnimatorLinker linkerWithView:self.view andAnimatorChain:self]];
+    [self.ls_animatorLinkers addObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
 }
 
 - (void)ls_repeat:(NSInteger)count andIsAnimation:(BOOL)isAnimation {
@@ -76,7 +76,7 @@
     }
     
     if (!isAnimation) {
-        [self.ls_animatorLinkers addObject:[LSAnimatorLinker linkerWithView:self.view andAnimatorChain:self]];
+        [self.ls_animatorLinkers addObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
     }
 }
 

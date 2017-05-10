@@ -18,7 +18,7 @@
 - (LSCAAnimatorRect)ls_bounds;
 - (LSCAAnimatorSize)ls_size;
 - (LSCAAnimatorPoint)ls_origin;
-- (LSCAAnimatorPoint)ls_center;
+- (LSCAAnimatorPoint)ls_position;
 - (LSCAAnimatorFloat)ls_x;
 - (LSCAAnimatorFloat)ls_y;
 - (LSCAAnimatorFloat)ls_width;
