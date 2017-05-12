@@ -19,6 +19,7 @@ But it's shortcomings as a single-chain animation framework is also obvious. JHC
 ### Features
 - [x] **Multi-chain Animation**
 - [x] **Non-intrusive**
+- [x] **Support CALayer (v1.1.0)**
 
 The following comparison of single-chain animation and multi-chain animation differences:
 
@@ -241,6 +242,7 @@ My E-mail address: lisionmail@gmail.com
 ### 新特性
 - [x] **多链式动画**
 - [x] **非侵入式**
+- [x] **支持 CALayer (v1.1.0)**
 
 下面对比一下单链式动画和多链式动画的差异：
 
