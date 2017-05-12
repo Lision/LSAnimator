@@ -200,7 +200,6 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 - (void)ls_animateLinkWithAnimatorChain:(LSAnimatorChain *)animatorChain {
     NSAssert([self.ls_animatorChains containsObject:animatorChain], @"LSANIMATOR ERROR: ANIMATORCHAINS DO NOT CONTAINS OBJECT CURRENT ANIMATORCHAIN");
     
-    [self ls_updateAnchorWithPoint:CGPointMake(0.5, 0.5)];
     [animatorChain ls_animateWithWithAnimationKey:LSAnimatorChainAnimationKey([self.ls_animatorChains indexOfObject:animatorChain])];
 }
 
