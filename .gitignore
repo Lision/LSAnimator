@@ -1,5 +1,5 @@
+# OSX  
 # DS_Store
-.DS_Store
 *.DS_Store
 
 # Xcode
@@ -20,6 +20,11 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
 
 ## Other
 *.moved-aside
