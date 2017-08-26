@@ -14,61 +14,63 @@
 #pragma mark - Animations
 // Properties
 // Affects views position and bounds
-- (LSAnimatorRect)ls_frame;
-- (LSAnimatorRect)ls_bounds;
-- (LSAnimatorSize)ls_size;
-- (LSAnimatorPoint)ls_origin;
-- (LSAnimatorPoint)ls_center;
-- (LSAnimatorFloat)ls_x;
-- (LSAnimatorFloat)ls_y;
-- (LSAnimatorFloat)ls_width;
-- (LSAnimatorFloat)ls_height;
-- (LSAnimatorFloat)ls_opacity;
-- (LSAnimatorColor)ls_background;
-- (LSAnimatorColor)ls_borderColor;
-- (LSAnimatorFloat)ls_borderWidth;
-- (LSAnimatorFloat)ls_cornerRadius;
-- (LSAnimatorFloat)ls_scale;
-- (LSAnimatorFloat)ls_scaleX;
-- (LSAnimatorFloat)ls_scaleY;
-- (LSAnimatorPoint)ls_anchor;
+
+@property (nonatomic, strong, readonly) LSAnimatorRect ls_frame;
+@property (nonatomic, strong, readonly) LSAnimatorRect ls_bounds;
+@property (nonatomic, strong, readonly) LSAnimatorSize ls_size;
+@property (nonatomic, strong, readonly) LSAnimatorPoint ls_origin;
+@property (nonatomic, strong, readonly) LSAnimatorPoint ls_center;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_x;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_y;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_width;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_height;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_opacity;
+@property (nonatomic, strong, readonly) LSAnimatorColor ls_background;
+@property (nonatomic, strong, readonly) LSAnimatorColor ls_borderColor;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_borderWidth;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_cornerRadius;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_scale;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_scaleX;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_scaleY;
+@property (nonatomic, strong, readonly) LSAnimatorPoint ls_anchor;
 
 // Moves
 // Affects views position and bounds
-- (LSAnimatorFloat)ls_moveX;
-- (LSAnimatorFloat)ls_moveY;
-- (LSAnimatorPoint)ls_moveXY;
-- (LSAnimatorPolarCoordinate)ls_movePolar;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_moveX;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_moveY;
+@property (nonatomic, strong, readonly) LSAnimatorPoint ls_moveXY;
+@property (nonatomic, strong, readonly) LSAnimatorPolarCoordinate ls_movePolar;
 
 // Increments
 // Affects views position and bounds
-- (LSAnimatorFloat)ls_increWidth;
-- (LSAnimatorFloat)ls_increHeight;
-- (LSAnimatorSize)ls_increSize;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_increWidth;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_increHeight;
+@property (nonatomic, strong, readonly) LSAnimatorSize ls_increSize;
 
 // Transforms
 // Affects views transform property NOT position and bounds
 // These should be used for AutoLayout
 // These should NOT be mixed with properties that affect position and bounds
 - (UIView *)ls_transformIdentity;
-- (LSAnimatorDegrees)ls_rotate; // Same as rotateZ
-- (LSAnimatorDegrees)ls_rotateX;
-- (LSAnimatorDegrees)ls_rotateY;
-- (LSAnimatorDegrees)ls_rotateZ;
-- (LSAnimatorFloat)ls_transformX;
-- (LSAnimatorFloat)ls_transformY;
-- (LSAnimatorFloat)ls_transformZ;
-- (LSAnimatorPoint)ls_transformXY;
-- (LSAnimatorFloat)ls_transformScale; // x and y equal
-- (LSAnimatorFloat)ls_transformScaleX;
-- (LSAnimatorFloat)ls_transformScaleY;
+
+@property (nonatomic, strong, readonly) LSAnimatorDegrees ls_rotate; // Same as rotateZ
+@property (nonatomic, strong, readonly) LSAnimatorDegrees ls_rotateX;
+@property (nonatomic, strong, readonly) LSAnimatorDegrees ls_rotateY;
+@property (nonatomic, strong, readonly) LSAnimatorDegrees ls_rotateZ;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformX;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformY;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformZ;
+@property (nonatomic, strong, readonly) LSAnimatorPoint ls_transformXY;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformScale; // x and y equal
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformScaleX;
+@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformScaleY;
 
 
 #pragma mark - Bezier Paths
 // Animation effects dont apply
-- (LSAnimatorBezierPath)ls_moveOnPath;
-- (LSAnimatorBezierPath)ls_moveAndRotateOnPath;
-- (LSAnimatorBezierPath)ls_moveAndReverseRotateOnPath;
+@property (nonatomic, strong, readonly) LSAnimatorBezierPath ls_moveOnPath;
+@property (nonatomic, strong, readonly) LSAnimatorBezierPath ls_moveAndRotateOnPath;
+@property (nonatomic, strong, readonly) LSAnimatorBezierPath ls_moveAndReverseRotateOnPath;
 
 
 #pragma mark - Anchor
@@ -125,22 +127,22 @@
 
 #pragma mark - Blocks
 // Allows handling in in context of the animation state
-- (LSAnimatorBlock)ls_preAnimationBlock;
-- (LSAnimatorBlock)ls_postAnimationBlock;
-- (LSFinalAnimatorCompletion)ls_theFinalCompletion;
+@property (nonatomic, strong, readonly)  LSAnimatorBlock ls_preAnimationBlock;
+@property (nonatomic, strong, readonly)  LSAnimatorBlock ls_postAnimationBlock;
+@property (nonatomic, strong, readonly)  LSFinalAnimatorCompletion ls_theFinalCompletion;
 
 
 #pragma mark - Animator Delay
-- (LSAnimatorTimeInterval)ls_delay;
-- (LSAnimatorTimeInterval)ls_wait;
+@property (nonatomic, strong, readonly)  LSAnimatorTimeInterval ls_delay;
+@property (nonatomic, strong, readonly)  LSAnimatorTimeInterval ls_wait;
 
 
 #pragma mark - Animator Controls
-- (LSAnimatorRepeatAnimation)ls_repeat;
-- (LSAnimatorTimeInterval)ls_thenAfter;
-- (LSAnimatorAnimation)ls_animate;
-- (LSAnimatorAnimationWithRepeat)ls_animateWithRepeat;
-- (LSAnimatorAnimationWithCompletion)ls_animateWithCompletion;
+@property (nonatomic, strong, readonly)  LSAnimatorRepeatAnimation ls_repeat;
+@property (nonatomic, strong, readonly)  LSAnimatorTimeInterval ls_thenAfter;
+@property (nonatomic, strong, readonly)  LSAnimatorAnimation ls_animate;
+@property (nonatomic, strong, readonly)  LSAnimatorAnimationWithRepeat ls_animateWithRepeat;
+@property (nonatomic, strong, readonly)  LSAnimatorAnimationWithCompletion ls_animateWithCompletion;
 
 
 #pragma mark - Multi-chain
