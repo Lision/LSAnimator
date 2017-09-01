@@ -14,38 +14,37 @@
 #pragma mark - Animations
 // Properties
 // Affects views position and bounds
-
-@property (nonatomic, strong, readonly) LSAnimatorRect ls_frame;
-@property (nonatomic, strong, readonly) LSAnimatorRect ls_bounds;
-@property (nonatomic, strong, readonly) LSAnimatorSize ls_size;
-@property (nonatomic, strong, readonly) LSAnimatorPoint ls_origin;
-@property (nonatomic, strong, readonly) LSAnimatorPoint ls_center;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_x;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_y;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_width;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_height;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_opacity;
-@property (nonatomic, strong, readonly) LSAnimatorColor ls_background;
-@property (nonatomic, strong, readonly) LSAnimatorColor ls_borderColor;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_borderWidth;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_cornerRadius;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_scale;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_scaleX;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_scaleY;
-@property (nonatomic, strong, readonly) LSAnimatorPoint ls_anchor;
+@property (nonatomic, copy, readonly) LSAnimatorRect ls_frame;
+@property (nonatomic, copy, readonly) LSAnimatorRect ls_bounds;
+@property (nonatomic, copy, readonly) LSAnimatorSize ls_size;
+@property (nonatomic, copy, readonly) LSAnimatorPoint ls_origin;
+@property (nonatomic, copy, readonly) LSAnimatorPoint ls_center;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_x;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_y;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_width;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_height;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_opacity;
+@property (nonatomic, copy, readonly) LSAnimatorColor ls_background;
+@property (nonatomic, copy, readonly) LSAnimatorColor ls_borderColor;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_borderWidth;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_cornerRadius;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_scale;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_scaleX;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_scaleY;
+@property (nonatomic, copy, readonly) LSAnimatorPoint ls_anchor;
 
 // Moves
 // Affects views position and bounds
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_moveX;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_moveY;
-@property (nonatomic, strong, readonly) LSAnimatorPoint ls_moveXY;
-@property (nonatomic, strong, readonly) LSAnimatorPolarCoordinate ls_movePolar;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_moveX;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_moveY;
+@property (nonatomic, copy, readonly) LSAnimatorPoint ls_moveXY;
+@property (nonatomic, copy, readonly) LSAnimatorPolarCoordinate ls_movePolar;
 
 // Increments
 // Affects views position and bounds
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_increWidth;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_increHeight;
-@property (nonatomic, strong, readonly) LSAnimatorSize ls_increSize;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_increWidth;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_increHeight;
+@property (nonatomic, copy, readonly) LSAnimatorSize ls_increSize;
 
 // Transforms
 // Affects views transform property NOT position and bounds
@@ -53,24 +52,24 @@
 // These should NOT be mixed with properties that affect position and bounds
 - (UIView *)ls_transformIdentity;
 
-@property (nonatomic, strong, readonly) LSAnimatorDegrees ls_rotate; // Same as rotateZ
-@property (nonatomic, strong, readonly) LSAnimatorDegrees ls_rotateX;
-@property (nonatomic, strong, readonly) LSAnimatorDegrees ls_rotateY;
-@property (nonatomic, strong, readonly) LSAnimatorDegrees ls_rotateZ;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformX;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformY;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformZ;
-@property (nonatomic, strong, readonly) LSAnimatorPoint ls_transformXY;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformScale; // x and y equal
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformScaleX;
-@property (nonatomic, strong, readonly) LSAnimatorFloat ls_transformScaleY;
+@property (nonatomic, copy, readonly) LSAnimatorDegrees ls_rotate; // Same as rotateZ
+@property (nonatomic, copy, readonly) LSAnimatorDegrees ls_rotateX;
+@property (nonatomic, copy, readonly) LSAnimatorDegrees ls_rotateY;
+@property (nonatomic, copy, readonly) LSAnimatorDegrees ls_rotateZ;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_transformX;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_transformY;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_transformZ;
+@property (nonatomic, copy, readonly) LSAnimatorPoint ls_transformXY;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_transformScale; // x and y equal
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_transformScaleX;
+@property (nonatomic, copy, readonly) LSAnimatorFloat ls_transformScaleY;
 
 
 #pragma mark - Bezier Paths
 // Animation effects dont apply
-@property (nonatomic, strong, readonly) LSAnimatorBezierPath ls_moveOnPath;
-@property (nonatomic, strong, readonly) LSAnimatorBezierPath ls_moveAndRotateOnPath;
-@property (nonatomic, strong, readonly) LSAnimatorBezierPath ls_moveAndReverseRotateOnPath;
+@property (nonatomic, copy, readonly) LSAnimatorBezierPath ls_moveOnPath;
+@property (nonatomic, copy, readonly) LSAnimatorBezierPath ls_moveAndRotateOnPath;
+@property (nonatomic, copy, readonly) LSAnimatorBezierPath ls_moveAndReverseRotateOnPath;
 
 
 #pragma mark - Anchor
@@ -127,22 +126,22 @@
 
 #pragma mark - Blocks
 // Allows handling in in context of the animation state
-@property (nonatomic, strong, readonly)  LSAnimatorBlock ls_preAnimationBlock;
-@property (nonatomic, strong, readonly)  LSAnimatorBlock ls_postAnimationBlock;
-@property (nonatomic, strong, readonly)  LSFinalAnimatorCompletion ls_theFinalCompletion;
+@property (nonatomic, copy, readonly) LSAnimatorBlock ls_preAnimationBlock;
+@property (nonatomic, copy, readonly) LSAnimatorBlock ls_postAnimationBlock;
+@property (nonatomic, copy, readonly) LSFinalAnimatorCompletion ls_theFinalCompletion;
 
 
 #pragma mark - Animator Delay
-@property (nonatomic, strong, readonly)  LSAnimatorTimeInterval ls_delay;
-@property (nonatomic, strong, readonly)  LSAnimatorTimeInterval ls_wait;
+@property (nonatomic, copy, readonly) LSAnimatorTimeInterval ls_delay;
+@property (nonatomic, copy, readonly) LSAnimatorTimeInterval ls_wait;
 
 
 #pragma mark - Animator Controls
-@property (nonatomic, strong, readonly)  LSAnimatorRepeatAnimation ls_repeat;
-@property (nonatomic, strong, readonly)  LSAnimatorTimeInterval ls_thenAfter;
-@property (nonatomic, strong, readonly)  LSAnimatorAnimation ls_animate;
-@property (nonatomic, strong, readonly)  LSAnimatorAnimationWithRepeat ls_animateWithRepeat;
-@property (nonatomic, strong, readonly)  LSAnimatorAnimationWithCompletion ls_animateWithCompletion;
+@property (nonatomic, copy, readonly) LSAnimatorRepeatAnimation ls_repeat;
+@property (nonatomic, copy, readonly) LSAnimatorTimeInterval ls_thenAfter;
+@property (nonatomic, copy, readonly) LSAnimatorAnimation ls_animate;
+@property (nonatomic, copy, readonly) LSAnimatorAnimationWithRepeat ls_animateWithRepeat;
+@property (nonatomic, copy, readonly) LSAnimatorAnimationWithCompletion ls_animateWithCompletion;
 
 
 #pragma mark - Multi-chain
