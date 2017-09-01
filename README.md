@@ -20,6 +20,7 @@ However, the shortcoming is also obvious. JHChainableAnimations will be more pow
 - [x] **Multi-chain Animation**
 - [x] **Non-intrusive**
 - [x] **Support CALayer (v1.1.0)**
+- [x] **Property Animation (Support auto parameter association v1.2.0)**
 
 The following comparison of single-chain animation and multi-chain animation differences:
 
@@ -243,6 +244,7 @@ My E-mail address: lisionmail@gmail.com
 - [x] **多链式动画**
 - [x] **非侵入式**
 - [x] **支持 CALayer (v1.1.0)**
+- [x] **属性化动画（支持自动参数联想 v1.2.0）**
 
 下面对比一下单链式动画和多链式动画的差异：
 
