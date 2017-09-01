@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UIView+LSAnimator.h"
-#import "CALayer+LSAnimator.h"
+#import "LSAnimator.h"
 
 @interface ViewController ()
 

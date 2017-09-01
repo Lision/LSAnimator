@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for LSAnimator.
-FOUNDATION_EXPORT double LSAnimatorVersionNumber;
+#if __has_include(<LSAnimator/LSAnimator.h>)
 
-//! Project version string for LSAnimator.
+FOUNDATION_EXPORT double LSAnimatorVersionNumber;
 FOUNDATION_EXPORT const unsigned char LSAnimatorVersionString[];
 
 #import <LSAnimator/UIView+LSAnimator.h>
 #import <LSAnimator/CALayer+LSAnimator.h>
 
+#else
 
+#import "UIView+LSAnimator.h"
+#import "CALayer+LSAnimator.h"
+
+#endif
