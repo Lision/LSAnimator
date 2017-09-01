@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9F4FF99D1EBF23CB001FA32C /* CALayer+LSAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */; };
-		9F945E7D1F51972E003DA23D /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F945E7C1F51972E003DA23D /* SwiftViewController.swift */; };
-		9FE1D0271F519C87002DE1F5 /* LSAnimatorSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1D0261F519C87002DE1F5 /* LSAnimatorSwift.swift */; };
 		BCC82D381EB98056004C5554 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D371EB98056004C5554 /* main.m */; };
 		BCC82D3B1EB98056004C5554 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D3A1EB98056004C5554 /* AppDelegate.m */; };
 		BCC82D3E1EB98056004C5554 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D3D1EB98056004C5554 /* ViewController.m */; };
@@ -27,8 +25,6 @@
 		9F4FF99B1EBF23CB001FA32C /* CALayer+LSAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+LSAnimator.h"; sourceTree = "<group>"; };
 		9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LSAnimator.m"; sourceTree = "<group>"; };
 		9F945E7B1F51972E003DA23D /* LSAnimatorDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LSAnimatorDemo-Bridging-Header.h"; sourceTree = "<group>"; };
-		9F945E7C1F51972E003DA23D /* SwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
-		9FE1D0261F519C87002DE1F5 /* LSAnimatorSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSAnimatorSwift.swift; sourceTree = "<group>"; };
 		BCC82D331EB98056004C5554 /* LSAnimatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSAnimatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC82D371EB98056004C5554 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCC82D391EB98056004C5554 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,7 +80,6 @@
 		BCC82D351EB98056004C5554 /* LSAnimatorDemo */ = {
 			isa = PBXGroup;
 			children = (
-				9F945E7C1F51972E003DA23D /* SwiftViewController.swift */,
 				9F945E7B1F51972E003DA23D /* LSAnimatorDemo-Bridging-Header.h */,
 				BCC82D391EB98056004C5554 /* AppDelegate.h */,
 				BCC82D3A1EB98056004C5554 /* AppDelegate.m */,
@@ -124,7 +119,6 @@
 				BCC82D591EB98248004C5554 /* UIView+LSAnimator.m */,
 				9F4FF99B1EBF23CB001FA32C /* CALayer+LSAnimator.h */,
 				9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */,
-				9FE1D0261F519C87002DE1F5 /* LSAnimatorSwift.swift */,
 			);
 			name = LSAnimator;
 			path = ../LSAnimator;
@@ -209,10 +203,8 @@
 				BCC82D3E1EB98056004C5554 /* ViewController.m in Sources */,
 				BCC82D5E1EB98248004C5554 /* UIView+LSAnimator.m in Sources */,
 				9F4FF99D1EBF23CB001FA32C /* CALayer+LSAnimator.m in Sources */,
-				9FE1D0271F519C87002DE1F5 /* LSAnimatorSwift.swift in Sources */,
 				BCC82D5A1EB98248004C5554 /* LSAnimatorChain.m in Sources */,
 				BCC82D3B1EB98056004C5554 /* AppDelegate.m in Sources */,
-				9F945E7D1F51972E003DA23D /* SwiftViewController.swift in Sources */,
 				BCC82D381EB98056004C5554 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
