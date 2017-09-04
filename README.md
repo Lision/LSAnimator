@@ -272,7 +272,7 @@ _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.25).
 
 如上所示，可以把逻辑上不相关的动画（上面例子是改变颜色的动画）独立出来放到另一个动画链去执行，以实现复杂的动画交互需求。
 
-# [这里还有一篇 LSAnimator 对比 JHChainableAnimations 的文章推荐阅读](http://blog-lision.com/2017/05/04/LSAnimatorVSJHChainableAnimations/)
+# [这里还有一篇 LSAnimator 对比 JHChainableAnimations 的文章推荐阅读](http://blog-lision.com/2017/09/01/LSAnimatorVSJHChainableAnimations/)
 
 # 安装
 
