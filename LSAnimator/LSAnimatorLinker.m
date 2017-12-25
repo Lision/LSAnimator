@@ -8,7 +8,6 @@
 
 #import "LSAnimatorLinker.h"
 
-
 @interface LSAnimatorLinker ()
 
 @property (strong, nonatomic) CAAnimationGroup *ls_animationgroup;
