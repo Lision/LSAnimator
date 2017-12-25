@@ -111,14 +111,14 @@
 				BCC82D511EB98248004C5554 /* LSAnimatorChain.m */,
 				BCC82D521EB98248004C5554 /* LSAnimatorLinker.h */,
 				BCC82D531EB98248004C5554 /* LSAnimatorLinker.m */,
-				BCC82D541EB98248004C5554 /* LSKeyframeAnimation.h */,
-				BCC82D551EB98248004C5554 /* LSKeyframeAnimation.m */,
-				BCC82D561EB98248004C5554 /* LSKeyframeAnimationFunctions.c */,
-				BCC82D571EB98248004C5554 /* LSKeyframeAnimationFunctions.h */,
 				BCC82D581EB98248004C5554 /* UIView+LSAnimator.h */,
 				BCC82D591EB98248004C5554 /* UIView+LSAnimator.m */,
 				9F4FF99B1EBF23CB001FA32C /* CALayer+LSAnimator.h */,
 				9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */,
+				BCC82D541EB98248004C5554 /* LSKeyframeAnimation.h */,
+				BCC82D551EB98248004C5554 /* LSKeyframeAnimation.m */,
+				BCC82D571EB98248004C5554 /* LSKeyframeAnimationFunctions.h */,
+				BCC82D561EB98248004C5554 /* LSKeyframeAnimationFunctions.c */,
 			);
 			name = LSAnimator;
 			path = ../LSAnimator;
