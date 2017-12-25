@@ -10,7 +10,7 @@
 
 @interface LSAnimatorChain ()
 
-@property (nonatomic, strong) NSMutableArray <LSAnimatorLinker *> *ls_animatorLinkers;
+@property (nonatomic, strong) NSMutableArray <LSAnimatorLinker *> *animatorLinkers;
 
 @end
 
@@ -28,81 +28,81 @@
     return self;
 }
 
-- (NSMutableArray<LSAnimatorLinker *> *)ls_animatorLinkers {
-    if (!_ls_animatorLinkers) {
-        _ls_animatorLinkers = [NSMutableArray arrayWithObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
+- (NSMutableArray<LSAnimatorLinker *> *)animatorLinkers {
+    if (!_animatorLinkers) {
+        _animatorLinkers = [NSMutableArray arrayWithObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
     }
     
-    return _ls_animatorLinkers;
+    return _animatorLinkers;
 }
 
-- (void)ls_updateAnchorWithAction:(LSAnimationCalculationAction)action {
-    [self.ls_animatorLinkers lastObject].anchorCalculationAction = action;
+- (void)updateAnchorWithAction:(LSAnimationCalculationAction)action {
+    [self.animatorLinkers lastObject].anchorCalculationAction = action;
 }
 
-- (void)ls_addAnimation:(LSKeyframeAnimation *)animation {
-    [[self.ls_animatorLinkers firstObject] ls_addAnimation:animation];
+- (void)addAnimation:(LSKeyframeAnimation *)animation {
+    [[self.animatorLinkers firstObject] addAnimation:animation];
 }
 
-- (void)ls_addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock {
-    [[self.ls_animatorLinkers firstObject] ls_addAnimationFunctionBlock:functionBlock];
+- (void)addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock {
+    [[self.animatorLinkers firstObject] addAnimationFunctionBlock:functionBlock];
 }
 
-- (void)ls_addAnimationCalculationAction:(LSAnimationCalculationAction)action {
-    [[self.ls_animatorLinkers lastObject] ls_addAnimationCalculationAction:action];
+- (void)addAnimationCalculationAction:(LSAnimationCalculationAction)action {
+    [[self.animatorLinkers lastObject] addAnimationCalculationAction:action];
 }
 
-- (void)ls_addAnimationCompletionAction:(LSAnimationCompletionAction)action {
-    [[self.ls_animatorLinkers lastObject] ls_addAnimationCompletionAction:action];
+- (void)addAnimationCompletionAction:(LSAnimationCompletionAction)action {
+    [[self.animatorLinkers lastObject] addAnimationCompletionAction:action];
 }
 
-- (void)ls_updateBeforeCurrentLinkerAnimationBlock:(LSAnimatorLinkerBlock)block {
-    [self.ls_animatorLinkers lastObject].beforelinkerBlock = block;
+- (void)updateBeforeCurrentLinkerAnimationBlock:(LSAnimatorLinkerBlock)block {
+    [self.animatorLinkers lastObject].beforelinkerBlock = block;
 }
 
-- (void)ls_updateAfterCurrentLinkerAnimationBlock:(LSAnimatorLinkerBlock)block {
-    [self.ls_animatorLinkers lastObject].afterLinkerBlock = block;
+- (void)updateAfterCurrentLinkerAnimationBlock:(LSAnimatorLinkerBlock)block {
+    [self.animatorLinkers lastObject].afterLinkerBlock = block;
 }
 
-- (void)ls_thenAfter:(NSTimeInterval)time {
-    [self ls_updateCurrentTurnLinkerAnimationsDuration:time];
-    [self.ls_animatorLinkers addObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
+- (void)thenAfter:(NSTimeInterval)time {
+    [self updateCurrentTurnLinkerAnimationsDuration:time];
+    [self.animatorLinkers addObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
 }
 
-- (void)ls_repeat:(NSInteger)count andIsAnimation:(BOOL)isAnimation {
+- (void)repeat:(NSInteger)count andIsAnimation:(BOOL)isAnimation {
     for (NSInteger index = 0; index < count - 1; index++) {
-        LSAnimatorLinker *animatorLinker = [[self.ls_animatorLinkers lastObject] copy];
-        [self.ls_animatorLinkers addObject:animatorLinker];
+        LSAnimatorLinker *animatorLinker = [[self.animatorLinkers lastObject] copy];
+        [self.animatorLinkers addObject:animatorLinker];
     }
     
     if (!isAnimation) {
-        [self.ls_animatorLinkers addObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
+        [self.animatorLinkers addObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
     }
 }
 
-- (void)ls_updateCurrentTurnLinkerAnimationsDelay:(NSTimeInterval)delay {
-    [self.ls_animatorLinkers lastObject].animationDelay = delay;
+- (void)updateCurrentTurnLinkerAnimationsDelay:(NSTimeInterval)delay {
+    [self.animatorLinkers lastObject].animationDelay = delay;
 }
 
-- (void)ls_updateCurrentTurnLinkerAnimationsDuration:(NSTimeInterval)duration {
-    [self.ls_animatorLinkers lastObject].animationDuration = duration;
+- (void)updateCurrentTurnLinkerAnimationsDuration:(NSTimeInterval)duration {
+    [self.animatorLinkers lastObject].animationDuration = duration;
 }
 
-- (void)ls_animateWithWithAnimationKey:(NSString *)animationKey {
-    [[self.ls_animatorLinkers firstObject] ls_animateWithAnimationKey:animationKey];
+- (void)animateWithWithAnimationKey:(NSString *)animationKey {
+    [[self.animatorLinkers firstObject] animateWithAnimationKey:animationKey];
 }
 
-- (void)ls_executeCompletionActions {
-    [[self.ls_animatorLinkers firstObject] ls_executeCompletionActions];
+- (void)executeCompletionActions {
+    [[self.animatorLinkers firstObject] executeCompletionActions];
 }
 
-- (BOOL)ls_isEmptiedAfterTryToRemoveCurrentTurnLinker {
-    if (self.ls_animatorLinkers.count) {
-        [[self.ls_animatorLinkers firstObject] ls_executeAfterLinkerBlock];
-        [self.ls_animatorLinkers removeObjectAtIndex:0];
+- (BOOL)isEmptiedAfterTryToRemoveCurrentTurnLinker {
+    if (self.animatorLinkers.count) {
+        [[self.animatorLinkers firstObject] executeAfterLinkerBlock];
+        [self.animatorLinkers removeObjectAtIndex:0];
     }
     
-    if (self.ls_animatorLinkers.count) {
+    if (self.animatorLinkers.count) {
         return NO;
     } else {
         if (self.completeBlock) {

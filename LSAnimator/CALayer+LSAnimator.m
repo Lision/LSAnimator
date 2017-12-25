@@ -86,21 +86,21 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 }
 
 - (void)ls_addAnimation:(LSKeyframeAnimation *)animation withAnimatorChain:(LSAnimatorChain *)animatorChain {
-    [animatorChain ls_addAnimation:animation];
+    [animatorChain addAnimation:animation];
 }
 
 - (void)ls_addAnimationKeyframeFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock {
     [self ls_addAnimationCalculationAction:^(__weak CALayer *view, __weak LSAnimatorChain *animatorChain) {
-        [animatorChain ls_addAnimationFunctionBlock:functionBlock];
+        [animatorChain addAnimationFunctionBlock:functionBlock];
     }];
 }
 
 - (void)ls_addAnimationCalculationAction:(LSAnimationCalculationAction)action {
-    [[self.ls_animatorChains lastObject] ls_addAnimationCalculationAction:action];
+    [[self.ls_animatorChains lastObject] addAnimationCalculationAction:action];
 }
 
 - (void)ls_addAnimationCompletionAction:(LSAnimationCompletionAction)action {
-    [[self.ls_animatorChains lastObject] ls_addAnimationCompletionAction:action];
+    [[self.ls_animatorChains lastObject] addAnimationCompletionAction:action];
 }
 
 - (void)ls_updateAnchorWithPoint:(CGPoint)anchorPoint {
@@ -128,7 +128,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
         weakSelf.anchorPoint = anchorPoint;
     };
     
-    [[self.ls_animatorChains lastObject] ls_updateAnchorWithAction:action];
+    [[self.ls_animatorChains lastObject] updateAnchorWithAction:action];
 }
 
 - (CGPoint)ls_newPositionFromNewFrame:(CGRect)newRect {
@@ -181,7 +181,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 }
 
 - (void)ls_chainLinkerDidFinishAnimationsWithAnimatorChain:(LSAnimatorChain *)animatorChain {
-    if ([animatorChain ls_isEmptiedAfterTryToRemoveCurrentTurnLinker]) {
+    if ([animatorChain isEmptiedAfterTryToRemoveCurrentTurnLinker]) {
         [self.ls_animatorChains removeObject:animatorChain];
         if (!self.ls_animatorChains.count) {
             [self.ls_animatorChains addObject:[LSAnimatorChain chainWithLayer:self]];
@@ -200,11 +200,11 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 - (void)ls_animateLinkWithAnimatorChain:(LSAnimatorChain *)animatorChain {
     NSAssert([self.ls_animatorChains containsObject:animatorChain], @"LSANIMATOR ERROR: ANIMATORCHAINS DO NOT CONTAINS OBJECT CURRENT ANIMATORCHAIN");
     
-    [animatorChain ls_animateWithWithAnimationKey:LSAnimatorChainAnimationKey([self.ls_animatorChains indexOfObject:animatorChain])];
+    [animatorChain animateWithWithAnimationKey:LSAnimatorChainAnimationKey([self.ls_animatorChains indexOfObject:animatorChain])];
 }
 
 - (void)ls_executeAnimationCompletionActionsWithAnimatorChain:(LSAnimatorChain *)animatorChain {
-    [animatorChain ls_executeCompletionActions];
+    [animatorChain executeCompletionActions];
 }
 
 @end
@@ -1286,7 +1286,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 #pragma mark - Blocks
 - (LSCAAnimatorBlock)ls_preAnimationBlock {
     LSCAAnimatorBlock animator = LSCAAnimatorBlock(block) {
-        [[self.ls_animatorChains lastObject] ls_updateBeforeCurrentLinkerAnimationBlock:block];
+        [[self.ls_animatorChains lastObject] updateBeforeCurrentLinkerAnimationBlock:block];
         
         return self;
     };
@@ -1296,7 +1296,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 - (LSCAAnimatorBlock)ls_postAnimationBlock {
     LSCAAnimatorBlock animator = LSCAAnimatorBlock(block) {
-        [[self.ls_animatorChains lastObject] ls_updateAfterCurrentLinkerAnimationBlock:block];
+        [[self.ls_animatorChains lastObject] updateAfterCurrentLinkerAnimationBlock:block];
         
         return self;
     };
@@ -1316,7 +1316,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 #pragma mark - Animator Delay
 - (LSCAAnimatorTimeInterval)ls_delay {
     LSCAAnimatorTimeInterval animator = LSCAAnimatorTimeInterval(t) {
-        [[self.ls_animatorChains lastObject] ls_updateCurrentTurnLinkerAnimationsDelay:t];
+        [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDelay:t];
         
         return self;
     };
@@ -1336,8 +1336,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 #pragma mark - Animator Controls
 - (LSCAAnimatorRepeatAnimation)ls_repeat {
     LSCAAnimatorRepeatAnimation animator = LSCAAnimatorRepeatAnimation(duration, count) {
-        [[self.ls_animatorChains lastObject] ls_updateCurrentTurnLinkerAnimationsDuration:duration];
-        [[self.ls_animatorChains lastObject] ls_repeat:count andIsAnimation:NO];
+        [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDuration:duration];
+        [[self.ls_animatorChains lastObject] repeat:count andIsAnimation:NO];
         
         return self;
     };
@@ -1347,7 +1347,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 - (LSCAAnimatorTimeInterval)ls_thenAfter {
     LSCAAnimatorTimeInterval animator = LSCAAnimatorTimeInterval(t) {
-        [[self.ls_animatorChains lastObject] ls_thenAfter:t];
+        [[self.ls_animatorChains lastObject] thenAfter:t];
         
         return self;
     };
@@ -1357,7 +1357,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 - (LSCAAnimatorAnimation)ls_animate {
     LSCAAnimatorAnimation animator = LSCAAnimatorAnimation(duration) {
-        [[self.ls_animatorChains lastObject] ls_updateCurrentTurnLinkerAnimationsDuration:duration];
+        [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDuration:duration];
         [self ls_animateWithAnimatorChain:[self.ls_animatorChains lastObject]];
     };
     
@@ -1366,8 +1366,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 - (LSCAAnimatorAnimationWithRepeat)ls_animateWithRepeat {
     LSCAAnimatorAnimationWithRepeat animator = LSCAAnimatorAnimationWithRepeat(duration, count) {
-        [[self.ls_animatorChains lastObject] ls_updateCurrentTurnLinkerAnimationsDuration:duration];
-        [[self.ls_animatorChains lastObject] ls_repeat:count andIsAnimation:YES];
+        [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDuration:duration];
+        [[self.ls_animatorChains lastObject] repeat:count andIsAnimation:YES];
         [self ls_animateWithAnimatorChain:[self.ls_animatorChains lastObject]];
     };
     
@@ -1376,7 +1376,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 - (LSCAAnimatorAnimationWithCompletion)ls_animateWithCompletion {
     LSCAAnimatorAnimationWithCompletion animator = LSCAAnimatorAnimationWithCompletion(duration, completion) {
-        [[self.ls_animatorChains lastObject] ls_updateCurrentTurnLinkerAnimationsDuration:duration];
+        [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDuration:duration];
         [self.ls_animatorChains lastObject].completeBlock = completion;
         [self ls_animateWithAnimatorChain:[self.ls_animatorChains lastObject]];
     };
