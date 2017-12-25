@@ -17,22 +17,22 @@
 
 @interface LSKeyframeAnimation ()
 
-- (void)ls_createValueArray;
-- (NSArray *)ls_createRectArrayFromXValues:(NSArray *)xValues
-                                   yValues:(NSArray *)yValues
-                                    widths:(NSArray *)widths
-                                   heights:(NSArray *)heights;
-- (NSArray *)ls_createPointArrayFromXValues:(NSArray *)xValues yValues:(NSArray *)yValues;
-- (NSArray *)ls_createSizeArrayFromWidths:(NSArray *)widths heights:(NSArray *)heights;
-- (NSArray *)ls_createColorArrayFromRed:(NSArray *)redValues
-                                  green:(NSArray *)greenValues
-                                   blue:(NSArray *)blueValues
-                                  alpha:(NSArray *)alphaValues;
-- (NSArray *)ls_createTransformArrayFromM11:(NSArray *)m11 M12:(NSArray *)m12 M13:(NSArray *)m13 M14:(NSArray *)m14
-                                        M21:(NSArray *)m21 M22:(NSArray *)m22 M23:(NSArray *)m23 M24:(NSArray *)m24
-                                        M31:(NSArray *)m31 M32:(NSArray *)m32 M33:(NSArray *)m33 M34:(NSArray *)m34
-                                        M41:(NSArray *)m41 M42:(NSArray *)m42 M43:(NSArray *)m43 M44:(NSArray *)m44;
-- (NSArray *)ls_valueArrayForStartValue:(CGFloat)startValue endValue:(CGFloat)endValue;
+- (void)createValueArray;
+- (NSArray *)createRectArrayFromXValues:(NSArray *)xValues
+                                yValues:(NSArray *)yValues
+                                 widths:(NSArray *)widths
+                                heights:(NSArray *)heights;
+- (NSArray *)createPointArrayFromXValues:(NSArray *)xValues yValues:(NSArray *)yValues;
+- (NSArray *)createSizeArrayFromWidths:(NSArray *)widths heights:(NSArray *)heights;
+- (NSArray *)createColorArrayFromRed:(NSArray *)redValues
+                               green:(NSArray *)greenValues
+                                blue:(NSArray *)blueValues
+                               alpha:(NSArray *)alphaValues;
+- (NSArray *)createTransformArrayFromM11:(NSArray *)m11 M12:(NSArray *)m12 M13:(NSArray *)m13 M14:(NSArray *)m14
+                                     M21:(NSArray *)m21 M22:(NSArray *)m22 M23:(NSArray *)m23 M24:(NSArray *)m24
+                                     M31:(NSArray *)m31 M32:(NSArray *)m32 M33:(NSArray *)m33 M34:(NSArray *)m34
+                                     M41:(NSArray *)m41 M42:(NSArray *)m42 M43:(NSArray *)m43 M44:(NSArray *)m44;
+- (NSArray *)valueArrayForStartValue:(CGFloat)startValue endValue:(CGFloat)endValue;
 
 @end
 
@@ -70,96 +70,96 @@
 }
 
 #pragma mark - CutomMethods
-- (void)ls_calculate {
-    [self ls_createValueArray];
+- (void)calculate {
+    [self createValueArray];
 }
 
-- (void)ls_createValueArray {
+- (void)createValueArray {
     if (self.fromValue && self.toValue && self.duration) {
         if ([self.fromValue isKindOfClass:[NSNumber class]] && [self.toValue isKindOfClass:[NSNumber class]]) {
-            self.values = [self ls_valueArrayForStartValue:[self.fromValue floatValue] endValue:[self.toValue floatValue]];
+            self.values = [self valueArrayForStartValue:[self.fromValue floatValue] endValue:[self.toValue floatValue]];
         } else if ([self.fromValue isKindOfClass:[UIColor class]] && [self.toValue isKindOfClass:[UIColor class]]) {
             const CGFloat *fromComponents = CGColorGetComponents(((UIColor *)self.fromValue).CGColor);
             const CGFloat *toComponents = CGColorGetComponents(((UIColor *)self.toValue).CGColor);
-            self.values = [self ls_createColorArrayFromRed:
-                           [self ls_valueArrayForStartValue:fromComponents[0] endValue:toComponents[0]]
+            self.values = [self createColorArrayFromRed:
+                           [self valueArrayForStartValue:fromComponents[0] endValue:toComponents[0]]
                                                   green:
-                           [self ls_valueArrayForStartValue:fromComponents[1] endValue:toComponents[1]]
+                           [self valueArrayForStartValue:fromComponents[1] endValue:toComponents[1]]
                                                    blue:
-                           [self ls_valueArrayForStartValue:fromComponents[2] endValue:toComponents[2]]
+                           [self valueArrayForStartValue:fromComponents[2] endValue:toComponents[2]]
                                                   alpha:
-                           [self ls_valueArrayForStartValue:fromComponents[3] endValue:toComponents[3]]];
+                           [self valueArrayForStartValue:fromComponents[3] endValue:toComponents[3]]];
         } else if ([self.fromValue isKindOfClass:[NSValue class]] && [self.toValue isKindOfClass:[NSValue class]]) {
             NSString *valueType = [NSString stringWithCString:[self.fromValue objCType] encoding:NSStringEncodingConversionAllowLossy];
             if ([valueType rangeOfString:@"CGRect"].location == 1) {
                 CGRect fromRect = [self.fromValue CGRectValue];
                 CGRect toRect = [self.toValue CGRectValue];
-                self.values = [self ls_createRectArrayFromXValues:
-                               [self ls_valueArrayForStartValue:fromRect.origin.x endValue:toRect.origin.x]
+                self.values = [self createRectArrayFromXValues:
+                               [self valueArrayForStartValue:fromRect.origin.x endValue:toRect.origin.x]
                                                        yValues:
-                               [self ls_valueArrayForStartValue:fromRect.origin.y endValue:toRect.origin.y]
+                               [self valueArrayForStartValue:fromRect.origin.y endValue:toRect.origin.y]
                                                         widths:
-                               [self ls_valueArrayForStartValue:fromRect.size.width endValue:toRect.size.width]
+                               [self valueArrayForStartValue:fromRect.size.width endValue:toRect.size.width]
                                                        heights:
-                               [self ls_valueArrayForStartValue:fromRect.size.height endValue:toRect.size.height]];
+                               [self valueArrayForStartValue:fromRect.size.height endValue:toRect.size.height]];
                 
             } else if ([valueType rangeOfString:@"CGPoint"].location == 1) {
                 CGPoint fromPoint = [self.fromValue CGPointValue];
                 CGPoint toPoint = [self.toValue CGPointValue];
-                self.values = [self ls_createPointArrayFromXValues:[self ls_valueArrayForStartValue:fromPoint.x endValue:toPoint.x]
-                                                           yValues:[self ls_valueArrayForStartValue:fromPoint.y endValue:toPoint.y]];
+                self.values = [self createPointArrayFromXValues:[self valueArrayForStartValue:fromPoint.x endValue:toPoint.x]
+                                                           yValues:[self valueArrayForStartValue:fromPoint.y endValue:toPoint.y]];
             } else if ([valueType rangeOfString:@"CATransform3D"].location == 1) {
                 CATransform3D fromTransform = [self.fromValue CATransform3DValue];
                 CATransform3D toTransform = [self.toValue CATransform3DValue];
                 
-                self.values = [self ls_createTransformArrayFromM11:
-                               [self ls_valueArrayForStartValue:fromTransform.m11 endValue:toTransform.m11]
+                self.values = [self createTransformArrayFromM11:
+                               [self valueArrayForStartValue:fromTransform.m11 endValue:toTransform.m11]
                                                             M12:
-                               [self ls_valueArrayForStartValue:fromTransform.m12 endValue:toTransform.m12]
+                               [self valueArrayForStartValue:fromTransform.m12 endValue:toTransform.m12]
                                                             M13:
-                               [self ls_valueArrayForStartValue:fromTransform.m13 endValue:toTransform.m13]
+                               [self valueArrayForStartValue:fromTransform.m13 endValue:toTransform.m13]
                                                             M14:
-                               [self ls_valueArrayForStartValue:fromTransform.m14 endValue:toTransform.m14]
+                               [self valueArrayForStartValue:fromTransform.m14 endValue:toTransform.m14]
                                                             M21:
-                               [self ls_valueArrayForStartValue:fromTransform.m21 endValue:toTransform.m21]
+                               [self valueArrayForStartValue:fromTransform.m21 endValue:toTransform.m21]
                                                             M22:
-                               [self ls_valueArrayForStartValue:fromTransform.m22 endValue:toTransform.m22]
+                               [self valueArrayForStartValue:fromTransform.m22 endValue:toTransform.m22]
                                                             M23:
-                               [self ls_valueArrayForStartValue:fromTransform.m23 endValue:toTransform.m23]
+                               [self valueArrayForStartValue:fromTransform.m23 endValue:toTransform.m23]
                                                             M24:
-                               [self ls_valueArrayForStartValue:fromTransform.m24 endValue:toTransform.m24]
+                               [self valueArrayForStartValue:fromTransform.m24 endValue:toTransform.m24]
                                                             M31:
-                               [self ls_valueArrayForStartValue:fromTransform.m31 endValue:toTransform.m31]
+                               [self valueArrayForStartValue:fromTransform.m31 endValue:toTransform.m31]
                                                             M32:
-                               [self ls_valueArrayForStartValue:fromTransform.m32 endValue:toTransform.m32]
+                               [self valueArrayForStartValue:fromTransform.m32 endValue:toTransform.m32]
                                                             M33:
-                               [self ls_valueArrayForStartValue:fromTransform.m33 endValue:toTransform.m33]
+                               [self valueArrayForStartValue:fromTransform.m33 endValue:toTransform.m33]
                                                             M34:
-                               [self ls_valueArrayForStartValue:fromTransform.m34 endValue:toTransform.m34]
+                               [self valueArrayForStartValue:fromTransform.m34 endValue:toTransform.m34]
                                                             M41:
-                               [self ls_valueArrayForStartValue:fromTransform.m41 endValue:toTransform.m41]
+                               [self valueArrayForStartValue:fromTransform.m41 endValue:toTransform.m41]
                                                             M42:
-                               [self ls_valueArrayForStartValue:fromTransform.m42 endValue:toTransform.m42]
+                               [self valueArrayForStartValue:fromTransform.m42 endValue:toTransform.m42]
                                                             M43:
-                               [self ls_valueArrayForStartValue:fromTransform.m43 endValue:toTransform.m43]
+                               [self valueArrayForStartValue:fromTransform.m43 endValue:toTransform.m43]
                                                             M44:
-                               [self ls_valueArrayForStartValue:fromTransform.m44 endValue:toTransform.m44]
+                               [self valueArrayForStartValue:fromTransform.m44 endValue:toTransform.m44]
                                ];
             } else if ([valueType rangeOfString:@"CGSize"].location == 1) {
                 CGSize fromSize = [self.fromValue CGSizeValue];
                 CGSize toSize = [self.toValue CGSizeValue];
-                self.values = [self ls_createSizeArrayFromWidths:[self ls_valueArrayForStartValue:fromSize.width endValue:toSize.width]
-                                                         heights:[self ls_valueArrayForStartValue:fromSize.height endValue:toSize.height]];
+                self.values = [self createSizeArrayFromWidths:[self valueArrayForStartValue:fromSize.width endValue:toSize.width]
+                                                         heights:[self valueArrayForStartValue:fromSize.height endValue:toSize.height]];
             }
         }
         self.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     }
 }
 
-- (NSArray *)ls_createRectArrayFromXValues:(NSArray *)xValues
-                                   yValues:(NSArray *)yValues
-                                    widths:(NSArray *)widths
-                                   heights:(NSArray *)heights {
+- (NSArray *)createRectArrayFromXValues:(NSArray *)xValues
+                                yValues:(NSArray *)yValues
+                                 widths:(NSArray *)widths
+                                heights:(NSArray *)heights {
     
     NSAssert(xValues.count == yValues.count && xValues.count == widths.count && xValues.count == heights.count, @"array must have arrays of equal size");
     
@@ -168,56 +168,50 @@
     CGRect value;
     
     for (NSInteger i = 1; i < numberOfRects; i++) {
-        value = CGRectMake(
-                           [[xValues objectAtIndex:i] floatValue],
+        value = CGRectMake([[xValues objectAtIndex:i] floatValue],
                            [[yValues objectAtIndex:i] floatValue],
                            [[widths objectAtIndex:i] floatValue],
-                           [[heights objectAtIndex:i] floatValue]
-                           );
+                           [[heights objectAtIndex:i] floatValue]);
         [values addObject:[NSValue valueWithCGRect:value]];
     }
     
     return values;
 }
 
-- (NSArray *)ls_createPointArrayFromXValues:(NSArray *)xValues yValues:(NSArray *)yValues {
+- (NSArray *)createPointArrayFromXValues:(NSArray *)xValues yValues:(NSArray *)yValues {
     NSAssert(xValues.count == yValues.count, @"array must have arrays of equal size");
     
     NSUInteger numberOfRects = xValues.count;
     NSMutableArray *values = [NSMutableArray arrayWithCapacity:numberOfRects];
     
     for (NSInteger i = 1; i < numberOfRects; i++) {
-        CGPoint value = CGPointMake(
-                                    [[xValues objectAtIndex:i] floatValue],
-                                    [[yValues objectAtIndex:i] floatValue]
-                                    );
+        CGPoint value = CGPointMake([[xValues objectAtIndex:i] floatValue],
+                                    [[yValues objectAtIndex:i] floatValue]);
         [values addObject:[NSValue valueWithCGPoint:value]];
     }
     
     return values;
 }
 
-- (NSArray *)ls_createSizeArrayFromWidths:(NSArray *)widths heights:(NSArray *)heights {
+- (NSArray *)createSizeArrayFromWidths:(NSArray *)widths heights:(NSArray *)heights {
     NSAssert(widths.count == heights.count, @"array must have arrays of equal size");
     
     NSUInteger numberOfRects = widths.count;
     NSMutableArray *values = [NSMutableArray arrayWithCapacity:numberOfRects];
     
     for (NSInteger i = 1; i < numberOfRects; i++) {
-        CGSize value = CGSizeMake(
-                                  [[widths objectAtIndex:i] floatValue],
-                                  [[heights objectAtIndex:i] floatValue]
-                                  );
+        CGSize value = CGSizeMake([[widths objectAtIndex:i] floatValue],
+                                  [[heights objectAtIndex:i] floatValue]);
         [values addObject:[NSValue valueWithCGSize:value]];
     }
     
     return values;
 }
 
-- (NSArray *)ls_createColorArrayFromRed:(NSArray*)redValues
-                                  green:(NSArray*)greenValues
-                                   blue:(NSArray*)blueValues
-                                  alpha:(NSArray*)alphaValues {
+- (NSArray *)createColorArrayFromRed:(NSArray*)redValues
+                               green:(NSArray*)greenValues
+                                blue:(NSArray*)blueValues
+                               alpha:(NSArray*)alphaValues {
     
     NSAssert(redValues.count == blueValues.count && redValues.count == greenValues.count && redValues.count == alphaValues.count, @"arrays must have arrays of equal size");
     
@@ -236,10 +230,10 @@
     return values;
 }
 
-- (NSArray *)ls_createTransformArrayFromM11:(NSArray *)m11 M12:(NSArray *)m12 M13:(NSArray *)m13 M14:(NSArray *)m14
-                                        M21:(NSArray *)m21 M22:(NSArray *)m22 M23:(NSArray *)m23 M24:(NSArray *)m24
-                                        M31:(NSArray *)m31 M32:(NSArray *)m32 M33:(NSArray *)m33 M34:(NSArray *)m34
-                                        M41:(NSArray *)m41 M42:(NSArray *)m42 M43:(NSArray *)m43 M44:(NSArray *)m44 {
+- (NSArray *)createTransformArrayFromM11:(NSArray *)m11 M12:(NSArray *)m12 M13:(NSArray *)m13 M14:(NSArray *)m14
+                                     M21:(NSArray *)m21 M22:(NSArray *)m22 M23:(NSArray *)m23 M24:(NSArray *)m24
+                                     M31:(NSArray *)m31 M32:(NSArray *)m32 M33:(NSArray *)m33 M34:(NSArray *)m34
+                                     M41:(NSArray *)m41 M42:(NSArray *)m42 M43:(NSArray *)m43 M44:(NSArray *)m44 {
     
     NSUInteger numberOfTransforms = m11.count;
     NSMutableArray *values = [NSMutableArray arrayWithCapacity:numberOfTransforms];
@@ -273,7 +267,7 @@
     return values;
 }
 
-- (NSArray *)ls_valueArrayForStartValue:(CGFloat)startValue endValue:(CGFloat)endValue {
+- (NSArray *)valueArrayForStartValue:(CGFloat)startValue endValue:(CGFloat)endValue {
     NSUInteger steps = ceil(kFPS * self.duration) + 2;
     NSMutableArray *valueArray = [NSMutableArray arrayWithCapacity:steps];
     

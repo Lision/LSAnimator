@@ -110,7 +110,7 @@
     }
     for (LSKeyframeAnimation *animation in self.ls_animations) {
         animation.duration = self.ls_animationgroup.duration;
-        [animation ls_calculate];
+        [animation calculate];
     }
     self.ls_animationgroup.beginTime = CACurrentMediaTime() + self.animationDelay;
     self.ls_animationgroup.animations = self.ls_animations;

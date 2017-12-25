@@ -17,6 +17,6 @@ typedef double(^LSKeyframeAnimationFunctionBlock)(double t, double b, double c, 
 @property (nonatomic, strong) id fromValue;
 @property (nonatomic, strong) id toValue;
 
-- (void)ls_calculate;
+- (void)calculate;
 
 @end
