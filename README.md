@@ -446,7 +446,7 @@ LSAnimator 使用 MIT 许可证，详情见 LICENSE 文件。
 
 如果你觉得 LSAnimator 值得关注，并且想要变成贡献者，不妨加入我们。
 
-LSAnimator 核心成员群（QQ 群）：163013540
+![](Rources/lision_wechat.jpg)
 
 # 联系我
 
