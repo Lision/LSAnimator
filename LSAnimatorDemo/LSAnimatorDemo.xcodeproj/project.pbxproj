@@ -21,7 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F945E7B1F51972E003DA23D /* LSAnimatorDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LSAnimatorDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		BC57B7A41FF1F89300A216FB /* LSAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSAnimator.m; sourceTree = "<group>"; };
 		BCC82D331EB98056004C5554 /* LSAnimatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSAnimatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC82D371EB98056004C5554 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -76,7 +75,6 @@
 		BCC82D351EB98056004C5554 /* LSAnimatorDemo */ = {
 			isa = PBXGroup;
 			children = (
-				9F945E7B1F51972E003DA23D /* LSAnimatorDemo-Bridging-Header.h */,
 				BCC82D391EB98056004C5554 /* AppDelegate.h */,
 				BCC82D3A1EB98056004C5554 /* AppDelegate.m */,
 				BCC82D3C1EB98056004C5554 /* ViewController.h */,
