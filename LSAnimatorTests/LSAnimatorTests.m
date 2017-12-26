@@ -7,8 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "UIView+LSAnimator.h"
-#import "CALayer+LSAnimator.h"
+#import "LSAnimator.h"
 
 #define kDuration 0.01
 
@@ -17,6 +16,7 @@
 @property (nonatomic, strong) UIView *superView;
 @property (nonatomic, strong) UIView *view;
 @property (nonatomic, weak, readonly) UIView *weakView;
+@property (nonatomic, strong) LSAnimator *animtor;
 
 @end
 
@@ -29,15 +29,16 @@
     _view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [_superView addSubview:_view];
     _weakView = _view;
+    _animtor = [LSAnimator animatorWithView:_view];
 }
 
 - (void)tearDown {
     [_view removeFromSuperview];
-    
     [super tearDown];
 }
 
 - (void)testls_frame {
+    
     self.view.ls_frame(CGRectMake(0, 0, 20, 20)).ls_animateWithCompletion(kDuration, ^{
         XCTAssertEqualObjects([NSValue valueWithCGRect:self.weakView.frame], [NSValue valueWithCGRect:CGRectMake(0, 0, 20, 20)], @"testls_frame error!");
     });
