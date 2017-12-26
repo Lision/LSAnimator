@@ -214,23 +214,23 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 
 #pragma mark - Animations
-- (LSAnimatorRect)ls_frame {
+- (LSAnimatorRect)makeFrame {
     LSAnimatorRect animator = LSAnimatorRect(rect) {
-        return self.ls_origin(rect.origin.x, rect.origin.y).ls_bounds(rect);
+        return self.makeOrigin(rect.origin.x, rect.origin.y).makeBounds(rect);
     };
     
     return animator;
 }
 
-- (LSAnimatorRect)ls_bounds {
+- (LSAnimatorRect)makeBounds {
     LSAnimatorRect animator = LSAnimatorRect(rect) {
-        return self.ls_size(rect.size.width, rect.size.height);
+        return self.makeSize(rect.size.width, rect.size.height);
     };
     
     return animator;
 }
 
-- (LSAnimatorSize)ls_size {
+- (LSAnimatorSize)makeSize {
     LSAnimatorSize animator = LSAnimatorSize(width, height) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *sizeAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds.size"];
@@ -249,7 +249,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorPoint)ls_origin {
+- (LSAnimatorPoint)makeOrigin {
     LSAnimatorPoint animator = LSAnimatorPoint(x, y) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
@@ -269,7 +269,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorPoint)ls_position {
+- (LSAnimatorPoint)makePosition {
     LSAnimatorPoint animator = LSAnimatorPoint(x, y) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
@@ -287,7 +287,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_x {
+- (LSAnimatorFloat)makeX {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position.x"];
@@ -307,7 +307,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_y {
+- (LSAnimatorFloat)makeY {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position.y"];
@@ -327,7 +327,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_width {
+- (LSAnimatorFloat)makeWidth {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *sizeAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds.size"];
@@ -346,7 +346,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_height {
+- (LSAnimatorFloat)makeHeight {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *sizeAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds.size"];
@@ -365,7 +365,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_opacity {
+- (LSAnimatorFloat)makeOpacity {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *opacityAnimation = [weakSelf ls_basicAnimationForKeyPath:@"opacity"];
@@ -383,7 +383,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorColor)ls_background {
+- (LSAnimatorColor)makeBackground {
     LSAnimatorColor animator = LSAnimatorColor(color) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *colorAnimation = [weakSelf ls_basicAnimationForKeyPath:@"backgroundColor"];
@@ -401,7 +401,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorColor)ls_borderColor {
+- (LSAnimatorColor)makeBorderColor {
     LSAnimatorColor animator = LSAnimatorColor(color) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *colorAnimation = [weakSelf ls_basicAnimationForKeyPath:@"borderColor"];
@@ -420,7 +420,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_borderWidth {
+- (LSAnimatorFloat)makeBorderWidth {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         f = MAX(0, f);
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
@@ -439,7 +439,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_cornerRadius {
+- (LSAnimatorFloat)makeCornerRadius {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         f = MAX(0, f);
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
@@ -458,7 +458,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_scale {
+- (LSAnimatorFloat)makeScale {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *boundsAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds"];
@@ -478,7 +478,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_scaleX {
+- (LSAnimatorFloat)makeScaleX {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *boundsAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds"];
@@ -498,7 +498,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_scaleY {
+- (LSAnimatorFloat)makeScaleY {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *boundsAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds"];
@@ -518,7 +518,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorPoint)ls_anchor {
+- (LSAnimatorPoint)makeAnchor {
     LSAnimatorPoint animator = LSAnimatorPoint(x, y) {
         [self ls_updateAnchorWithPoint:CGPointMake(x, y)];
         
@@ -528,7 +528,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_moveX {
+- (LSAnimatorFloat)moveX {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position.x"];
@@ -548,7 +548,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_moveY {
+- (LSAnimatorFloat)moveY {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position.y"];
@@ -568,7 +568,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorPoint)ls_moveXY {
+- (LSAnimatorPoint)moveXY {
     LSAnimatorPoint animator = LSAnimatorPoint(x, y) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *positionAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
@@ -591,18 +591,18 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorPolarCoordinate)ls_movePolar {
+- (LSAnimatorPolarCoordinate)movePolar {
     LSAnimatorPolarCoordinate animator = LSAnimatorPolarCoordinate(radius, angle) {
         CGFloat x = radius * cosf(ls_degreesToRadians(angle));
         CGFloat y = -radius * sinf(ls_degreesToRadians(angle));
         
-        return self.ls_moveXY(x, y);
+        return self.moveXY(x, y);
     };
     
     return animator;
 }
 
-- (LSAnimatorFloat)ls_increWidth {
+- (LSAnimatorFloat)increWidth {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *sizeAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds.size"];
@@ -621,7 +621,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_increHeight {
+- (LSAnimatorFloat)increHeight {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *sizeAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds.size"];
@@ -640,7 +640,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorSize)ls_increSize {
+- (LSAnimatorSize)increSize {
     LSAnimatorSize animator = LSAnimatorSize(width, height) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *sizeAnimation = [weakSelf ls_basicAnimationForKeyPath:@"bounds.size"];
@@ -659,7 +659,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimator *)ls_transformIdentity {
+- (LSAnimator *)transformIdentity {
     [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
         LSKeyframeAnimation *transformAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform"];
         CATransform3D transform = CATransform3DIdentity;
@@ -675,11 +675,11 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimatorDegrees)ls_rotate {
-    return [self ls_rotateZ];
+- (LSAnimatorDegrees)rotate {
+    return [self rotateZ];
 }
 
-- (LSAnimatorDegrees)ls_rotateX {
+- (LSAnimatorDegrees)rotateX {
     LSAnimatorDegrees animator = LSAnimatorDegrees(angle) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *rotationAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform.rotation.x"];
@@ -702,7 +702,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorDegrees)ls_rotateY {
+- (LSAnimatorDegrees)rotateY {
     LSAnimatorDegrees animator = LSAnimatorDegrees(angle) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *rotationAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform.rotation.y"];
@@ -725,7 +725,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorDegrees)ls_rotateZ {
+- (LSAnimatorDegrees)rotateZ {
     LSAnimatorDegrees animator = LSAnimatorDegrees(angle) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *rotationAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform.rotation.z"];
@@ -748,7 +748,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_transformX {
+- (LSAnimatorFloat)transformX {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *transformAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform"];
@@ -769,7 +769,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_transformY {
+- (LSAnimatorFloat)transformY {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *transformAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform"];
@@ -791,7 +791,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_transformZ {
+- (LSAnimatorFloat)transformZ {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *transformAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform"];
@@ -813,7 +813,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorPoint)ls_transformXY {
+- (LSAnimatorPoint)transformXY {
     LSAnimatorPoint animator = LSAnimatorPoint(x, y) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *transformAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform"];
@@ -835,7 +835,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_transformScale {
+- (LSAnimatorFloat)transformScale {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *transformAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform"];
@@ -857,7 +857,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_transformScaleX {
+- (LSAnimatorFloat)transformScaleX {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *transformAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform"];
@@ -879,7 +879,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorFloat)ls_transformScaleY {
+- (LSAnimatorFloat)transformScaleY {
     LSAnimatorFloat animator = LSAnimatorFloat(f) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *transformAnimation = [weakSelf ls_basicAnimationForKeyPath:@"transform"];
@@ -903,7 +903,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 
 #pragma mark - Bezier Paths
-- (LSAnimatorBezierPath)ls_moveOnPath {
+- (LSAnimatorBezierPath)moveOnPath {
     LSAnimatorBezierPath animator = LSAnimatorBezierPath(path) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *pathAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
@@ -921,7 +921,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorBezierPath)ls_moveAndRotateOnPath {
+- (LSAnimatorBezierPath)moveAndRotateOnPath {
     LSAnimatorBezierPath animator = LSAnimatorBezierPath(path) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *pathAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
@@ -940,7 +940,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorBezierPath)ls_moveAndReverseRotateOnPath {
+- (LSAnimatorBezierPath)moveAndReverseRotateOnPath {
     LSAnimatorBezierPath animator = LSAnimatorBezierPath(path) {
         [self ls_addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *pathAnimation = [weakSelf ls_basicAnimationForKeyPath:@"position"];
@@ -961,59 +961,59 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 
 #pragma mark - Anchor
-- (LSAnimator *)ls_anchorDefault {
-    return self.ls_anchorCenter;
+- (LSAnimator *)anchorDefault {
+    return self.anchorCenter;
 }
 
-- (LSAnimator *)ls_anchorCenter {
+- (LSAnimator *)anchorCenter {
     [self ls_updateAnchorWithPoint:CGPointMake(0.5, 0.5)];
     
     return self;
 }
 
-- (LSAnimator *)ls_anchorTop {
+- (LSAnimator *)anchorTop {
     [self ls_updateAnchorWithPoint:CGPointMake(0.5, 0.0)];
     
     return self;
 }
 
-- (LSAnimator *)ls_anchorBottom {
+- (LSAnimator *)anchorBottom {
     [self ls_updateAnchorWithPoint:CGPointMake(0.5, 1.0)];
     
     return self;
 }
 
-- (LSAnimator *)ls_anchorLeft {
+- (LSAnimator *)anchorLeft {
     [self ls_updateAnchorWithPoint:CGPointMake(0.0, 0.5)];
     
     return self;
 }
 
-- (LSAnimator *)ls_anchorRight {
+- (LSAnimator *)anchorRight {
     [self ls_updateAnchorWithPoint:CGPointMake(1.0, 0.5)];
     
     return self;
 }
 
-- (LSAnimator *)ls_anchorTopLeft {
+- (LSAnimator *)anchorTopLeft {
     [self ls_updateAnchorWithPoint:CGPointMake(0.0, 0.0)];
     
     return self;
 }
 
-- (LSAnimator *)ls_anchorTopRight {
+- (LSAnimator *)anchorTopRight {
     [self ls_updateAnchorWithPoint:CGPointMake(1.0, 0.0)];
     
     return self;
 }
 
-- (LSAnimator *)ls_anchorBottomLeft {
+- (LSAnimator *)anchorBottomLeft {
     [self ls_updateAnchorWithPoint:CGPointMake(0.0, 1.0)];
     
     return self;
 }
 
-- (LSAnimator *)ls_anchorBottomRight {
+- (LSAnimator *)anchorBottomRight {
     [self ls_updateAnchorWithPoint:CGPointMake(1.0, 1.0)];
     
     return self;
@@ -1021,31 +1021,31 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 
 #pragma mark - Animation Effect Functions
-- (LSAnimator *)ls_easeIn {
-    return self.ls_easeInQuad;
+- (LSAnimator *)easeIn {
+    return self.easeInQuad;
 }
 
-- (LSAnimator *)ls_easeOut {
-    return self.ls_easeOutQuad;
+- (LSAnimator *)easeOut {
+    return self.easeOutQuad;
 }
 
-- (LSAnimator *)ls_easeInOut {
-    return self.ls_easeInOutQuad;
+- (LSAnimator *)easeInOut {
+    return self.easeInOutQuad;
 }
 
-- (LSAnimator *)ls_easeBack {
-    return self.ls_easeOutBack;
+- (LSAnimator *)easeBack {
+    return self.easeOutBack;
 }
 
-- (LSAnimator *)ls_spring {
-    return self.ls_easeOutElastic;
+- (LSAnimator *)spring {
+    return self.easeOutElastic;
 }
 
-- (LSAnimator *)ls_bounce {
-    return self.ls_easeOutBounce;
+- (LSAnimator *)bounce {
+    return self.easeOutBounce;
 }
 
-- (LSAnimator *)ls_easeInQuad {
+- (LSAnimator *)easeInQuad {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInQuad(t, b, c, d);
     }];
@@ -1053,7 +1053,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutQuad {
+- (LSAnimator *)easeOutQuad {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutQuad(t, b, c, d);
     }];
@@ -1061,7 +1061,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutQuad {
+- (LSAnimator *)easeInOutQuad {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutQuad(t, b, c, d);
     }];
@@ -1069,7 +1069,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInCubic {
+- (LSAnimator *)easeInCubic {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInCubic(t, b, c, d);
     }];
@@ -1077,7 +1077,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutCubic {
+- (LSAnimator *)easeOutCubic {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutCubic(t, b, c, d);
     }];
@@ -1085,7 +1085,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutCubic {
+- (LSAnimator *)easeInOutCubic {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutCubic(t, b, c, d);
     }];
@@ -1093,7 +1093,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInQuart {
+- (LSAnimator *)easeInQuart {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInQuart(t, b, c, d);
     }];
@@ -1101,7 +1101,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutQuart {
+- (LSAnimator *)easeOutQuart {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutQuart(t, b, c, d);
     }];
@@ -1109,7 +1109,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutQuart {
+- (LSAnimator *)easeInOutQuart {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutQuart(t, b, c, d);
     }];
@@ -1117,7 +1117,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInQuint {
+- (LSAnimator *)easeInQuint {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInQuint(t, b, c, d);
     }];
@@ -1125,7 +1125,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutQuint {
+- (LSAnimator *)easeOutQuint {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutQuint(t, b, c, d);
     }];
@@ -1133,7 +1133,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutQuint {
+- (LSAnimator *)easeInOutQuint {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutQuint(t, b, c, d);
     }];
@@ -1141,7 +1141,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInSine {
+- (LSAnimator *)easeInSine {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInSine(t, b, c, d);
     }];
@@ -1149,7 +1149,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutSine {
+- (LSAnimator *)easeOutSine {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutSine(t, b, c, d);
     }];
@@ -1157,7 +1157,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutSine {
+- (LSAnimator *)easeInOutSine {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutSine(t, b, c, d);
     }];
@@ -1165,7 +1165,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInExpo {
+- (LSAnimator *)easeInExpo {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInExpo(t, b, c, d);
     }];
@@ -1173,7 +1173,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutExpo {
+- (LSAnimator *)easeOutExpo {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutExpo(t, b, c, d);
     }];
@@ -1181,7 +1181,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutExpo {
+- (LSAnimator *)easeInOutExpo {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutExpo(t, b, c, d);
     }];
@@ -1189,7 +1189,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInCirc {
+- (LSAnimator *)easeInCirc {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInCirc(t, b, c, d);
     }];
@@ -1197,7 +1197,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutCirc {
+- (LSAnimator *)easeOutCirc {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutCirc(t, b, c, d);
     }];
@@ -1205,7 +1205,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutCirc {
+- (LSAnimator *)easeInOutCirc {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutCirc(t, b, c, d);
     }];
@@ -1213,7 +1213,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInElastic {
+- (LSAnimator *)easeInElastic {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInElastic(t, b, c, d);
     }];
@@ -1221,7 +1221,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutElastic {
+- (LSAnimator *)easeOutElastic {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutElastic(t, b, c, d);
     }];
@@ -1229,7 +1229,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutElastic {
+- (LSAnimator *)easeInOutElastic {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutElastic(t, b, c, d);
     }];
@@ -1237,7 +1237,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInBack {
+- (LSAnimator *)easeInBack {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInBack(t, b, c, d);
     }];
@@ -1245,7 +1245,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutBack {
+- (LSAnimator *)easeOutBack {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutBack(t, b, c, d);
     }];
@@ -1253,7 +1253,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutBack {
+- (LSAnimator *)easeInOutBack {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutBack(t, b, c, d);
     }];
@@ -1261,7 +1261,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInBounce {
+- (LSAnimator *)easeInBounce {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInBounce(t, b, c, d);
     }];
@@ -1269,7 +1269,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeOutBounce {
+- (LSAnimator *)easeOutBounce {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseOutBounce(t, b, c, d);
     }];
@@ -1277,7 +1277,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return self;
 }
 
-- (LSAnimator *)ls_easeInOutBounce {
+- (LSAnimator *)easeInOutBounce {
     [self ls_addAnimationKeyframeFunctionBlock:^double(double t, double b, double c, double d) {
         return LSKeyframeAnimationFunctionEaseInOutBounce(t, b, c, d);
     }];
@@ -1287,7 +1287,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 
 #pragma mark - Blocks
-- (LSAnimatorBlock)ls_preAnimationBlock {
+- (LSAnimatorBlock)preAnimationBlock {
     LSAnimatorBlock animator = LSAnimatorBlock(block) {
         [[self.ls_animatorChains lastObject] updateBeforeCurrentLinkerAnimationBlock:block];
         
@@ -1297,7 +1297,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorBlock)ls_postAnimationBlock {
+- (LSAnimatorBlock)postAnimationBlock {
     LSAnimatorBlock animator = LSAnimatorBlock(block) {
         [[self.ls_animatorChains lastObject] updateAfterCurrentLinkerAnimationBlock:block];
         
@@ -1307,7 +1307,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSFinalAnimatorCompletion)ls_theFinalCompletion {
+- (LSFinalAnimatorCompletion)theFinalCompletion {
     LSFinalAnimatorCompletion animator = LSFinalAnimatorCompletion(block) {
         self.ls_finalCompleteBlock = block;
     };
@@ -1317,7 +1317,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 
 #pragma mark - Animator Delay
-- (LSAnimatorTimeInterval)ls_delay {
+- (LSAnimatorTimeInterval)delay {
     LSAnimatorTimeInterval animator = LSAnimatorTimeInterval(t) {
         [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDelay:t];
         
@@ -1327,9 +1327,9 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorTimeInterval)ls_wait {
+- (LSAnimatorTimeInterval)wait {
     LSAnimatorTimeInterval animator = LSAnimatorTimeInterval(t) {
-        return self.ls_delay(t);
+        return self.delay(t);
     };
     
     return animator;
@@ -1337,7 +1337,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 
 #pragma mark - Animator Controls
-- (LSAnimatorRepeatAnimation)ls_repeat {
+- (LSAnimatorRepeatAnimation)repeat {
     LSAnimatorRepeatAnimation animator = LSAnimatorRepeatAnimation(duration, count) {
         [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDuration:duration];
         [[self.ls_animatorChains lastObject] repeat:count andIsAnimation:NO];
@@ -1348,7 +1348,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorTimeInterval)ls_thenAfter {
+- (LSAnimatorTimeInterval)thenAfter {
     LSAnimatorTimeInterval animator = LSAnimatorTimeInterval(t) {
         [[self.ls_animatorChains lastObject] thenAfter:t];
         
@@ -1358,7 +1358,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorAnimation)ls_animate {
+- (LSAnimatorAnimation)animate {
     LSAnimatorAnimation animator = LSAnimatorAnimation(duration) {
         [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDuration:duration];
         [self ls_animateWithAnimatorChain:[self.ls_animatorChains lastObject]];
@@ -1367,7 +1367,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorAnimationWithRepeat)ls_animateWithRepeat {
+- (LSAnimatorAnimationWithRepeat)animateWithRepeat {
     LSAnimatorAnimationWithRepeat animator = LSAnimatorAnimationWithRepeat(duration, count) {
         [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDuration:duration];
         [[self.ls_animatorChains lastObject] repeat:count andIsAnimation:YES];
@@ -1377,7 +1377,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return animator;
 }
 
-- (LSAnimatorAnimationWithCompletion)ls_animateWithCompletion {
+- (LSAnimatorAnimationWithCompletion)animateWithCompletion {
     LSAnimatorAnimationWithCompletion animator = LSAnimatorAnimationWithCompletion(duration, completion) {
         [[self.ls_animatorChains lastObject] updateCurrentTurnLinkerAnimationsDuration:duration];
         [self.ls_animatorChains lastObject].completeBlock = completion;
@@ -1389,7 +1389,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 
 
 #pragma mark - Multi-chain
-- (LSAnimator *)ls_concurrent {
+- (LSAnimator *)concurrent {
     [self.ls_animatorChains addObject:[LSAnimatorChain chainWithAnimator:self]];
     
     return self;

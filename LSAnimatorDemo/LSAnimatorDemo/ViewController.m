@@ -62,17 +62,17 @@
     sender.enabled = NO;
     // chain_01
     LSAnimator *animator = [LSAnimator animatorWithLayer:_animatorLayer];
-    animator.ls_increWidth(20).ls_bounce.ls_repeat(0.5, 3).ls_increHeight(60).ls_spring.ls_thenAfter(1).ls_cornerRadius(40).ls_moveX(-20).ls_thenAfter(1.5).ls_wait(0.2).ls_y(sender.frame.origin.y - 80).ls_postAnimationBlock(^{
+    animator.increWidth(20).bounce.repeat(0.5, 3).increHeight(60).spring.thenAfter(1).makeCornerRadius(40).moveX(-20).thenAfter(1.5).wait(0.2).makeY(sender.frame.origin.y - 80).postAnimationBlock(^{
         LSAnimator *senderAnimator = [LSAnimator animatorWithView:sender];
-        senderAnimator.ls_moveY(sender.bounds.size.height).ls_animate(0.2);
-    }).ls_thenAfter(0.2).ls_moveY(-60).ls_easeOut.ls_thenAfter(0.2).ls_moveY(109).ls_bounce.ls_animate(1);
+        senderAnimator.moveY(sender.bounds.size.height).animate(0.2);
+    }).thenAfter(0.2).moveY(-60).easeOut.thenAfter(0.2).moveY(109).bounce.animate(1);
     // chain_02
-    animator.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.75).ls_animate(1);
+    animator.concurrent.makeBackground([UIColor orangeColor]).delay(0.75).animate(1);
     // theFinalCompletion
-    animator.ls_theFinalCompletion(^{
-        animator.ls_cornerRadius(0).ls_background([UIColor purpleColor]).ls_bounds(CGRectMake(0, 0, 20, 20)).ls_position(self.view.center.x * 0.5, self.view.center.y - 20).ls_animate(0.5);
+    animator.theFinalCompletion(^{
+        animator.makeCornerRadius(0).makeBackground([UIColor purpleColor]).makeBounds(CGRectMake(0, 0, 20, 20)).makePosition(self.view.center.x * 0.5, self.view.center.y - 20).animate(0.5);
         LSAnimator *senderAnimator = [LSAnimator animatorWithView:sender];
-        senderAnimator.ls_moveY(-sender.bounds.size.height).ls_animateWithCompletion(0.5, ^{
+        senderAnimator.moveY(-sender.bounds.size.height).animateWithCompletion(0.5, ^{
             sender.enabled = YES;
         });
     });
