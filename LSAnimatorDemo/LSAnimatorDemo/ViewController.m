@@ -61,36 +61,39 @@
     // CALayer
     sender.enabled = NO;
     // chain_01
-    _animatorLayer.ls_increWidth(20).ls_bounce.ls_repeat(0.5, 3).ls_increHeight(60).ls_spring.ls_thenAfter(1).ls_cornerRadius(40).ls_moveX(-20).ls_thenAfter(1.5).ls_wait(0.2).ls_y(sender.frame.origin.y - 80).ls_postAnimationBlock(^{
-        sender.ls_moveY(sender.bounds.size.height).ls_animate(0.2);
+    LSAnimator *animator = [LSAnimator animatorWithLayer:_animatorLayer];
+    animator.ls_increWidth(20).ls_bounce.ls_repeat(0.5, 3).ls_increHeight(60).ls_spring.ls_thenAfter(1).ls_cornerRadius(40).ls_moveX(-20).ls_thenAfter(1.5).ls_wait(0.2).ls_y(sender.frame.origin.y - 80).ls_postAnimationBlock(^{
+        LSAnimator *senderAnimator = [LSAnimator animatorWithView:sender];
+        senderAnimator.ls_moveY(sender.bounds.size.height).ls_animate(0.2);
     }).ls_thenAfter(0.2).ls_moveY(-60).ls_easeOut.ls_thenAfter(0.2).ls_moveY(109).ls_bounce.ls_animate(1);
     // chain_02
-    _animatorLayer.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.75).ls_animate(1);
+    animator.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.75).ls_animate(1);
     // theFinalCompletion
-    _animatorLayer.ls_theFinalCompletion(^{
-        _animatorLayer.ls_cornerRadius(0).ls_background([UIColor purpleColor]).ls_bounds(CGRectMake(0, 0, 20, 20)).ls_position(self.view.center.x * 0.5, self.view.center.y - 20).ls_animate(0.5);
-        sender.ls_moveY(-sender.bounds.size.height).ls_animateWithCompletion(0.5, ^{
+    animator.ls_theFinalCompletion(^{
+        animator.ls_cornerRadius(0).ls_background([UIColor purpleColor]).ls_bounds(CGRectMake(0, 0, 20, 20)).ls_position(self.view.center.x * 0.5, self.view.center.y - 20).ls_animate(0.5);
+        LSAnimator *senderAnimator = [LSAnimator animatorWithView:sender];
+        senderAnimator.ls_moveY(-sender.bounds.size.height).ls_animateWithCompletion(0.5, ^{
             sender.enabled = YES;
         });
     });
 }
 
 - (void)viewAnimatorBtnDidClicked:(UIButton *)sender {
-    // UIView
-    sender.enabled = NO;
-    // chain_01
-    _animatorView.ls_increWidth(20).ls_bounce.ls_repeat(0.5, 3).ls_increHeight(60).ls_spring.ls_thenAfter(1).ls_cornerRadius(40).ls_moveX(-20).ls_thenAfter(1.5).ls_wait(0.2).ls_y(sender.frame.origin.y - 80).ls_postAnimationBlock(^{
-        sender.ls_moveY(sender.bounds.size.height).ls_animate(0.2);
-    }).ls_thenAfter(0.2).ls_moveY(-60).ls_easeOut.ls_thenAfter(0.2).ls_moveY(109).ls_bounce.ls_animate(1);
-    // chain_02
-    _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.75).ls_animate(1);
-    // theFinalCompletion
-    _animatorView.ls_theFinalCompletion(^{
-        _animatorView.ls_cornerRadius(0).ls_background([UIColor purpleColor]).ls_bounds(CGRectMake(0, 0, 20, 20)).ls_center(self.view.center.x * 1.5, self.view.center.y - 20).ls_animate(0.5);
-        sender.ls_moveY(-sender.bounds.size.height).ls_animateWithCompletion(0.5, ^{
-            sender.enabled = YES;
-        });
-    });
+//    // UIView
+//    sender.enabled = NO;
+//    // chain_01
+//    _animatorView.ls_increWidth(20).ls_bounce.ls_repeat(0.5, 3).ls_increHeight(60).ls_spring.ls_thenAfter(1).ls_cornerRadius(40).ls_moveX(-20).ls_thenAfter(1.5).ls_wait(0.2).ls_y(sender.frame.origin.y - 80).ls_postAnimationBlock(^{
+//        sender.ls_moveY(sender.bounds.size.height).ls_animate(0.2);
+//    }).ls_thenAfter(0.2).ls_moveY(-60).ls_easeOut.ls_thenAfter(0.2).ls_moveY(109).ls_bounce.ls_animate(1);
+//    // chain_02
+//    _animatorView.ls_concurrent.ls_background([UIColor orangeColor]).ls_delay(0.75).ls_animate(1);
+//    // theFinalCompletion
+//    _animatorView.ls_theFinalCompletion(^{
+//        _animatorView.ls_cornerRadius(0).ls_background([UIColor purpleColor]).ls_bounds(CGRectMake(0, 0, 20, 20)).ls_center(self.view.center.x * 1.5, self.view.center.y - 20).ls_animate(0.5);
+//        sender.ls_moveY(-sender.bounds.size.height).ls_animateWithCompletion(0.5, ^{
+//            sender.enabled = YES;
+//        });
+//    });
 }
 
 @end

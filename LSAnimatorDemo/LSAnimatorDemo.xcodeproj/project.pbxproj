@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F4FF99D1EBF23CB001FA32C /* CALayer+LSAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */; };
+		BC57B7A51FF1F89300A216FB /* LSAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC57B7A41FF1F89300A216FB /* LSAnimator.m */; };
 		BCC82D381EB98056004C5554 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D371EB98056004C5554 /* main.m */; };
 		BCC82D3B1EB98056004C5554 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D3A1EB98056004C5554 /* AppDelegate.m */; };
 		BCC82D3E1EB98056004C5554 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D3D1EB98056004C5554 /* ViewController.m */; };
@@ -18,13 +18,11 @@
 		BCC82D5B1EB98248004C5554 /* LSAnimatorLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D531EB98248004C5554 /* LSAnimatorLinker.m */; };
 		BCC82D5C1EB98248004C5554 /* LSKeyframeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D551EB98248004C5554 /* LSKeyframeAnimation.m */; };
 		BCC82D5D1EB98248004C5554 /* LSKeyframeAnimationFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D561EB98248004C5554 /* LSKeyframeAnimationFunctions.c */; };
-		BCC82D5E1EB98248004C5554 /* UIView+LSAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC82D591EB98248004C5554 /* UIView+LSAnimator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F4FF99B1EBF23CB001FA32C /* CALayer+LSAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+LSAnimator.h"; sourceTree = "<group>"; };
-		9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LSAnimator.m"; sourceTree = "<group>"; };
 		9F945E7B1F51972E003DA23D /* LSAnimatorDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LSAnimatorDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		BC57B7A41FF1F89300A216FB /* LSAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSAnimator.m; sourceTree = "<group>"; };
 		BCC82D331EB98056004C5554 /* LSAnimatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSAnimatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC82D371EB98056004C5554 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCC82D391EB98056004C5554 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,8 +43,6 @@
 		BCC82D551EB98248004C5554 /* LSKeyframeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSKeyframeAnimation.m; sourceTree = "<group>"; };
 		BCC82D561EB98248004C5554 /* LSKeyframeAnimationFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LSKeyframeAnimationFunctions.c; sourceTree = "<group>"; };
 		BCC82D571EB98248004C5554 /* LSKeyframeAnimationFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSKeyframeAnimationFunctions.h; sourceTree = "<group>"; };
-		BCC82D581EB98248004C5554 /* UIView+LSAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LSAnimator.h"; sourceTree = "<group>"; };
-		BCC82D591EB98248004C5554 /* UIView+LSAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LSAnimator.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,15 +102,12 @@
 			isa = PBXGroup;
 			children = (
 				BCC82D4E1EB98248004C5554 /* LSAnimator.h */,
-				BCC82D4F1EB98248004C5554 /* LSAnimatorBlocks.h */,
+				BC57B7A41FF1F89300A216FB /* LSAnimator.m */,
 				BCC82D501EB98248004C5554 /* LSAnimatorChain.h */,
 				BCC82D511EB98248004C5554 /* LSAnimatorChain.m */,
 				BCC82D521EB98248004C5554 /* LSAnimatorLinker.h */,
 				BCC82D531EB98248004C5554 /* LSAnimatorLinker.m */,
-				BCC82D581EB98248004C5554 /* UIView+LSAnimator.h */,
-				BCC82D591EB98248004C5554 /* UIView+LSAnimator.m */,
-				9F4FF99B1EBF23CB001FA32C /* CALayer+LSAnimator.h */,
-				9F4FF99C1EBF23CB001FA32C /* CALayer+LSAnimator.m */,
+				BCC82D4F1EB98248004C5554 /* LSAnimatorBlocks.h */,
 				BCC82D541EB98248004C5554 /* LSKeyframeAnimation.h */,
 				BCC82D551EB98248004C5554 /* LSKeyframeAnimation.m */,
 				BCC82D571EB98248004C5554 /* LSKeyframeAnimationFunctions.h */,
@@ -200,9 +193,8 @@
 				BCC82D5D1EB98248004C5554 /* LSKeyframeAnimationFunctions.c in Sources */,
 				BCC82D5B1EB98248004C5554 /* LSAnimatorLinker.m in Sources */,
 				BCC82D5C1EB98248004C5554 /* LSKeyframeAnimation.m in Sources */,
+				BC57B7A51FF1F89300A216FB /* LSAnimator.m in Sources */,
 				BCC82D3E1EB98056004C5554 /* ViewController.m in Sources */,
-				BCC82D5E1EB98248004C5554 /* UIView+LSAnimator.m in Sources */,
-				9F4FF99D1EBF23CB001FA32C /* CALayer+LSAnimator.m in Sources */,
 				BCC82D5A1EB98248004C5554 /* LSAnimatorChain.m in Sources */,
 				BCC82D3B1EB98056004C5554 /* AppDelegate.m in Sources */,
 				BCC82D381EB98056004C5554 /* main.m in Sources */,

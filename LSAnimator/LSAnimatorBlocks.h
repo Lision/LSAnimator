@@ -12,95 +12,47 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-#pragma mark - CALayer Blocks
-typedef CALayer * (^LSCAAnimatorRect)(CGRect rect);
-#define LSCAAnimatorRect(rect) ^CALayer * (CGRect rect)
+@class LSAnimator;
 
-typedef CALayer * (^LSCAAnimatorSize)(CGFloat width, CGFloat height);
-#define LSCAAnimatorSize(width,height) ^CALayer * (CGFloat width, CGFloat height)
+#pragma mark - LSAnimator Blocks
+typedef LSAnimator * (^LSAnimatorRect)(CGRect rect);
+#define LSAnimatorRect(rect) ^LSAnimator * (CGRect rect)
 
-typedef CALayer * (^LSCAAnimatorPoint)(CGFloat x, CGFloat y);
-#define LSCAAnimatorPoint(x,y) ^CALayer * (CGFloat x, CGFloat y)
+typedef LSAnimator * (^LSAnimatorSize)(CGFloat width, CGFloat height);
+#define LSAnimatorSize(width,height) ^LSAnimator * (CGFloat width, CGFloat height)
 
-typedef CALayer * (^LSCAAnimatorFloat)(CGFloat f);
-#define LSCAAnimatorFloat(f) ^CALayer * (CGFloat f)
+typedef LSAnimator * (^LSAnimatorPoint)(CGFloat x, CGFloat y);
+#define LSAnimatorPoint(x,y) ^LSAnimator * (CGFloat x, CGFloat y)
 
-typedef CALayer * (^LSCAAnimatorColor)(UIColor *color);
-#define LSCAAnimatorColor(color) ^CALayer * (UIColor *color)
+typedef LSAnimator * (^LSAnimatorFloat)(CGFloat f);
+#define LSAnimatorFloat(f) ^LSAnimator * (CGFloat f)
 
-typedef CALayer * (^LSCAAnimatorPolarCoordinate)(CGFloat radius, CGFloat angle);
-#define LSCAAnimatorPolarCoordinate(radius,angle) ^CALayer * (CGFloat radius, CGFloat angle)
+typedef LSAnimator * (^LSAnimatorColor)(UIColor *color);
+#define LSAnimatorColor(color) ^LSAnimator * (UIColor *color)
 
-typedef CALayer * (^LSCAAnimatorDegrees)(CGFloat angle);
-#define LSCAAnimatorDegrees(angle) ^CALayer * (CGFloat angle)
+typedef LSAnimator * (^LSAnimatorPolarCoordinate)(CGFloat radius, CGFloat angle);
+#define LSAnimatorPolarCoordinate(radius,angle) ^LSAnimator * (CGFloat radius, CGFloat angle)
 
-typedef CALayer * (^LSCAAnimatorLayoutConstraint)(NSLayoutConstraint *constraint, CGFloat f);
-#define LSCAAnimatorLayoutConstraint(constraint,f) ^CALayer * (NSLayoutConstraint *constraint, CGFloat f)
+typedef LSAnimator * (^LSAnimatorDegrees)(CGFloat angle);
+#define LSAnimatorDegrees(angle) ^LSAnimator * (CGFloat angle)
 
-typedef CALayer * (^LSCAAnimatorBezierPath)(UIBezierPath *path);
-#define LSCAAnimatorBezierPath(path) ^CALayer * (UIBezierPath *path)
+typedef LSAnimator * (^LSAnimatorLayoutConstraint)(NSLayoutConstraint *constraint, CGFloat f);
+#define LSAnimatorLayoutConstraint(constraint,f) ^LSAnimator * (NSLayoutConstraint *constraint, CGFloat f)
 
-typedef CALayer * (^LSCAAnimatorBlock)(void(^block)());
-#define LSCAAnimatorBlock(block) ^CALayer * (void(^block)())
+typedef LSAnimator * (^LSAnimatorBezierPath)(UIBezierPath *path);
+#define LSAnimatorBezierPath(path) ^LSAnimator * (UIBezierPath *path)
 
-typedef void (^LSCAFinalAnimatorCompletion)(void(^block)());
-#define LSCAFinalAnimatorCompletion(block) ^void (void(^block)())
-
-typedef CALayer * (^LSCAAnimatorTimeInterval)(NSTimeInterval t);
-#define LSCAAnimatorTimeInterval(t) ^CALayer * (NSTimeInterval t)
-
-typedef CALayer * (^LSCAAnimatorRepeatAnimation)(NSTimeInterval duration, NSInteger count);
-#define LSCAAnimatorRepeatAnimation(duration, count) ^CALayer * (NSTimeInterval duration, NSInteger count)
-
-typedef void (^LSCAAnimatorAnimation)(NSTimeInterval duration);
-#define LSCAAnimatorAnimation(duration) ^void (NSTimeInterval duration)
-
-typedef void (^LSCAAnimatorAnimationWithRepeat)(NSTimeInterval duration, NSInteger count);
-#define LSCAAnimatorAnimationWithRepeat(duration, count) ^void (NSTimeInterval duration, NSInteger count)
-
-typedef void (^LSCAAnimatorAnimationWithCompletion)(NSTimeInterval duration, void(^completion)());
-#define LSCAAnimatorAnimationWithCompletion(duration,completion) ^void (NSTimeInterval duration, void(^completion)())
-
-
-#pragma mark - UIView Blocks
-typedef UIView * (^LSAnimatorRect)(CGRect rect);
-#define LSAnimatorRect(rect) ^UIView * (CGRect rect)
-
-typedef UIView * (^LSAnimatorSize)(CGFloat width, CGFloat height);
-#define LSAnimatorSize(width,height) ^UIView * (CGFloat width, CGFloat height)
-
-typedef UIView * (^LSAnimatorPoint)(CGFloat x, CGFloat y);
-#define LSAnimatorPoint(x,y) ^UIView * (CGFloat x, CGFloat y)
-
-typedef UIView * (^LSAnimatorFloat)(CGFloat f);
-#define LSAnimatorFloat(f) ^UIView * (CGFloat f)
-
-typedef UIView * (^LSAnimatorColor)(UIColor *color);
-#define LSAnimatorColor(color) ^UIView * (UIColor *color)
-
-typedef UIView * (^LSAnimatorPolarCoordinate)(CGFloat radius, CGFloat angle);
-#define LSAnimatorPolarCoordinate(radius,angle) ^UIView * (CGFloat radius, CGFloat angle)
-
-typedef UIView * (^LSAnimatorDegrees)(CGFloat angle);
-#define LSAnimatorDegrees(angle) ^UIView * (CGFloat angle)
-
-typedef UIView * (^LSAnimatorLayoutConstraint)(NSLayoutConstraint *constraint, CGFloat f);
-#define LSAnimatorLayoutConstraint(constraint,f) ^UIView * (NSLayoutConstraint *constraint, CGFloat f)
-
-typedef UIView * (^LSAnimatorBezierPath)(UIBezierPath *path);
-#define LSAnimatorBezierPath(path) ^UIView * (UIBezierPath *path)
-
-typedef UIView * (^LSAnimatorBlock)(void(^block)());
-#define LSAnimatorBlock(block) ^UIView * (void(^block)())
+typedef LSAnimator * (^LSAnimatorBlock)(void(^block)());
+#define LSAnimatorBlock(block) ^LSAnimator * (void(^block)())
 
 typedef void (^LSFinalAnimatorCompletion)(void(^block)());
 #define LSFinalAnimatorCompletion(block) ^void (void(^block)())
 
-typedef UIView * (^LSAnimatorTimeInterval)(NSTimeInterval t);
-#define LSAnimatorTimeInterval(t) ^UIView * (NSTimeInterval t)
+typedef LSAnimator * (^LSAnimatorTimeInterval)(NSTimeInterval t);
+#define LSAnimatorTimeInterval(t) ^LSAnimator * (NSTimeInterval t)
 
-typedef UIView * (^LSAnimatorRepeatAnimation)(NSTimeInterval duration, NSInteger count);
-#define LSAnimatorRepeatAnimation(duration, count) ^UIView * (NSTimeInterval duration, NSInteger count)
+typedef LSAnimator * (^LSAnimatorRepeatAnimation)(NSTimeInterval duration, NSInteger count);
+#define LSAnimatorRepeatAnimation(duration, count) ^LSAnimator * (NSTimeInterval duration, NSInteger count)
 
 typedef void (^LSAnimatorAnimation)(NSTimeInterval duration);
 #define LSAnimatorAnimation(duration) ^void (NSTimeInterval duration)

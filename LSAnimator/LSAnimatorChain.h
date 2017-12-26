@@ -12,20 +12,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class LSKeyframeAnimation;
+@class LSAnimator, LSKeyframeAnimation;
 
 typedef void (^LSAnimatorChainCompleteBlock)();
 
 @interface LSAnimatorChain : NSObject
 
-@property (nonatomic, weak) CALayer *layer;
+@property (nonatomic, weak) LSAnimator *animator;
 @property (nonatomic, copy) LSAnimatorChainCompleteBlock completeBlock;
 
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-+ (instancetype)chainWithLayer:(CALayer *)layer;
-- (instancetype)initWithLayer:(CALayer *)layer NS_DESIGNATED_INITIALIZER;
++ (instancetype)chainWithAnimator:(LSAnimator *)animator;
+- (instancetype)initWithAnimator:(LSAnimator *)animator NS_DESIGNATED_INITIALIZER;
 
 - (void)updateAnchorWithAction:(LSAnimationCalculationAction)action;
 
@@ -42,7 +42,7 @@ typedef void (^LSAnimatorChainCompleteBlock)();
 - (void)updateCurrentTurnLinkerAnimationsDelay:(NSTimeInterval)delay;
 - (void)updateCurrentTurnLinkerAnimationsDuration:(NSTimeInterval)duration;
 
-- (void)animateWithWithAnimationKey:(NSString *)animationKey;
+- (void)animateWithAnimationKey:(NSString *)animationKey;
 - (void)executeCompletionActions;
 - (BOOL)isEmptiedAfterTryToRemoveCurrentTurnLinker;
 

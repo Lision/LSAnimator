@@ -7,6 +7,7 @@
 //
 
 #import "LSAnimatorLinker.h"
+#import "LSAnimator.h"
 
 @interface LSAnimatorLinker ()
 
@@ -19,13 +20,13 @@
 
 @implementation LSAnimatorLinker
 
-+ (instancetype)linkerWithLayer:(CALayer *)layer andAnimatorChain:(LSAnimatorChain *)animatorChain {
-    return [[self alloc] initWithLayer:layer andAnimatorChain:animatorChain];
++ (instancetype)linkerWithAnimator:(LSAnimator *)animator andAnimatorChain:(LSAnimatorChain *)animatorChain {
+    return [[self alloc] initWithAnimator:animator andAnimatorChain:animatorChain];
 }
 
-- (instancetype)initWithLayer:(CALayer *)layer andAnimatorChain:(LSAnimatorChain *)animatorChain {
+- (instancetype)initWithAnimator:(LSAnimator *)animator andAnimatorChain:(LSAnimatorChain *)animatorChain {
     if (self = [super init]) {
-        _layer = layer;
+        _animator = animator;
         _animatorChain = animatorChain;
     }
     
@@ -33,7 +34,7 @@
 }
 
 - (id)copyWithZone:(nullable NSZone *)zone {
-    typeof(self) copySelf = [[self.class allocWithZone:zone] initWithLayer:self.layer andAnimatorChain:self.animatorChain];
+    typeof(self) copySelf = [[self.class allocWithZone:zone] initWithAnimator:self.animator andAnimatorChain:self.animatorChain];
     copySelf.animationDelay = self.animationDelay;
     copySelf.animationDuration = self.animationDuration;
     copySelf.beforelinkerBlock = [self.beforelinkerBlock copy];
@@ -101,12 +102,12 @@
     }
     
     if (self.anchorCalculationAction) {
-        self.anchorCalculationAction(self.layer, self.animatorChain);
+        self.anchorCalculationAction(self.animator, self.animatorChain);
     }
     
     self.animationgroup.duration = self.animationDuration;
     for (LSAnimationCalculationAction action in self.animationCalculationActions) {
-        action(self.layer, self.animatorChain);
+        action(self.animator, self.animatorChain);
     }
     for (LSKeyframeAnimation *animation in self.animations) {
         animation.duration = self.animationgroup.duration;
@@ -114,7 +115,7 @@
     }
     self.animationgroup.beginTime = CACurrentMediaTime() + self.animationDelay;
     self.animationgroup.animations = self.animations;
-    [self.layer addAnimation:self.animationgroup forKey:animationKey];
+    [self.animator.layer addAnimation:self.animationgroup forKey:animationKey];
 }
 
 - (void)executeCompletionActions {
@@ -123,7 +124,7 @@
         for (LSAnimationCompletionAction action in self.animationCompletionActions) {
             [CATransaction begin];
             [CATransaction setDisableActions:YES];
-            action(self.layer);
+            action(self.animator);
             [CATransaction commit];
         }
     });

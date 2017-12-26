@@ -7,6 +7,7 @@
 //
 
 #import "LSAnimatorChain.h"
+#import "LSAnimator.h"
 
 @interface LSAnimatorChain ()
 
@@ -16,13 +17,13 @@
 
 @implementation LSAnimatorChain
 
-+ (instancetype)chainWithLayer:(CALayer *)layer {
-    return [[self alloc] initWithLayer:layer];
++ (instancetype)chainWithAnimator:(LSAnimator *)animator {
+    return [[self alloc] initWithAnimator:animator];
 }
 
-- (instancetype)initWithLayer:(CALayer *)layer {
+- (instancetype)initWithAnimator:(LSAnimator *)animator {
     if (self = [super init]) {
-        _layer = layer;
+        _animator = animator;
     }
     
     return self;
@@ -30,7 +31,7 @@
 
 - (NSMutableArray<LSAnimatorLinker *> *)animatorLinkers {
     if (!_animatorLinkers) {
-        _animatorLinkers = [NSMutableArray arrayWithObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
+        _animatorLinkers = [NSMutableArray arrayWithObject:[LSAnimatorLinker linkerWithAnimator:self.animator andAnimatorChain:self]];
     }
     
     return _animatorLinkers;
@@ -66,7 +67,7 @@
 
 - (void)thenAfter:(NSTimeInterval)time {
     [self updateCurrentTurnLinkerAnimationsDuration:time];
-    [self.animatorLinkers addObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
+    [self.animatorLinkers addObject:[LSAnimatorLinker linkerWithAnimator:self.animator andAnimatorChain:self]];
 }
 
 - (void)repeat:(NSInteger)count andIsAnimation:(BOOL)isAnimation {
@@ -76,7 +77,7 @@
     }
     
     if (!isAnimation) {
-        [self.animatorLinkers addObject:[LSAnimatorLinker linkerWithLayer:self.layer andAnimatorChain:self]];
+        [self.animatorLinkers addObject:[LSAnimatorLinker linkerWithAnimator:self.animator andAnimatorChain:self]];
     }
 }
 
@@ -88,7 +89,7 @@
     [self.animatorLinkers lastObject].animationDuration = duration;
 }
 
-- (void)animateWithWithAnimationKey:(NSString *)animationKey {
+- (void)animateWithAnimationKey:(NSString *)animationKey {
     [[self.animatorLinkers firstObject] animateWithAnimationKey:animationKey];
 }
 
