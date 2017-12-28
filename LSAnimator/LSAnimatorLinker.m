@@ -7,25 +7,26 @@
 //
 
 #import "LSAnimatorLinker.h"
+#import "LSAnimator.h"
 
 @interface LSAnimatorLinker ()
 
-@property (strong, nonatomic) CAAnimationGroup *ls_animationgroup;
-@property (strong, nonatomic) NSMutableArray <LSKeyframeAnimation *> *ls_animations;
-@property (strong, nonatomic) NSMutableArray <LSAnimationCalculationAction> *ls_animationCalculationActions;
-@property (strong, nonatomic) NSMutableArray <LSAnimationCompletionAction> *ls_animationCompletionActions;
+@property (nonatomic, strong) CAAnimationGroup *animationgroup;
+@property (nonatomic, strong) NSMutableArray <LSKeyframeAnimation *> *animations;
+@property (nonatomic, strong) NSMutableArray <LSAnimationCalculationAction> *animationCalculationActions;
+@property (nonatomic, strong) NSMutableArray <LSAnimationCompletionAction> *animationCompletionActions;
 
 @end
 
 @implementation LSAnimatorLinker
 
-+ (instancetype)linkerWithLayer:(CALayer *)layer andAnimatorChain:(LSAnimatorChain *)animatorChain {
-    return [[self alloc] initWithLayer:layer andAnimatorChain:animatorChain];
++ (instancetype)linkerWithAnimator:(LSAnimator *)animator andAnimatorChain:(LSAnimatorChain *)animatorChain {
+    return [[self alloc] initWithAnimator:animator andAnimatorChain:animatorChain];
 }
 
-- (instancetype)initWithLayer:(CALayer *)layer andAnimatorChain:(LSAnimatorChain *)animatorChain {
+- (instancetype)initWithAnimator:(LSAnimator *)animator andAnimatorChain:(LSAnimatorChain *)animatorChain {
     if (self = [super init]) {
-        _layer = layer;
+        _animator = animator;
         _animatorChain = animatorChain;
     }
     
@@ -33,103 +34,103 @@
 }
 
 - (id)copyWithZone:(nullable NSZone *)zone {
-    typeof(self) copySelf = [[self.class allocWithZone:zone] initWithLayer:self.layer andAnimatorChain:self.animatorChain];
+    typeof(self) copySelf = [[self.class allocWithZone:zone] initWithAnimator:self.animator andAnimatorChain:self.animatorChain];
     copySelf.animationDelay = self.animationDelay;
     copySelf.animationDuration = self.animationDuration;
     copySelf.beforelinkerBlock = [self.beforelinkerBlock copy];
     copySelf.afterLinkerBlock = [self.afterLinkerBlock copy];
     copySelf.anchorCalculationAction = [self.anchorCalculationAction copy];
-    copySelf.ls_animationgroup = [self.ls_animationgroup copy];
-    copySelf.ls_animations = [[NSMutableArray alloc] initWithArray:self.ls_animations copyItems:YES];
-    copySelf.ls_animationCalculationActions = [[NSMutableArray alloc] initWithArray:self.ls_animationCalculationActions copyItems:YES];
-    copySelf.ls_animationCompletionActions = [[NSMutableArray alloc] initWithArray:self.ls_animationCompletionActions copyItems:YES];
+    copySelf.animationgroup = [self.animationgroup copy];
+    copySelf.animations = [[NSMutableArray alloc] initWithArray:self.animations copyItems:YES];
+    copySelf.animationCalculationActions = [[NSMutableArray alloc] initWithArray:self.animationCalculationActions copyItems:YES];
+    copySelf.animationCompletionActions = [[NSMutableArray alloc] initWithArray:self.animationCompletionActions copyItems:YES];
     
     return copySelf;
 }
 
-- (CAAnimationGroup *)ls_animationgroup {
-    if (!_ls_animationgroup) {
-        _ls_animationgroup = [CAAnimationGroup animation];
+- (CAAnimationGroup *)animationgroup {
+    if (!_animationgroup) {
+        _animationgroup = [CAAnimationGroup animation];
     }
     
-    return _ls_animationgroup;
+    return _animationgroup;
 }
 
-- (NSMutableArray<LSKeyframeAnimation *> *)ls_animations {
-    if (!_ls_animations) {
-        _ls_animations = [NSMutableArray array];
+- (NSMutableArray<LSKeyframeAnimation *> *)animations {
+    if (!_animations) {
+        _animations = [NSMutableArray array];
     }
     
-    return _ls_animations;
+    return _animations;
 }
 
-- (NSMutableArray<LSAnimationCalculationAction> *)ls_animationCalculationActions {
-    if (!_ls_animationCalculationActions) {
-        _ls_animationCalculationActions = [NSMutableArray array];
+- (NSMutableArray<LSAnimationCalculationAction> *)animationCalculationActions {
+    if (!_animationCalculationActions) {
+        _animationCalculationActions = [NSMutableArray array];
     }
     
-    return _ls_animationCalculationActions;
+    return _animationCalculationActions;
 }
 
-- (NSMutableArray<LSAnimationCompletionAction> *)ls_animationCompletionActions {
-    if (!_ls_animationCompletionActions) {
-        _ls_animationCompletionActions = [NSMutableArray array];
+- (NSMutableArray<LSAnimationCompletionAction> *)animationCompletionActions {
+    if (!_animationCompletionActions) {
+        _animationCompletionActions = [NSMutableArray array];
     }
     
-    return _ls_animationCompletionActions;
+    return _animationCompletionActions;
 }
 
-- (void)ls_addAnimation:(LSKeyframeAnimation *)animation {
-    [self.ls_animations addObject:animation];
+- (void)addAnimation:(LSKeyframeAnimation *)animation {
+    [self.animations addObject:animation];
 }
 
-- (void)ls_addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock {
-    [self.ls_animations lastObject].functionBlock = functionBlock;
+- (void)addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock {
+    [self.animations lastObject].functionBlock = functionBlock;
 }
 
-- (void)ls_addAnimationCalculationAction:(LSAnimationCalculationAction)action {
-    [self.ls_animationCalculationActions addObject:action];
+- (void)addAnimationCalculationAction:(LSAnimationCalculationAction)action {
+    [self.animationCalculationActions addObject:action];
 }
 
-- (void)ls_addAnimationCompletionAction:(LSAnimationCompletionAction)action {
-    [self.ls_animationCompletionActions addObject:action];
+- (void)addAnimationCompletionAction:(LSAnimationCompletionAction)action {
+    [self.animationCompletionActions addObject:action];
 }
 
-- (void)ls_animateWithAnimationKey:(NSString *)animationKey {
+- (void)animateWithAnimationKey:(NSString *)animationKey {
     if (self.beforelinkerBlock) {
         self.beforelinkerBlock();
     }
     
     if (self.anchorCalculationAction) {
-        self.anchorCalculationAction(self.layer, self.animatorChain);
+        self.anchorCalculationAction(self.animator, self.animatorChain);
     }
     
-    self.ls_animationgroup.duration = self.animationDuration;
-    for (LSAnimationCalculationAction action in self.ls_animationCalculationActions) {
-        action(self.layer, self.animatorChain);
+    self.animationgroup.duration = self.animationDuration;
+    for (LSAnimationCalculationAction action in self.animationCalculationActions) {
+        action(self.animator, self.animatorChain);
     }
-    for (LSKeyframeAnimation *animation in self.ls_animations) {
-        animation.duration = self.ls_animationgroup.duration;
-        [animation ls_calculate];
+    for (LSKeyframeAnimation *animation in self.animations) {
+        animation.duration = self.animationgroup.duration;
+        [animation calculate];
     }
-    self.ls_animationgroup.beginTime = CACurrentMediaTime() + self.animationDelay;
-    self.ls_animationgroup.animations = self.ls_animations;
-    [self.layer addAnimation:self.ls_animationgroup forKey:animationKey];
+    self.animationgroup.beginTime = CACurrentMediaTime() + self.animationDelay;
+    self.animationgroup.animations = self.animations;
+    [self.animator.layer addAnimation:self.animationgroup forKey:animationKey];
 }
 
-- (void)ls_executeCompletionActions {
-    NSTimeInterval delay = MAX(self.ls_animationgroup.beginTime - CACurrentMediaTime(), 0.0);
+- (void)executeCompletionActions {
+    NSTimeInterval delay = MAX(self.animationgroup.beginTime - CACurrentMediaTime(), 0.0);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        for (LSAnimationCompletionAction action in self.ls_animationCompletionActions) {
+        for (LSAnimationCompletionAction action in self.animationCompletionActions) {
             [CATransaction begin];
             [CATransaction setDisableActions:YES];
-            action(self.layer);
+            action(self.animator);
             [CATransaction commit];
         }
     });
 }
 
-- (void)ls_executeAfterLinkerBlock {
+- (void)executeAfterLinkerBlock {
     if (self.afterLinkerBlock) {
         self.afterLinkerBlock();
     }

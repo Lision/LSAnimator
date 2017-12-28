@@ -13,15 +13,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class LSAnimatorChain;
+@class LSAnimator, LSAnimatorChain;
 
-typedef void (^LSAnimatorLinkerBlock)();
-typedef void (^LSAnimationCalculationAction)(__weak CALayer *layer, __weak LSAnimatorChain *animatorChain);
-typedef void (^LSAnimationCompletionAction)(__weak CALayer *layer);
+typedef void (^LSAnimatorLinkerBlock)(void);
+typedef void (^LSAnimationCalculationAction)(__weak LSAnimator *animator, __weak LSAnimatorChain *animatorChain);
+typedef void (^LSAnimationCompletionAction)(__weak LSAnimator *animator);
 
 @interface LSAnimatorLinker : NSObject <NSCopying>
 
-@property (nonatomic, weak) CALayer *layer;
+@property (nonatomic, weak) LSAnimator *animator;
 @property (nonatomic, weak) LSAnimatorChain *animatorChain;
 @property (nonatomic, assign) NSTimeInterval animationDelay;
 @property (nonatomic, assign) NSTimeInterval animationDuration;
@@ -32,17 +32,17 @@ typedef void (^LSAnimationCompletionAction)(__weak CALayer *layer);
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-+ (instancetype)linkerWithLayer:(CALayer *)layer andAnimatorChain:(LSAnimatorChain *)animatorChain;
-- (instancetype)initWithLayer:(CALayer *)layer andAnimatorChain:(LSAnimatorChain *)animatorChain;
++ (instancetype)linkerWithAnimator:(LSAnimator *)animator andAnimatorChain:(LSAnimatorChain *)animatorChain;
+- (instancetype)initWithAnimator:(LSAnimator *)animator andAnimatorChain:(LSAnimatorChain *)animatorChain NS_DESIGNATED_INITIALIZER;
 
-- (void)ls_addAnimation:(LSKeyframeAnimation *)animation;
-- (void)ls_addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock;
-- (void)ls_addAnimationCalculationAction:(LSAnimationCalculationAction)action;
-- (void)ls_addAnimationCompletionAction:(LSAnimationCompletionAction)action;
+- (void)addAnimation:(LSKeyframeAnimation *)animation;
+- (void)addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock;
+- (void)addAnimationCalculationAction:(LSAnimationCalculationAction)action;
+- (void)addAnimationCompletionAction:(LSAnimationCompletionAction)action;
 
-- (void)ls_animateWithAnimationKey:(NSString *)animationKey;
-- (void)ls_executeCompletionActions;
-- (void)ls_executeAfterLinkerBlock;
+- (void)animateWithAnimationKey:(NSString *)animationKey;
+- (void)executeCompletionActions;
+- (void)executeAfterLinkerBlock;
 
 @end
 

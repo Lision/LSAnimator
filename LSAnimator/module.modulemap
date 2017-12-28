@@ -1,0 +1,4 @@
+module LSAnimator [system] {
+    header "LSAnimator.h"
+    export *
+}

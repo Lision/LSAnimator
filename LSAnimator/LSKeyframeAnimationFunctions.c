@@ -15,126 +15,103 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunsequenced"
 
-double LSKeyframeAnimationFunctionLinear(double t,double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionLinear(double t,double b, double c, double d) {
     return c*(t/=d) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInQuad(double t,double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInQuad(double t,double b, double c, double d) {
     return c*(t/=d)*t + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutQuad(double t,double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutQuad(double t,double b, double c, double d) {
     return -c *(t/=d)*(t-2) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutQuad(double t,double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutQuad(double t,double b, double c, double d) {
     if ((t/=d/2) < 1) return c/2*t*t + b;
     return -c/2 * ((--t)*(t-2) - 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInCubic(double t,double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInCubic(double t,double b, double c, double d) {
     return c*(t/=d)*t*t + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutCubic(double t,double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutCubic(double t,double b, double c, double d) {
     return c*((t=t/d-1)*t*t + 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutCubic(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutCubic(double t, double b, double c, double d) {
     if ((t/=d/2) < 1) return c/2*t*t*t + b;
     return c/2*((t-=2)*t*t + 2) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInQuart(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInQuart(double t, double b, double c, double d) {
     return c*(t/=d)*t*t*t + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutQuart(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutQuart(double t, double b, double c, double d) {
     return -c * ((t=t/d-1)*t*t*t - 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutQuart(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutQuart(double t, double b, double c, double d) {
     if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
     return -c/2 * ((t-=2)*t*t*t - 2) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInQuint(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInQuint(double t, double b, double c, double d) {
     return c*(t/=d)*t*t*t*t + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutQuint(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutQuint(double t, double b, double c, double d) {
     return c*((t=t/d-1)*t*t*t*t + 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutQuint(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutQuint(double t, double b, double c, double d) {
     if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
     return c/2*((t-=2)*t*t*t*t + 2) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInSine(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInSine(double t, double b, double c, double d) {
     return -c * cos(t/d * (M_PI_2)) + c + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutSine(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutSine(double t, double b, double c, double d) {
     return c * sin(t/d * (M_PI_2)) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutSine(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutSine(double t, double b, double c, double d) {
     return -c/2 * (cos(M_PI*t/d) - 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInExpo(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInExpo(double t, double b, double c, double d) {
     return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutExpo(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutExpo(double t, double b, double c, double d) {
     return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutExpo(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutExpo(double t, double b, double c, double d) {
     if (t==0) return b;
     if (t==d) return b+c;
     if ((t/=d/2) < 1) return c/2 * pow(2, 10 * (t - 1)) + b;
     return c/2 * (-pow(2, -10 * --t) + 2) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInCirc(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInCirc(double t, double b, double c, double d) {
     return -c * (sqrt(1 - (t/=d)*t) - 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutCirc(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutCirc(double t, double b, double c, double d) {
     return c * sqrt(1 - (t=t/d-1)*t) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutCirc(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutCirc(double t, double b, double c, double d) {
     if ((t/=d/2) < 1) return -c/2 * (sqrt(1 - t*t) - 1) + b;
     return c/2 * (sqrt(1 - (t-=2)*t) + 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInElastic(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInElastic(double t, double b, double c, double d) {
     double s = 1.70158; double p=0; double a=c;
     
     if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
@@ -143,8 +120,7 @@ double LSKeyframeAnimationFunctionEaseInElastic(double t, double b, double c, do
     return -(a*pow(2,10*(t-=1)) * sin( (t*d-s)*(2*M_PI)/p )) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutElastic(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutElastic(double t, double b, double c, double d) {
     double s=1.70158, p=0, a=c;
     if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
     if (a < fabs(c)) { a=c; s=p/4; }
@@ -152,8 +128,7 @@ double LSKeyframeAnimationFunctionEaseOutElastic(double t, double b, double c, d
     return a*pow(2,-10*t) * sin( (t*d-s)*(2*M_PI)/p ) + c + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutElastic(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutElastic(double t, double b, double c, double d) {
     double s=1.70158, p=0, a=c;
     if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
     if (a < fabs(c)) { a=c; s=p/4; }
@@ -162,32 +137,27 @@ double LSKeyframeAnimationFunctionEaseInOutElastic(double t, double b, double c,
     return a*pow(2,-10*(t-=1)) * sin( (t*d-s)*(2*M_PI)/p )*.5 + c + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInBack(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInBack(double t, double b, double c, double d) {
     const double s = 1.70158;
     return c*(t/=d)*t*((s+1)*t - s) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutBack(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutBack(double t, double b, double c, double d) {
     const double s = 1.70158;
     return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutBack(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutBack(double t, double b, double c, double d) {
     double s = 1.70158;
     if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
     return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInBounce(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInBounce(double t, double b, double c, double d) {
     return c - LSKeyframeAnimationFunctionEaseOutBounce(d-t, 0, c, d) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutBounce(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseOutBounce(double t, double b, double c, double d) {
     if ((t/=d) < (1/2.75)) {
         return c*(7.5625*t*t) + b;
     } else if (t < (2/2.75)) {
@@ -199,8 +169,7 @@ double LSKeyframeAnimationFunctionEaseOutBounce(double t, double b, double c, do
     }
 }
 
-double LSKeyframeAnimationFunctionEaseInOutBounce(double t, double b, double c, double d)
-{
+double LSKeyframeAnimationFunctionEaseInOutBounce(double t, double b, double c, double d) {
     if (t < d/2)
         return LSKeyframeAnimationFunctionEaseInBounce (t*2, 0, c, d) * .5 + b;
     else

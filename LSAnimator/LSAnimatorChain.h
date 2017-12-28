@@ -12,39 +12,39 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class LSKeyframeAnimation;
+@class LSAnimator, LSKeyframeAnimation;
 
-typedef void (^LSAnimatorChainCompleteBlock)();
+typedef void (^LSAnimatorChainCompleteBlock)(void);
 
 @interface LSAnimatorChain : NSObject
 
-@property (nonatomic, weak) CALayer *layer;
+@property (nonatomic, weak) LSAnimator *animator;
 @property (nonatomic, copy) LSAnimatorChainCompleteBlock completeBlock;
 
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-+ (instancetype)chainWithLayer:(CALayer *)layer;
-- (instancetype)initWithLayer:(CALayer *)layer;
++ (instancetype)chainWithAnimator:(LSAnimator *)animator;
+- (instancetype)initWithAnimator:(LSAnimator *)animator NS_DESIGNATED_INITIALIZER;
 
-- (void)ls_updateAnchorWithAction:(LSAnimationCalculationAction)action;
+- (void)updateAnchorWithAction:(LSAnimationCalculationAction)action;
 
-- (void)ls_addAnimation:(LSKeyframeAnimation *)animation;
-- (void)ls_addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock;
-- (void)ls_addAnimationCalculationAction:(LSAnimationCalculationAction)action;
-- (void)ls_addAnimationCompletionAction:(LSAnimationCompletionAction)action;
+- (void)addAnimation:(LSKeyframeAnimation *)animation;
+- (void)addAnimationFunctionBlock:(LSKeyframeAnimationFunctionBlock)functionBlock;
+- (void)addAnimationCalculationAction:(LSAnimationCalculationAction)action;
+- (void)addAnimationCompletionAction:(LSAnimationCompletionAction)action;
 
-- (void)ls_updateBeforeCurrentLinkerAnimationBlock:(LSAnimatorLinkerBlock)block;
-- (void)ls_updateAfterCurrentLinkerAnimationBlock:(LSAnimatorLinkerBlock)block;
+- (void)updateBeforeCurrentLinkerAnimationBlock:(LSAnimatorLinkerBlock)block;
+- (void)updateAfterCurrentLinkerAnimationBlock:(LSAnimatorLinkerBlock)block;
 
-- (void)ls_thenAfter:(NSTimeInterval)time;
-- (void)ls_repeat:(NSInteger)count andIsAnimation:(BOOL)isAnimation;
-- (void)ls_updateCurrentTurnLinkerAnimationsDelay:(NSTimeInterval)delay;
-- (void)ls_updateCurrentTurnLinkerAnimationsDuration:(NSTimeInterval)duration;
+- (void)thenAfter:(NSTimeInterval)time;
+- (void)repeat:(NSInteger)count andIsAnimation:(BOOL)isAnimation;
+- (void)updateCurrentTurnLinkerAnimationsDelay:(NSTimeInterval)delay;
+- (void)updateCurrentTurnLinkerAnimationsDuration:(NSTimeInterval)duration;
 
-- (void)ls_animateWithWithAnimationKey:(NSString *)animationKey;
-- (void)ls_executeCompletionActions;
-- (BOOL)ls_isEmptiedAfterTryToRemoveCurrentTurnLinker;
+- (void)animateWithAnimationKey:(NSString *)animationKey;
+- (void)executeCompletionActions;
+- (BOOL)isEmptiedAfterTryToRemoveCurrentTurnLinker;
 
 @end
 
