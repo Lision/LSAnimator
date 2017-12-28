@@ -42,11 +42,11 @@ typedef LSAnimator * (^LSAnimatorLayoutConstraint)(NSLayoutConstraint *constrain
 typedef LSAnimator * (^LSAnimatorBezierPath)(UIBezierPath *path);
 #define LSAnimatorBezierPath(path) ^LSAnimator * (UIBezierPath *path)
 
-typedef LSAnimator * (^LSAnimatorBlock)(void(^block)());
-#define LSAnimatorBlock(block) ^LSAnimator * (void(^block)())
+typedef LSAnimator * (^LSAnimatorBlock)(void(^block)(void));
+#define LSAnimatorBlock(block) ^LSAnimator * (void(^block)(void))
 
-typedef void (^LSFinalAnimatorCompletion)(void(^block)());
-#define LSFinalAnimatorCompletion(block) ^void (void(^block)())
+typedef void (^LSFinalAnimatorCompletion)(void(^block)(void));
+#define LSFinalAnimatorCompletion(block) ^void (void(^block)(void))
 
 typedef LSAnimator * (^LSAnimatorTimeInterval)(NSTimeInterval t);
 #define LSAnimatorTimeInterval(t) ^LSAnimator * (NSTimeInterval t)
@@ -60,7 +60,7 @@ typedef void (^LSAnimatorAnimation)(NSTimeInterval duration);
 typedef void (^LSAnimatorAnimationWithRepeat)(NSTimeInterval duration, NSInteger count);
 #define LSAnimatorAnimationWithRepeat(duration, count) ^void (NSTimeInterval duration, NSInteger count)
 
-typedef void (^LSAnimatorAnimationWithCompletion)(NSTimeInterval duration, void(^completion)());
-#define LSAnimatorAnimationWithCompletion(duration,completion) ^void (NSTimeInterval duration, void(^completion)())
+typedef void (^LSAnimatorAnimationWithCompletion)(NSTimeInterval duration, void(^completion)(void));
+#define LSAnimatorAnimationWithCompletion(duration,completion) ^void (NSTimeInterval duration, void(^completion)(void))
 
 #endif /* LSBlocks_h */

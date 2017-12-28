@@ -2,21 +2,23 @@
 //  LSAnimator.h
 //  LSAnimator
 //
-//  Created by Lision on 2017/5/3.
+//  Created by Lision on 2017/12/28.
 //  Copyright © 2017年 Lision. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
 #import "LSAnimatorBlocks.h"
 
 #if __has_include(<LSAnimator/LSAnimator.h>)
 
+//! Project version number for LSAnimator.
 FOUNDATION_EXPORT double LSAnimatorVersionNumber;
+
+//! Project version string for LSAnimator.
 FOUNDATION_EXPORT const unsigned char LSAnimatorVersionString[];
 
-#else
-
 #endif
+
 
 NS_ASSUME_NONNULL_BEGIN
 

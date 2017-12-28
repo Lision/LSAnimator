@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class LSAnimator, LSKeyframeAnimation;
 
-typedef void (^LSAnimatorChainCompleteBlock)();
+typedef void (^LSAnimatorChainCompleteBlock)(void);
 
 @interface LSAnimatorChain : NSObject
 

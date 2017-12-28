@@ -19,7 +19,7 @@
 
 static NSString * const kLSAnimatorKey = @"LSAnimatorKey";
 
-typedef void (^LSAnimatorCompleteBlock)();
+typedef void (^LSAnimatorCompleteBlock)(void);
 
 static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return [NSString stringWithFormat:@"%@_%@", kLSAnimatorKey, @(index)];
@@ -387,7 +387,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     LSAnimatorColor animator = LSAnimatorColor(color) {
         [self addAnimationCalculationAction:^(__weak LSAnimator *weakSelf, __weak LSAnimatorChain *animatorChain) {
             LSKeyframeAnimation *colorAnimation = [weakSelf basicAnimationForKeyPath:@"backgroundColor"];
-            colorAnimation.fromValue = [self colorWithCGColor:weakSelf.layer.backgroundColor];
+            colorAnimation.fromValue = [weakSelf colorWithCGColor:weakSelf.layer.backgroundColor];
             colorAnimation.toValue = color;
             [weakSelf addAnimation:colorAnimation withAnimatorChain:animatorChain];
         }];

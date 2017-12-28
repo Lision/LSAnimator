@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class LSAnimator, LSAnimatorChain;
 
-typedef void (^LSAnimatorLinkerBlock)();
+typedef void (^LSAnimatorLinkerBlock)(void);
 typedef void (^LSAnimationCalculationAction)(__weak LSAnimator *animator, __weak LSAnimatorChain *animatorChain);
 typedef void (^LSAnimationCompletionAction)(__weak LSAnimator *animator);
 
