@@ -11,6 +11,8 @@
 		BC0D10A91FF4F5A900763510 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D10A81FF4F5A900763510 /* ViewController.swift */; };
 		BC0D10AE1FF4F5A900763510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC0D10AD1FF4F5A900763510 /* Assets.xcassets */; };
 		BC0D10B11FF4F5A900763510 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC0D10AF1FF4F5A900763510 /* LaunchScreen.storyboard */; };
+		BC5317041FF6579E00643A24 /* LSAnimatorBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC411FF4B4BF00771DA7 /* LSAnimatorBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC5317061FF6594B00643A24 /* CoreAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BCA11FF4D71200771DA7 /* CoreAnimator.framework */; };
 		BC86BC2D1FF4B40900771DA7 /* LSAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BC231FF4B40900771DA7 /* LSAnimator.framework */; };
 		BC86BC321FF4B40900771DA7 /* LSAnimatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC311FF4B40900771DA7 /* LSAnimatorTests.m */; };
 		BC86BC341FF4B40900771DA7 /* LSAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC261FF4B40900771DA7 /* LSAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,8 +32,7 @@
 		BC86BCB61FF4D97C00771DA7 /* LSAnimatorLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC3F1FF4B4BF00771DA7 /* LSAnimatorLinker.m */; };
 		BC86BCB71FF4D97F00771DA7 /* LSAnimatorChain.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC431FF4B4BF00771DA7 /* LSAnimatorChain.m */; };
 		BC86BCB81FF4D98300771DA7 /* LSAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC441FF4B4C000771DA7 /* LSAnimator.m */; };
-		BC86BCBB1FF4D9BB00771DA7 /* LSAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC261FF4B40900771DA7 /* LSAnimator.h */; };
-		BC86BCBC1FF4DB4D00771DA7 /* LSAnimatorBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC411FF4B4BF00771DA7 /* LSAnimatorBlocks.h */; };
+		BC86BCBB1FF4D9BB00771DA7 /* LSAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC261FF4B40900771DA7 /* LSAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC86BCBD1FF4DB5000771DA7 /* LSAnimatorBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC411FF4B4BF00771DA7 /* LSAnimatorBlocks.h */; };
 		BCE3843F1FF505C20087C491 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3843E1FF505C20087C491 /* ViewController.m */; };
 		BCE384411FF50E6A0087C491 /* CoreAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE384401FF50E6A0087C491 /* CoreAnimator.swift */; };
@@ -90,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5317061FF6594B00643A24 /* CoreAnimator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +140,13 @@
 			path = LSAnimatorDemoSwift;
 			sourceTree = "<group>";
 		};
+		BC5317051FF6594B00643A24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC86BC191FF4B40900771DA7 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +156,7 @@
 				BC86BC851FF4D33E00771DA7 /* LSAnimatorDemo */,
 				BC0D10A51FF4F5A900763510 /* LSAnimatorDemoSwift */,
 				BC86BC241FF4B40900771DA7 /* Products */,
+				BC5317051FF6594B00643A24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,7 +243,7 @@
 			files = (
 				BC86BCA51FF4D71300771DA7 /* CoreAnimator.h in Headers */,
 				BC86BCBB1FF4D9BB00771DA7 /* LSAnimator.h in Headers */,
-				BC86BCBC1FF4DB4D00771DA7 /* LSAnimatorBlocks.h in Headers */,
+				BC5317041FF6579E00643A24 /* LSAnimatorBlocks.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,7 +780,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/CoreAnimator/";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -795,7 +805,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lision.CoreAnimator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/CoreAnimator/";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
