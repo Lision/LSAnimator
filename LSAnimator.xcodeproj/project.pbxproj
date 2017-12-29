@@ -33,7 +33,7 @@
 		BC86BCB71FF4D97F00771DA7 /* LSAnimatorChain.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC431FF4B4BF00771DA7 /* LSAnimatorChain.m */; };
 		BC86BCB81FF4D98300771DA7 /* LSAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC441FF4B4C000771DA7 /* LSAnimator.m */; };
 		BC86BCBB1FF4D9BB00771DA7 /* LSAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC261FF4B40900771DA7 /* LSAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BC86BCBD1FF4DB5000771DA7 /* LSAnimatorBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC411FF4B4BF00771DA7 /* LSAnimatorBlocks.h */; };
+		BC86BCBD1FF4DB5000771DA7 /* LSAnimatorBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC411FF4B4BF00771DA7 /* LSAnimatorBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCE3843F1FF505C20087C491 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3843E1FF505C20087C491 /* ViewController.m */; };
 		BCE384411FF50E6A0087C491 /* CoreAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE384401FF50E6A0087C491 /* CoreAnimator.swift */; };
 /* End PBXBuildFile section */
