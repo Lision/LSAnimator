@@ -140,13 +140,6 @@
 			path = LSAnimatorDemoSwift;
 			sourceTree = "<group>";
 		};
-		BC5317051FF6594B00643A24 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BC86BC191FF4B40900771DA7 = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +149,6 @@
 				BC86BC851FF4D33E00771DA7 /* LSAnimatorDemo */,
 				BC0D10A51FF4F5A900763510 /* LSAnimatorDemoSwift */,
 				BC86BC241FF4B40900771DA7 /* Products */,
-				BC5317051FF6594B00643A24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

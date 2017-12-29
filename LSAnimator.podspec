@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Lision/LSAnimator.git", :tag => "v2.0.0" }
   s.source_files = "LSAnimator/*.{h,m,c}"
   s.frameworks   = "UIKit", "QuartzCore"
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 end

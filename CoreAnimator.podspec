@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Lision" => "lisionmail@gmail.com" }
   s.source       = { :git => "https://github.com/Lision/LSAnimator.git", :tag => "v2.0.0" }
-  s.source_files = "LSAnimator/*.{h,m,c,swift,modulemap}", "CoreAnimator/CoreAnimator.h"
+  s.source_files = "LSAnimator/*.{h,m,c,swift}", "CoreAnimator/CoreAnimator.h"
   s.frameworks   = "UIKit", "QuartzCore"
   s.platform     = :ios, '9.0'
   s.requires_arc = true
