@@ -1,22 +1,14 @@
-osx_image: xcode9
 language: objective-c
-
-env:
-  global:
-    - LANG=en_US.UTF-8
-    - LC_ALL=en_US.UTF-8
-    - XCODE_PROJECT=LSAnimator.xcodeproj
-  matrix:
-    - SCHEME="LSAnimator"
-    - SCHEME_SWIFT="CoreAnimator"
+osx_image: xcode9
+xcode_project: LSAnimator.xcodeproj
+xcode_scheme: CoreAnimator
 
 before_install:
-  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+- env
+- xcodebuild -version
+- xcodebuild -showsdks
+- xcpretty --version
 
 script:
-  - set -o pipefail
-  - xcodebuild -project "$XCODE_PROJECT" -scheme "$SCHEME" -configuration Debug clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c
-  - xcodebuild -project "$XCODE_PROJECT" -scheme "$SCHEME_SWIFT" -configuration Debug clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c
-
-after_success:
-  - sleep 3
+- set -o pipefail
+- xcodebuild clean build -project "$TRAVIS_XCODE_PROJECT"  -scheme "$TRAVIS_XCODE_SCHEME" | xcpretty
