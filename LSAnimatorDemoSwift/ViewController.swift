@@ -49,12 +49,12 @@ class ViewController: UIViewController {
         animatorBtn.backgroundColor = .lightGray
         
         let animator = CoreAnimator(view: animatorView)
-        animator.incre(width: 20).bounce.repeat(t: 0.5, count: 3).incre(height: 60).spring.thenAfter(t: 1).make(cornerRadius: 40).move(x: -20).thenAfter(t: 1.5).wait(t: 0.2).make(y: Double(animatorBtn.frame.origin.y - 80)).postAnimationBlock {
+        animator.incre(width: 20).bounce.repeat(t: 0.5, count: 3).incre(height: 60).spring.thenAfter(t: 1).make(cornerRadius: 40).move(y: -90).thenAfter(t: 1.5).wait(t: 0.2).make(y: Double(animatorBtn.frame.origin.y - 80)).postAnimationBlock {
             let btnAnimator = CoreAnimator(view:self.animatorBtn)
             btnAnimator.move(y: Double(self.animatorBtn.bounds.size.height)).animate(t: 0.2)
         }.thenAfter(t: 0.2).move(y: -60).easeOut.thenAfter(t: 0.2).move(y: 109).bounce.animate(t: 1)
         
-        animator.concurrent.make(backgroundColor: .cyan).thenAfter(t: 2).wait(t: 1).make(backgroundColor: .orange).animate(t: 2)
+        animator.concurrent.make(backgroundColor: .cyan).animate(t: 4)
         
         animator.theFinalCompletion {
             animator.make(cornerRadius: 0).make(backgroundColor: .purple).make(bounds: CGRect(x: 0, y: 0, width: 20, height: 20)).makePosition(x: Double(self.view.center.x), y: Double(self.view.center.y - 40)).animate(t: 0.5)

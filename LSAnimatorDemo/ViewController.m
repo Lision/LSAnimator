@@ -51,13 +51,13 @@
     
     // chain_01
     LSAnimator *animator = [LSAnimator animatorWithView:_animatorView];
-    animator.increWidth(20).bounce.repeat(0.5, 3).increHeight(60).spring.thenAfter(1).makeCornerRadius(40).moveX(-20).thenAfter(1.5).wait(0.2).makeY(sender.frame.origin.y - 80).postAnimationBlock(^{
+    animator.increWidth(20).bounce.repeat(0.5, 3).increHeight(60).spring.thenAfter(1).makeCornerRadius(40).moveY(-90).thenAfter(1.5).wait(0.2).makeY(sender.frame.origin.y - 80).postAnimationBlock(^{
         LSAnimator *senderAnimator = [LSAnimator animatorWithView:sender];
         senderAnimator.moveY(sender.bounds.size.height).animate(0.2);
     }).thenAfter(0.2).moveY(-60).easeOut.thenAfter(0.2).moveY(109).bounce.animate(1);
     
     // chain_02
-    animator.concurrent.makeBackground([UIColor cyanColor]).thenAfter(2).wait(1).makeBackground([UIColor orangeColor]).animate(2);
+    animator.concurrent.makeBackground([UIColor cyanColor]).animate(4);
     
     // theFinalCompletion
     animator.theFinalCompletion(^{
