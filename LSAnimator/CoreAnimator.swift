@@ -31,8 +31,10 @@ public final class CoreAnimator {
     }
 }
 
+// MARK: - CoreAnimator Animations
 public extension CoreAnimator {
     
+    // MARK: - Make Animations
     public func make(frame: CGRect) -> Self {
         _ = animator.makeFrame(frame)
         return self
@@ -123,6 +125,7 @@ public extension CoreAnimator {
         return self
     }
 
+    // MARK: - Move Animations
     public func move(x: Double) -> Self {
         _ = animator.moveX(x.toCG)
         return self
@@ -143,6 +146,7 @@ public extension CoreAnimator {
         return self
     }
 
+    // MARK: - Incre Animations
     public func incre(width: Double) -> Self {
         _ = animator.increWidth(width.toCG)
         return self
@@ -158,6 +162,7 @@ public extension CoreAnimator {
         return self
     }
     
+    // MARK: - Transform Animations
     public var transformIdentity: CoreAnimator {
         animator.transformIdentity()
         return self
@@ -218,6 +223,7 @@ public extension CoreAnimator {
         return self
     }
 
+    // MARK: - BezierPath Animations
     public func move(onPath path: UIBezierPath, rotate: Bool = false, isReversed: Bool = false) -> Self {
         if rotate {
             if isReversed {
@@ -231,6 +237,7 @@ public extension CoreAnimator {
         return self
     }
 
+    // MARK: - Anchor Position
     public enum AnchorPosition {
         case normal
         case center
@@ -270,6 +277,7 @@ public extension CoreAnimator {
         return self
     }
 
+    // MARK: - Effect Functions
     public var easeIn: CoreAnimator {
         animator.easeIn()
         return self
@@ -450,6 +458,7 @@ public extension CoreAnimator {
         return self
     }
 
+    // MARK: - Hooks
     public func preAnimationBlock(block: @escaping () -> ()) -> Self {
         _ = animator.preAnimationBlock(block)
         return self
@@ -464,6 +473,7 @@ public extension CoreAnimator {
         animator.theFinalCompletion(block)
     }
     
+    // MARK: - Delay & Wait
     public func delay(t: TimeInterval) -> Self {
         _ = animator.delay(t)
         return self
@@ -474,6 +484,7 @@ public extension CoreAnimator {
         return self
     }
 
+    // MARK: - Animator Controls
     public func `repeat`(t: TimeInterval, count: Int) -> Self {
         _ = animator.`repeat`(t, count)
         return self
@@ -496,6 +507,7 @@ public extension CoreAnimator {
         animator.animateWithCompletion(t, completion)
     }
     
+    // MARK: - Multi-chain Animations
     public var concurrent: CoreAnimator {
         animator.concurrent()
         return self
