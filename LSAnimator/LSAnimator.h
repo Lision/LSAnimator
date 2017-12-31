@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Animations
-// Properties
+// Makes
 // Affects views position and bounds
 @property (nonatomic, copy, readonly) LSAnimatorRect makeFrame;
 @property (nonatomic, copy, readonly) LSAnimatorRect makeBounds;
