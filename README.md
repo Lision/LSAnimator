@@ -24,7 +24,7 @@ Say I want to move myView 100 pixels to the right with spring and then incre 30 
 
 ### The Old Way
 
-``` objc
+``` obj-c
 [UIView animateWithDuration:2.0
                           delay:0.0
          usingSpringWithDamping:0.8
@@ -50,7 +50,7 @@ Thats pretty gross huh... With LSAnimator it is one line of code.
 
 ### Using LSAnimator
 
-``` objc
+``` obj-c
 LSAnimator *animator = [LSAnimator animatorWithView:self.myView];
 animator.moveX(100).spring.thenAfter(2).increWidth(30).easeIn.animate(2);
 ```
@@ -69,7 +69,7 @@ Following the example above, assume now that the whole animation chain above nee
 
 With LSAnimator it is just need to add one line of code.
 
-``` objc
+``` obj-c
 LSAnimator *animator = [LSAnimator animatorWithView:self.myView];
 animator.moveX(100).spring.thenAfter(2).increWidth(30).easeIn.animate(2);
 animator.concurrent.makeOpacity(0).animate(4);
@@ -81,7 +81,7 @@ animator.concurrent.makeOpacity(0).animate(4);
 
 Emmmmm...With JHChainableAnimations it is can not finished task. Trying to add the following code will cause the animation bug or crash.
 
-``` objc
+``` obj-c
 JHChainableAnimator *animator = [[JHChainableAnimator alloc] initWithView:self.myView];
 animator.moveX(100).spring.thenAfter(2).moveWidth(30).easeIn.animate(2);
 animator.makeOpacity(0).animate(4);
@@ -101,18 +101,52 @@ JHChainableAnimations is still a really good animation library and LSAnimator is
 
 # Features
 
-- **Multi-chain Animations**
-- **CALayer Support**
-- **Parameter Auto-completion**
-- **Support for Animation Hooks**
-- **Swift 3.2 ~ 4 Support**
-- **Friendly Swift Interface**
-- **Non-intrusive**
-- **Unit Testing**
+- **Swift Support:** Swift 3.2 ~ 4 Support.
+- **Friendly Swift Interface:** Added friendly Swift interface in separate framework.
+- **Multi-chain Animations:** Can complete all animation design needs.
+- **CALayer Support:** Support CALayer initialization.
+- **Parameter Auto-completion:** Support parameter auto-completion.
+- **Support for Animation Hooks:** Added pre-animation and post-animation hooks for each animation linker. Added a final completion hook that fires when all animation chains have completed.
+- **Non-intrusive:** There is no need to make the view/layer class inherit from other base class.
 
 # Usage
 
-Emmmmm...
+### Creating an Animator
+
+### Animating
+
+### Combining Animations
+
+### Chaining Animations
+
+### Animation Effects
+
+### Anchoring
+
+### Delays
+
+### Completion
+
+### Repeating Animations
+
+### Callbacks
+
+### Bezier Paths
+
+## Using with Auto Layout
+
+## Using with Swift
+
+## Chainable Properties
+
+## Animation Effects
+
+## Anchoring
+
+## Multi-chain
+
+# To Do
+
 
 # Installation
 
