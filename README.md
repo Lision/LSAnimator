@@ -150,6 +150,8 @@ animator.makeScale(2.0).moveXY(100, 50).animate(1.0);
 
 If the animations have different durations. When they **can not be done in the same animation step**, they need to use **Multi-chain Animations**.
 
+A full list of chainable properties can be found [here](#chainable-properties).
+
 ### Chaining Animations
 
 To chain animations seperate the chains with the `thenAfter(t)` function.
@@ -182,6 +184,8 @@ animator.makeScale(2.0).bounce.spring.animate(1.0);
 // The same as animator.makeScale(2.0).spring.animate(1.0);
 ```
 
+A full list of animation effect properties can be found [here](#animation-effects-1).
+
 ### Anchoring
 
 To anchor your view call an achoring method at some point in an animation chain. Like effects, calling one after another in the same chain will cancel the first out.
@@ -194,6 +198,8 @@ animator.rotateZ(180).anchorTopLeft.thenAfter(1.0).rotateZ(90).anchorCenter.anim
 ```
 
 ![](Rources/UsageDemo/AnchoringDemo.gif)
+
+A full list of anchor properties can be found [here](#anchoring-1).
 
 ### Delays
 
