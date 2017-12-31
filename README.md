@@ -22,7 +22,7 @@ CAAnimations and UIView animations are extremely powerful, but it is very hard t
 
 Say I want to move myView 100 pixels to the right with spring and then incre 30 pixels to the width with inward easing when the movement has finished:
 
-## The Old Way
+### The Old Way
 
 ``` objc
 [UIView animateWithDuration:2.0
@@ -48,7 +48,7 @@ Say I want to move myView 100 pixels to the right with spring and then incre 30 
 
 Thats pretty gross huh... With LSAnimator it is one line of code.
 
-## Using LSAnimator
+### Using LSAnimator
 
 ``` objc
 LSAnimator *animator = [LSAnimator animatorWithView:self.myView];
@@ -116,34 +116,34 @@ Emmmmm...
 
 # Installation
 
-## Cocoapods
+### Cocoapods
 
-### Objective-C
+#### Objective-C
 
 1. Add `pod 'LSAnimator', '~> 2.1.0'` to your Podfile.
 2. Run `pod install` or `pod update`.
 3. Add `#import <LSAnimator/LSAnimator.h>`.
 
-### Swift
+#### Swift
 
 1. Add `pod 'CoreAnimator', '~> 2.1.0'` to your Podfile.
 2. Run `pod install` or `pod update`.
 3. Add `import CoreAnimator`.
 
-## Carthage
+### Carthage
 
 1. Add `github "Lision/LSAnimator" ~> 2.1.0` to your Cartfile.
 2. Run `carthage update --platform ios`.
 
-### Objective-C
+#### Objective-C
 
 Add the `LSAnimator` framework to your project.
 
-### Swift
+#### Swift
 
 Add the `CoreAnimator` framework to your project.
 
-## Manually
+### Manually
 
 Either clone the repo and manually add the Files in [LSAnimator](https://github.com/Lision/LSAnimator/tree/master/LSAnimator)
 
@@ -160,6 +160,6 @@ Either clone the repo and manually add the Files in [LSAnimator](https://github.
 
 # License
 
-![](https://camo.githubusercontent.com/5e085da09b057cc65da38f334ab63f0c2705f46a/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f662f66382f4c6963656e73655f69636f6e2d6d69742d38387833312d322e7376672f31323870782d4c6963656e73655f69636f6e2d6d69742d38387833312d322e7376672e706e67)
+[![](https://camo.githubusercontent.com/5e085da09b057cc65da38f334ab63f0c2705f46a/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f662f66382f4c6963656e73655f69636f6e2d6d69742d38387833312d322e7376672f31323870782d4c6963656e73655f69636f6e2d6d69742d38387833312d322e7376672e706e67)](https://raw.githubusercontent.com/Lision/LSAnimator/master/LICENSE)
 
 LSAnimator is provided under the MIT license. See LICENSE file for details.
