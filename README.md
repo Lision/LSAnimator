@@ -9,6 +9,8 @@
 [![CocoaPods](https://img.shields.io/cocoapods/p/LSAnimator.svg?style=flat)](http://cocoadocs.org/docsets/LSAnimator)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%207%2B%20-orange.svg?style=flat)](https://www.apple.com/nl/ios/)
 
+> [中文介绍](https://github.com/Lision/LSAnimator/blob/master/README_ZH-CN.md)
+
 # Why Choose LSAnimator & CoreAnimator?
 
 You can write complex and easy-to-maintain animations in just a few lines of code by use LSAnimator(Objective-C) or CoreAnimator(Swift).
