@@ -63,7 +63,7 @@ Emmmmm...There is an animation library called JHChainableAnimations can also do 
 
 [JHChainableAnimations](https://github.com/jhurray/JHChainableAnimations) has powerful chainable animations AND easy to read/write syntax, but it does not support for Multi-chain Animations.
 
-Following the example above, assume now that the whole animation chain above needs to change the transparency of my view to zero at the same time:
+Following the example above, assume now that the whole animation chain above needs to change the transparency of myView to zero at the same time:
 
 ### Using LSAnimator
 
