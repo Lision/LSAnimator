@@ -82,7 +82,7 @@ animator.concurrent.makeOpacity(0).animate(4);
 
 ![JHChainableAnimations](Rources/JHChainableAnimationsEffect.gif)
 
-Emmmmm...使用 JHChainableAnimations 是不能完成这项任务的。尝试添加下面的代码将会一起动画表现异常甚至闪退。效果就如上面所示，myView 闪了一下透明度直接变为了 0，这显然不是我们想要的效果。
+Emmmmm...使用 JHChainableAnimations 是不能完成这项任务的。尝试添加下面的代码将会引起动画表现异常甚至闪退。效果就如上面所示，myView 闪了一下透明度直接变为了 0，这显然不是我们想要的效果。
 
 ``` obj-c
 JHChainableAnimator *animator = [[JHChainableAnimator alloc] initWithView:self.myView];
@@ -93,8 +93,8 @@ animator.makeOpacity(0).animate(4);
 # LSAnimator VS JHChainableAnimations
 
 - **多链式动画：** 可以实现几乎所有的动画设计，比 JHChainableAnimations 灵活而且强大（高了一个维度）。
-- **支持 CALayer：** 支持通过 CALayer 初始化，可以直接操作 CALayer 实现动画, JHChainableAnimations 仅支持 UIView.
-- **参数自动补全：** 支持参数自动补全，自动提示所需参数的数量和所属类型，JHChainableAnimations 并不支持.
+- **支持 CALayer：** 支持通过 CALayer 初始化，可以直接操作 CALayer 实现动画, JHChainableAnimations 仅支持 UIView。
+- **参数自动补全：** 支持参数自动补全，自动提示所需参数的数量和所属类型，JHChainableAnimations 并不支持。
 
 LSAnimator 在 `.` 语法后跟出的方法中自带了参数提示，包含**参数的数量和所属类型**：
 
