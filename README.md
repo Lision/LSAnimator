@@ -52,6 +52,8 @@ Thats pretty gross huh... With LSAnimator it is one line of code.
 
 ### Using LSAnimator
 
+![](Rources/SingleChainDemo.gif)
+
 ``` obj-c
 LSAnimator *animator = [LSAnimator animatorWithView:self.myView];
 animator.moveX(100).spring.thenAfter(2).increWidth(30).easeIn.animate(2);

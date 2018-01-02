@@ -52,6 +52,8 @@ Emmmmm...这代码很难阅读，而且不利于维护。
 
 ### Using LSAnimator
 
+![](Rources/SingleChainDemo.gif)
+
 ``` obj-c
 LSAnimator *animator = [LSAnimator animatorWithView:self.myView];
 animator.moveX(100).spring.thenAfter(2).increWidth(30).easeIn.animate(2);
