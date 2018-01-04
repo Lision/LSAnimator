@@ -464,19 +464,19 @@ animator.concurrent.moveX(-20).animate(1.0);
 
 #### Objective-C
 
-1. Add `pod 'LSAnimator', '~> 2.1.0'` to your Podfile.
+1. Add `pod 'LSAnimator', '~> 2.1.1'` to your Podfile.
 2. Run `pod install` or `pod update`.
 3. Add `#import <LSAnimator/LSAnimator.h>`.
 
 #### Swift
 
-1. Add `pod 'CoreAnimator', '~> 2.1.0'` to your Podfile.
+1. Add `pod 'CoreAnimator', '~> 2.1.1'` to your Podfile.
 2. Run `pod install` or `pod update`.
 3. Add `import CoreAnimator`.
 
 ### Carthage
 
-1. Add `github "Lision/LSAnimator" ~> 2.1.0` to your Cartfile.
+1. Add `github "Lision/LSAnimator" ~> 2.1.1` to your Cartfile.
 2. Run `carthage update --platform ios`.
 
 #### Objective-C
