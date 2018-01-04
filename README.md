@@ -15,7 +15,7 @@
 
 You can write complex and easy-to-maintain animations in just a few lines of code by use LSAnimator(Objective-C) or CoreAnimator(Swift).
 
-![Objective-C](Rources/LSAnimatorDemo.gif)
+![Objective-C](Rources/LSAnimatorDemo.gif)&nbsp;&nbsp;
 ![Swift](Rources/CoreAnimatorDemo.gif)
 
 # What's The Multi-chain Animations?
