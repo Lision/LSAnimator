@@ -11,6 +11,8 @@
 
 #define kDuration 0.01
 
+#define DoubleEqual(a,b)          (fabs(a - b) < 0.0000001)
+
 @interface LSAnimatorTests : XCTestCase
 
 @property (nonatomic, strong) UIView *superView;
@@ -26,8 +28,9 @@
     [super setUp];
     
     _superView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    _view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    _view = [UIView new];
     [_superView addSubview:_view];
+    _view.frame = CGRectMake(0, 0, 10, 10);
     _weakView = _view;
     _animtor = [LSAnimator animatorWithView:_view];
 }
@@ -39,7 +42,7 @@
 
 - (void)testMakeFrame {
     self.animtor.makeFrame(CGRectMake(0, 0, 20, 20)).animateWithCompletion(kDuration, ^{
-        XCTAssertEqualObjects([NSValue valueWithCGRect:self.weakView.layer.frame], [NSValue valueWithCGRect:CGRectMake(0, 0, 20, 20)], @"testls_frame error!");
+        XCTAssertTrue(CGRectEqualToRect(self.weakView.layer.frame, CGRectMake(0, 0, 20, 20)));
     });
 }
 
@@ -93,7 +96,7 @@
 
 - (void)testMakeOpacity {
     self.animtor.makeOpacity(0.2).animateWithCompletion(kDuration, ^{
-        XCTAssertEqual(self.weakView.alpha, 0.2, @"testls_opacity error!");
+        XCTAssertTrue(DoubleEqual(self.weakView.alpha, 0.2));
     });
 }
 
@@ -104,8 +107,8 @@
 }
 
 - (void)testMakeBorderColor {
-    self.animtor.makeBorderColor([UIColor purpleColor]).animateWithCompletion(kDuration, ^{
-        XCTAssertEqualObjects((__bridge UIColor *)self.weakView.layer.borderColor, [UIColor purpleColor], @"testls_borderColor error!");
+    self.animtor.makeBorderColor([UIColor cyanColor]).animateWithCompletion(kDuration, ^{
+        XCTAssertTrue(CGColorEqualToColor(self.weakView.layer.borderColor, [UIColor cyanColor].CGColor));
     });
 }
 

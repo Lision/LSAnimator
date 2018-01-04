@@ -216,7 +216,7 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 #pragma mark - Animations
 - (LSAnimatorRect)makeFrame {
     LSAnimatorRect animator = LSAnimatorRect(rect) {
-        return self.makeOrigin(rect.origin.x, rect.origin.y).makeBounds(rect);
+        return self.makeBounds(rect).makeOrigin(rect.origin.x, rect.origin.y);
     };
     
     return animator;
