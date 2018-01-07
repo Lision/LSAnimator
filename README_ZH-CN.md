@@ -7,7 +7,7 @@
 [![Build Status](https://api.travis-ci.org/Lision/LSAnimator.svg?branch=master)](https://travis-ci.org/Lision/LSAnimator)&nbsp;
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/Lision/LSAnimator/master/LICENSE)&nbsp;
 [![CocoaPods](https://img.shields.io/cocoapods/p/LSAnimator.svg?style=flat)](http://cocoadocs.org/docsets/LSAnimator)&nbsp;
-[![Support](https://img.shields.io/badge/support-iOS%207%2B%20-orange.svg?style=flat)](https://www.apple.com/nl/ios/)
+[![Support](https://img.shields.io/badge/support-iOS%209%2B%20-orange.svg?style=flat)](https://www.apple.com/nl/ios/)
 
 # 为什么选择 LSAnimator？
 
