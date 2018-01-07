@@ -167,6 +167,10 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 }
 
 - (UIColor *)colorWithCGColor:(CGColorRef)cgColor {
+    if (CGColorGetColorSpace(cgColor) != CGColorSpaceCreateDeviceRGB()) {
+        cgColor = CGColorCreateCopyByMatchingToColorSpace(CGColorSpaceCreateDeviceRGB(), kCGRenderingIntentDefault, cgColor, NULL);
+    }
+    
     const CGFloat *components = CGColorGetComponents(cgColor);
     if (!components) return nil;
     
