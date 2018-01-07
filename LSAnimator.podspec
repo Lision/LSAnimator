@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'LSAnimator'
   s.summary          = 'Easy to Read and Write Multi-chain Animations Kit in Objective-C.'
-  s.version          = '2.1.1'
+  s.version          = '2.1.2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Lision' => 'lisionmail@gmail.com' }
   s.social_media_url = 'https://lision.me/'
