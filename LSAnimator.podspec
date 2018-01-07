@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/Lision/LSAnimator'
   s.source           = { :git => 'https://github.com/Lision/LSAnimator.git', :tag => s.version.to_s }
   s.source_files     = 'LSAnimator/*.{h,m,c}'
-  s.platform         = :ios, '7.0'
+  s.platform         = :ios, '9.0'
   s.requires_arc     = true
 end
