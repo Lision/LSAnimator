@@ -15,7 +15,7 @@
 
 You can write complex and easy-to-maintain animations in just a few lines of code by use LSAnimator(Objective-C) or CoreAnimator(Swift).
 
-![Objective-C](Rources/LSAnimatorDemo.gif)&nbsp;&nbsp;
+![Objective-C](Rources/LSAnimatorDemo.gif)&nbsp;
 ![Swift](Rources/CoreAnimatorDemo.gif)
 
 # What's The Multi-chain Animations?
@@ -97,7 +97,11 @@ animator.makeOpacity(0).animate(4);
 - **CALayer Support:** Support CALayer initialization, JHChainableAnimations only supports UIView.
 - **Parameter Auto-completion:** Support parameter auto-completion, JHChainableAnimations does not support.
 
+LSAnimator support parameter auto-completion, **including the number of parameters and parameter types**:
+
 ![LSAnimator](Rources/PACLSAnimator.gif)
+
+JHChainableAnimations is not friendly when actually writing code.
 
 ![JHChainableAnimations](Rources/PACJHChainableAnimations.gif)
 

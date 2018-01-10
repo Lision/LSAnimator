@@ -13,7 +13,7 @@
 
 通过使用 LSAnimator（Objective-C）或者 CoreAnimator（Swift）可以用少量的代码实现复杂而又易于维护的动画。
 
-![Objective-C](Rources/LSAnimatorDemo.gif)&nbsp;&nbsp;
+![Objective-C](Rources/LSAnimatorDemo.gif)&nbsp;
 ![Swift](Rources/CoreAnimatorDemo.gif)
 
 # 什么是多链式动画？
