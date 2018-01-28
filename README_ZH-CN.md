@@ -464,37 +464,37 @@ animator.concurrent.moveX(-20).animate(1.0);
 
 #### Objective-C
 
-1. Add `pod 'LSAnimator', '~> 2.1.2'` to your Podfile.
-2. Run `pod install` or `pod update`.
-3. Add `#import <LSAnimator/LSAnimator.h>`.
+1. 在你的 Podfile 中添加 `pod 'LSAnimator', '~> 2.1.2'` 。
+2. 执行 `pod install` 或 `pod update` 。
+3. 添加 `#import <LSAnimator/LSAnimator.h>` 。
 
 #### Swift
 
-1. Add `pod 'CoreAnimator', '~> 2.1.2'` to your Podfile.
-2. Run `pod install` or `pod update`.
-3. Add `import CoreAnimator`.
+1. 在你的 Podfile 中添加 `pod 'CoreAnimator', '~> 2.1.2'` 。
+2. 执行 `pod install` 或 `pod update` 。
+3. 添加 `import CoreAnimator` 。
 
 ### Carthage
 
-1. Add `github "Lision/LSAnimator" ~> 2.1.2` to your Cartfile.
-2. Run `carthage update --platform ios`.
+1. 在你的 Cartfile 中添加 `github "Lision/LSAnimator" ~> 2.1.2` 。
+2. 执行 `carthage update --platform ios` 。
 
 #### Objective-C
 
-Add the `LSAnimator` framework to your project.
+将 `LSAnimator` Framework 添加到你的项目中。
 
 #### Swift
 
-Add the `CoreAnimator` framework to your project.
+将 `CoreAnimator` Framework 添加到你的项目中。
 
 ### 手动安装
 
-Either clone the repo and manually add the Files in [LSAnimator](https://github.com/Lision/LSAnimator/tree/master/LSAnimator)
+`clone` 这个项目然后手动添加 [LSAnimator](https://github.com/Lision/LSAnimator/tree/master/LSAnimator) 目录中的文件。
 
 # 系统要求
 
-- LSAnimator requires `iOS 7.0+`.
-- CoreAnimator requires `iOS 9.0+`.
+- LSAnimator 要求 `iOS 7.0+` 。
+- CoreAnimator 要求 `iOS 9.0+` 。
 
 # 联系我
 
@@ -506,4 +506,4 @@ Either clone the repo and manually add the Files in [LSAnimator](https://github.
 
 [![](https://camo.githubusercontent.com/5e085da09b057cc65da38f334ab63f0c2705f46a/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f662f66382f4c6963656e73655f69636f6e2d6d69742d38387833312d322e7376672f31323870782d4c6963656e73655f69636f6e2d6d69742d38387833312d322e7376672e706e67)](https://raw.githubusercontent.com/Lision/LSAnimator/master/LICENSE)
 
-LSAnimator is provided under the MIT license. See LICENSE file for details.
+LSAnimator 基于 MIT 许可证发布，查看 LICENSE 文件以了解更多信息。
