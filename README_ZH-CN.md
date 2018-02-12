@@ -464,19 +464,19 @@ animator.concurrent.moveX(-20).animate(1.0);
 
 #### Objective-C
 
-1. 在你的 Podfile 中添加 `pod 'LSAnimator', '~> 2.1.2'` 。
+1. 在你的 Podfile 中添加 `pod 'LSAnimator', '~> 2.1.3'` 。
 2. 执行 `pod install` 或 `pod update` 。
 3. 添加 `#import <LSAnimator/LSAnimator.h>` 。
 
 #### Swift
 
-1. 在你的 Podfile 中添加 `pod 'CoreAnimator', '~> 2.1.2'` 。
+1. 在你的 Podfile 中添加 `pod 'CoreAnimator', '~> 2.1.3'` 。
 2. 执行 `pod install` 或 `pod update` 。
 3. 添加 `import CoreAnimator` 。
 
 ### Carthage
 
-1. 在你的 Cartfile 中添加 `github "Lision/LSAnimator" ~> 2.1.2` 。
+1. 在你的 Cartfile 中添加 `github "Lision/LSAnimator" ~> 2.1.3` 。
 2. 执行 `carthage update --platform ios` 。
 
 #### Objective-C
