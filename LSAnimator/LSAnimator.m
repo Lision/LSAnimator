@@ -220,7 +220,8 @@ static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 #pragma mark - Animations
 - (LSAnimatorRect)makeFrame {
     LSAnimatorRect animator = LSAnimatorRect(rect) {
-        return self.makeBounds(rect).makeOrigin(rect.origin.x, rect.origin.y);
+        CGPoint newPosition = [self newPositionFromNewFrame:rect];
+        return self.makeBounds(rect).makePosition(newPosition.x, newPosition.y);
     };
     
     return animator;
