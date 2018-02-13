@@ -11,6 +11,8 @@
 
 > [中文介绍](https://github.com/Lision/LSAnimator/blob/master/README_ZH-CN.md)
 
+> This project is inspired by [JHChainableAnimations](https://github.com/jhurray/JHChainableAnimations)!
+
 # Why Choose LSAnimator & CoreAnimator?
 
 You can write complex and easy-to-maintain animations in just a few lines of code by use LSAnimator(Objective-C) or CoreAnimator(Swift).

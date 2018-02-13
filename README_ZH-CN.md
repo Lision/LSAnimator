@@ -9,6 +9,8 @@
 [![CocoaPods](https://img.shields.io/cocoapods/p/LSAnimator.svg?style=flat)](http://cocoadocs.org/docsets/LSAnimator)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%209%2B%20-orange.svg?style=flat)](https://www.apple.com/nl/ios/)
 
+> 此项目基于 [JHChainableAnimations](https://github.com/jhurray/JHChainableAnimations)，在其上扩充可控维度（支持**多链式动画**），支持 **CALayer** 与**参数自动补全**等功能。
+
 # 为什么选择 LSAnimator？
 
 通过使用 LSAnimator（Objective-C）或者 CoreAnimator（Swift）可以用少量的代码实现复杂而又易于维护的动画。
