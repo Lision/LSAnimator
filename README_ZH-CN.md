@@ -1,4 +1,4 @@
-![](Rources/LSAnimatorLogo.jpg)
+![](Resources/LSAnimatorLogo.jpg)
 
 [![language](https://img.shields.io/badge/Language-Objective--C-7D6FFF.svg)](https://developer.apple.com/documentation/objectivec)&nbsp;
 [![language](https://img.shields.io/badge/Language-Swift-6986FF.svg)](https://github.com/apple/swift)&nbsp;
@@ -15,8 +15,8 @@
 
 通过使用 LSAnimator（Objective-C）或者 CoreAnimator（Swift）可以用少量的代码实现复杂而又易于维护的动画。
 
-![Objective-C](Rources/LSAnimatorDemo.gif)&nbsp;
-![Swift](Rources/CoreAnimatorDemo.gif)
+![Objective-C](Resources/LSAnimatorDemo.gif)&nbsp;
+![Swift](Resources/CoreAnimatorDemo.gif)
 
 # 什么是多链式动画？
 
@@ -54,7 +54,7 @@ Emmmmm...这代码很难阅读，而且不利于维护。
 
 ### Using LSAnimator
 
-![](Rources/SingleChainDemo.gif)
+![](Resources/SingleChainDemo.gif)
 
 ``` obj-c
 LSAnimator *animator = [LSAnimator animatorWithView:self.myView];
@@ -71,7 +71,7 @@ Emmmmm...不过已经有一个名为 JHChainableAnimations 的动画库了，使
 
 ### LSAnimator
 
-![LSAnimator](Rources/LSAnimatorEffect.gif)
+![LSAnimator](Resources/LSAnimatorEffect.gif)
 
 用 LSAnimator 实现的话仅需要添加一行代码即可。
 
@@ -84,7 +84,7 @@ animator.concurrent.makeOpacity(0).animate(4);
 
 ### JHChainableAnimations
 
-![JHChainableAnimations](Rources/JHChainableAnimationsEffect.gif)
+![JHChainableAnimations](Resources/JHChainableAnimationsEffect.gif)
 
 Emmmmm...使用 JHChainableAnimations 是不能完成这项任务的。尝试添加下面的代码将会引起动画表现异常甚至闪退。效果就如上面所示，myView 闪了一下透明度直接变为了 0，这显然不是我们想要的效果。
 
@@ -102,11 +102,11 @@ animator.makeOpacity(0).animate(4);
 
 LSAnimator 在 `.` 语法后跟出的方法中自带了参数提示，包含**参数的数量和所属类型**：
 
-![LSAnimator](Rources/PACLSAnimator.gif)
+![LSAnimator](Resources/PACLSAnimator.gif)
 
 JHChainableAnimations 在 `.` 语法后跟出的方法并没有参数提示，使用起来很不方便，特别是不熟悉参数的时候需要 `command + left mouse` 跟代码才能确认所需参数的数量和类型：
 
-![JHChainableAnimations](Rources/PACJHChainableAnimations.gif)
+![JHChainableAnimations](Resources/PACJHChainableAnimations.gif)
 
 不过 JHChainableAnimations 依然是一个很好的动画库（已经 3k+ Stars），LSAnimator 是站在 JHChainableAnimations 的肩膀上创建的，我准备持续维护有信心做的更好。
 
@@ -146,7 +146,7 @@ LSAnimator *layerAnimator = [[LSAnimator alloc] initWithLayer:self.myLayer];
 animator.makeScale(2.0).animate(1.0);
 ```
 
-![](Rources/UsageDemo/AnimatingDemo.gif)
+![](Resources/UsageDemo/AnimatingDemo.gif)
 
 ### 动画结合
 
@@ -157,7 +157,7 @@ animator.makeScale(2.0).moveXY(100, 50).animate(1.0);
 // the same as animator.moveXY(100, 50).makeScale(2.0).animate(1.0);
 ```
 
-![](Rources/UsageDemo/CombiningAnimationsDemo.gif)
+![](Resources/UsageDemo/CombiningAnimationsDemo.gif)
 
 > Note: 动画结合本质上是把两个需要同时执行且动画持续时长相同的可以放入同一动画节点的动画用 CAAnimationGroup 集结在一起，也仅仅适用于这种情况。
 
@@ -177,7 +177,7 @@ animator.makeScale(2.0).moveXY(100, 50).animate(1.0);
 animator.makeScale(2.0).thenAfter(0.5).moveXY(100, 50).animate(1.0);
 ```
 
-![](Rources/UsageDemo/ChainingAnimationsDemo.gif)
+![](Resources/UsageDemo/ChainingAnimationsDemo.gif)
 
 ### 动画效果
 
@@ -189,7 +189,7 @@ animator.makeScale(2.0).thenAfter(0.5).moveXY(100, 50).animate(1.0);
 animator.makeScale(2.0).spring.animate(1.0);
 ```
 
-![](Rources/UsageDemo/AnimationEffectsDemo.gif)
+![](Resources/UsageDemo/AnimationEffectsDemo.gif)
 
 如果你在同一动画节点调用两个动画效果的话，后面调用的动画效果会覆盖掉前面的，即前面调用的动画效果不生效。
 
@@ -211,7 +211,7 @@ animator.rotateZ(180).anchorTopLeft.thenAfter(1.0).rotateZ(90).anchorCenter.anim
 // animator.rotateZ(90).anchorTopLeft.anchorCenter == animator.rotateZ(90).anchorCenter
 ```
 
-![](Rources/UsageDemo/AnchoringDemo.gif)
+![](Resources/UsageDemo/AnchoringDemo.gif)
 
 [这里](#anchoring-1) 可以找到完整的锚点改变属性方法列表。
 
@@ -246,7 +246,7 @@ animator.makeX(0).animateWithCompletion(1.0, ^{
 animator.increWidth(30).spring.repeat(0.5, 3).moveXY(100, 50).animate(1.0);
 ```
 
-![](Rources/UsageDemo/RepeatingAnimationsDemo.gif)
+![](Resources/UsageDemo/RepeatingAnimationsDemo.gif)
 
 如果要重复加入的动画时一条动画链的尾动画节点，可以调用 `animateWithRepeat(time, count)` 方法。
 
@@ -254,7 +254,7 @@ animator.increWidth(30).spring.repeat(0.5, 3).moveXY(100, 50).animate(1.0);
 animator.increWidth(30).spring.animateWithRepeat(0.5, 3);
 ```
 
-![](Rources/UsageDemo/RepeatingAnimationsDemo_01.gif)
+![](Resources/UsageDemo/RepeatingAnimationsDemo_01.gif)
 
 ### 回调
 
@@ -280,7 +280,7 @@ UIBezierPath *path = [UIBezierPath bezierPath];
 animator.moveOnPath(path).animate(1.0);
 ```
 
-![](Rources/UsageDemo/BezierPathsDemo.gif)
+![](Resources/UsageDemo/BezierPathsDemo.gif)
 
 ## 与自动布局一起使用
 
@@ -301,7 +301,7 @@ let animator = CoreAnimator(view: myView)
 animator.move(x: 60).thenAfter(t: 1.0).rotate(angle: 360).bounce.animate(t: 1.0)
 ```
 
-![](Rources/UsageDemo/SwiftDemo.gif)
+![](Resources/UsageDemo/SwiftDemo.gif)
 
 ## 可链式动画属性
 
@@ -407,7 +407,7 @@ animator.move(x: 60).thenAfter(t: 1.0).rotate(angle: 360).bounce.animate(t: 1.0)
 - (LSAnimator *)easeInOutBounce;
 ```
 
-![](Rources/AnimationCurves.jpg)
+![](Resources/AnimationCurves.jpg)
 
 [这里](http://easings.net/) 可以快速查看到这些动画效果的时间曲线。
 
@@ -439,7 +439,7 @@ animator.increWidth(20).spring.animateWithRepeat(0.5, 3);
 animator.concurrent.makeBackground([UIColor orangeColor]).animate(1);
 ```
 
-![](Rources/UsageDemo/MultichainAnimationsDemo.gif)
+![](Resources/UsageDemo/MultichainAnimationsDemo.gif)
 
 > Note：不要尝试在新的动画链中改变之前动画链会在统一时段内改变的动画属性。
 
@@ -453,7 +453,7 @@ animator.moveX(20).animate(1.0);
 animator.concurrent.moveX(-20).animate(1.0);
 ```
 
-![](Rources/UsageDemo/DoNotDoThisDemo.gif)
+![](Resources/UsageDemo/DoNotDoThisDemo.gif)
 
 
 ## 待实现

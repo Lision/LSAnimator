@@ -1,4 +1,4 @@
-![](Rources/LSAnimatorLogo.jpg)
+![](Resources/LSAnimatorLogo.jpg)
 
 [![language](https://img.shields.io/badge/Language-Objective--C-7D6FFF.svg)](https://developer.apple.com/documentation/objectivec)&nbsp;
 [![language](https://img.shields.io/badge/Language-Swift-6986FF.svg)](https://github.com/apple/swift)&nbsp;
@@ -17,8 +17,8 @@
 
 You can write complex and easy-to-maintain animations in just a few lines of code by use LSAnimator(Objective-C) or CoreAnimator(Swift).
 
-![Objective-C](Rources/LSAnimatorDemo.gif)&nbsp;
-![Swift](Rources/CoreAnimatorDemo.gif)
+![Objective-C](Resources/LSAnimatorDemo.gif)&nbsp;
+![Swift](Resources/CoreAnimatorDemo.gif)
 
 # What's The Multi-chain Animations?
 
@@ -54,7 +54,7 @@ Thats pretty gross huh... With LSAnimator it is one line of code.
 
 ### Using LSAnimator
 
-![](Rources/SingleChainDemo.gif)
+![](Resources/SingleChainDemo.gif)
 
 ``` obj-c
 LSAnimator *animator = [LSAnimator animatorWithView:self.myView];
@@ -71,7 +71,7 @@ Following the example above, assume now that the whole animation chain above nee
 
 ### Using LSAnimator
 
-![LSAnimator](Rources/LSAnimatorEffect.gif)
+![LSAnimator](Resources/LSAnimatorEffect.gif)
 
 With LSAnimator it is just need to add one line of code.
 
@@ -83,7 +83,7 @@ animator.concurrent.makeOpacity(0).animate(4);
 
 ### Using JHChainableAnimations
 
-![JHChainableAnimations](Rources/JHChainableAnimationsEffect.gif)
+![JHChainableAnimations](Resources/JHChainableAnimationsEffect.gif)
 
 Emmmmm...With JHChainableAnimations it is can not finished task. Trying to add the following code will cause the animation bug or crash.
 
@@ -101,11 +101,11 @@ animator.makeOpacity(0).animate(4);
 
 LSAnimator support parameter auto-completion, **including the number of parameters and parameter types**:
 
-![LSAnimator](Rources/PACLSAnimator.gif)
+![LSAnimator](Resources/PACLSAnimator.gif)
 
 JHChainableAnimations is not friendly when actually writing code.
 
-![JHChainableAnimations](Rources/PACJHChainableAnimations.gif)
+![JHChainableAnimations](Resources/PACJHChainableAnimations.gif)
 
 JHChainableAnimations is still a really good animation library and LSAnimator is standing on the shoulders of it.
 
@@ -143,7 +143,7 @@ Below is an example of how to double an objects size over the course of one seco
 animator.makeScale(2.0).animate(1.0);
 ```
 
-![](Rources/UsageDemo/AnimatingDemo.gif)
+![](Resources/UsageDemo/AnimatingDemo.gif)
 
 ### Combining Animations
 
@@ -154,7 +154,7 @@ animator.makeScale(2.0).moveXY(100, 50).animate(1.0);
 // the same as animator.moveXY(100, 50).makeScale(2.0).animate(1.0);
 ```
 
-![](Rources/UsageDemo/CombiningAnimationsDemo.gif)
+![](Resources/UsageDemo/CombiningAnimationsDemo.gif)
 
 > Note: Combining Animations works only for the animation that needs to be done in the same step. 
 
@@ -172,7 +172,7 @@ Below is an example of how to scale and object for 0.5 seconds, and then move it
 animator.makeScale(2.0).thenAfter(0.5).moveXY(100, 50).animate(1.0);
 ```
 
-![](Rources/UsageDemo/ChainingAnimationsDemo.gif)
+![](Resources/UsageDemo/ChainingAnimationsDemo.gif)
 
 ### Animation Effects
 
@@ -185,7 +185,7 @@ Below is an example of scaling a view with a spring effect.
 animator.makeScale(2.0).spring.animate(1.0);
 ```
 
-![](Rources/UsageDemo/AnimationEffectsDemo.gif)
+![](Resources/UsageDemo/AnimationEffectsDemo.gif)
 
 If you add 2 to the same chainable property the second will cancel the first out.
 
@@ -207,7 +207,7 @@ animator.rotateZ(180).anchorTopLeft.thenAfter(1.0).rotateZ(90).anchorCenter.anim
 // animator.rotateZ(90).anchorTopLeft.anchorCenter == animator.rotateZ(90).anchorCenter
 ```
 
-![](Rources/UsageDemo/AnchoringDemo.gif)
+![](Resources/UsageDemo/AnchoringDemo.gif)
 
 A full list of anchor properties can be found [here](#anchoring-1).
 
@@ -240,7 +240,7 @@ You can repeat an animation by replacing the `thenAfter(time)` method with the `
 animator.increWidth(30).spring.repeat(0.5, 3).moveXY(100, 50).animate(1.0);
 ```
 
-![](Rources/UsageDemo/RepeatingAnimationsDemo.gif)
+![](Resources/UsageDemo/RepeatingAnimationsDemo.gif)
 
 You can repeat the last part of an animation by calling `animateWithRepeat(time, count)`.
 
@@ -248,7 +248,7 @@ You can repeat the last part of an animation by calling `animateWithRepeat(time,
 animator.increWidth(30).spring.animateWithRepeat(0.5, 3);
 ```
 
-![](Rources/UsageDemo/RepeatingAnimationsDemo_01.gif)
+![](Resources/UsageDemo/RepeatingAnimationsDemo_01.gif)
 
 ### Callbacks
 
@@ -274,7 +274,7 @@ UIBezierPath *path = [UIBezierPath bezierPath];
 animator.moveOnPath(path).animate(1.0);
 ```
 
-![](Rources/UsageDemo/BezierPathsDemo.gif)
+![](Resources/UsageDemo/BezierPathsDemo.gif)
 
 ## Using with Auto Layout
 
@@ -295,7 +295,7 @@ let animator = CoreAnimator(view: myView)
 animator.move(x: 60).thenAfter(t: 1.0).rotate(angle: 360).bounce.animate(t: 1.0)
 ```
 
-![](Rources/UsageDemo/SwiftDemo.gif)
+![](Resources/UsageDemo/SwiftDemo.gif)
 
 ## Chainable Properties
 
@@ -401,7 +401,7 @@ animator.move(x: 60).thenAfter(t: 1.0).rotate(angle: 360).bounce.animate(t: 1.0)
 - (LSAnimator *)easeInOutBounce;
 ```
 
-![](Rources/AnimationCurves.jpg)
+![](Resources/AnimationCurves.jpg)
 
 A quick look at these funcs can be found [here](http://easings.net/)
 
@@ -433,7 +433,7 @@ animator.increWidth(20).spring.animateWithRepeat(0.5, 3);
 animator.concurrent.makeBackground([UIColor orangeColor]).animate(1);
 ```
 
-![](Rources/UsageDemo/MultichainAnimationsDemo.gif)
+![](Resources/UsageDemo/MultichainAnimationsDemo.gif)
 
 > Do not change the properties of the animation chain before the new animation chain operates at the same time.
 
@@ -443,7 +443,7 @@ animator.moveX(20).animate(1.0);
 animator.concurrent.moveX(-20).animate(1.0);
 ```
 
-![](Rources/UsageDemo/DoNotDoThisDemo.gif)
+![](Resources/UsageDemo/DoNotDoThisDemo.gif)
 
 
 ## To Do
