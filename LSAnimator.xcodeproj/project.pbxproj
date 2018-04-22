@@ -11,8 +11,11 @@
 		BC0D10A91FF4F5A900763510 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D10A81FF4F5A900763510 /* ViewController.swift */; };
 		BC0D10AE1FF4F5A900763510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC0D10AD1FF4F5A900763510 /* Assets.xcassets */; };
 		BC0D10B11FF4F5A900763510 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC0D10AF1FF4F5A900763510 /* LaunchScreen.storyboard */; };
+		BC182703208C844100C1EA9A /* LSAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BC231FF4B40900771DA7 /* LSAnimator.framework */; };
+		BC182704208C844100C1EA9A /* LSAnimator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BC231FF4B40900771DA7 /* LSAnimator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC182708208C844C00C1EA9A /* CoreAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BCA11FF4D71200771DA7 /* CoreAnimator.framework */; };
+		BC182709208C844C00C1EA9A /* CoreAnimator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BCA11FF4D71200771DA7 /* CoreAnimator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC5317041FF6579E00643A24 /* LSAnimatorBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC411FF4B4BF00771DA7 /* LSAnimatorBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BC5317061FF6594B00643A24 /* CoreAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BCA11FF4D71200771DA7 /* CoreAnimator.framework */; };
 		BC86BC2D1FF4B40900771DA7 /* LSAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BC231FF4B40900771DA7 /* LSAnimator.framework */; };
 		BC86BC321FF4B40900771DA7 /* LSAnimatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC311FF4B40900771DA7 /* LSAnimatorTests.m */; };
 		BC86BC341FF4B40900771DA7 /* LSAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BC261FF4B40900771DA7 /* LSAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,7 +28,6 @@
 		BC86BC901FF4D33E00771DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC86BC8F1FF4D33E00771DA7 /* Assets.xcassets */; };
 		BC86BC931FF4D33E00771DA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC86BC911FF4D33E00771DA7 /* LaunchScreen.storyboard */; };
 		BC86BC961FF4D33F00771DA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC951FF4D33F00771DA7 /* main.m */; };
-		BC86BC9B1FF4D3CB00771DA7 /* LSAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC86BC231FF4B40900771DA7 /* LSAnimator.framework */; };
 		BC86BCA51FF4D71300771DA7 /* CoreAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC86BCA31FF4D71300771DA7 /* CoreAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC86BCB41FF4D97500771DA7 /* LSKeyframeAnimationFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC421FF4B4BF00771DA7 /* LSKeyframeAnimationFunctions.c */; };
 		BC86BCB51FF4D97900771DA7 /* LSKeyframeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC86BC451FF4B4C000771DA7 /* LSKeyframeAnimation.m */; };
@@ -39,6 +41,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BC182705208C844100C1EA9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC86BC1A1FF4B40900771DA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC86BC221FF4B40900771DA7;
+			remoteInfo = LSAnimator;
+		};
+		BC18270A208C844C00C1EA9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC86BC1A1FF4B40900771DA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC86BCA01FF4D71200771DA7;
+			remoteInfo = CoreAnimator;
+		};
 		BC86BC2E1FF4B40900771DA7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC86BC1A1FF4B40900771DA7 /* Project object */;
@@ -47,6 +63,31 @@
 			remoteInfo = LSAnimator;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BC182707208C844100C1EA9A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BC182704208C844100C1EA9A /* LSAnimator.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC18270C208C844D00C1EA9A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BC182709208C844C00C1EA9A /* CoreAnimator.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BC0D10A41FF4F5A900763510 /* LSAnimatorDemoSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSAnimatorDemoSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC5317061FF6594B00643A24 /* CoreAnimator.framework in Frameworks */,
+				BC182708208C844C00C1EA9A /* CoreAnimator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC86BC9B1FF4D3CB00771DA7 /* LSAnimator.framework in Frameworks */,
+				BC182703208C844100C1EA9A /* LSAnimator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,10 +290,12 @@
 				BC0D10A01FF4F5A900763510 /* Sources */,
 				BC0D10A11FF4F5A900763510 /* Frameworks */,
 				BC0D10A21FF4F5A900763510 /* Resources */,
+				BC18270C208C844D00C1EA9A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BC18270B208C844C00C1EA9A /* PBXTargetDependency */,
 			);
 			name = LSAnimatorDemoSwift;
 			productName = LSAnimatorDemoSwift;
@@ -302,10 +345,12 @@
 				BC86BC801FF4D33E00771DA7 /* Sources */,
 				BC86BC811FF4D33E00771DA7 /* Frameworks */,
 				BC86BC821FF4D33E00771DA7 /* Resources */,
+				BC182707208C844100C1EA9A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BC182706208C844100C1EA9A /* PBXTargetDependency */,
 			);
 			name = LSAnimatorDemo;
 			productName = LSAnimatorDemo;
@@ -483,6 +528,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BC182706208C844100C1EA9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC86BC221FF4B40900771DA7 /* LSAnimator */;
+			targetProxy = BC182705208C844100C1EA9A /* PBXContainerItemProxy */;
+		};
+		BC18270B208C844C00C1EA9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC86BCA01FF4D71200771DA7 /* CoreAnimator */;
+			targetProxy = BC18270A208C844C00C1EA9A /* PBXContainerItemProxy */;
+		};
 		BC86BC2F1FF4B40900771DA7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BC86BC221FF4B40900771DA7 /* LSAnimator */;
@@ -513,6 +568,7 @@
 		BC0D10B31FF4F5A900763510 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ACXP2JHJKF;
@@ -531,6 +587,7 @@
 		BC0D10B41FF4F5A900763510 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ACXP2JHJKF;
