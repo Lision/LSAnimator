@@ -12,8 +12,6 @@
 #import "LSKeyframeAnimation.h"
 #import "LSKeyframeAnimationFunctions.h"
 
-#define force_inline __inline__ __attribute__((always_inline))
-
 #define LSDegreesToRadians( degrees ) ( ( degrees ) / 180.f * M_PI )
 #define LSRadiansToDegrees( radians ) ( ( radians ) * ( 180.f / M_PI ) )
 
@@ -21,7 +19,7 @@ static NSString * const kLSAnimatorKey = @"LSAnimatorKey";
 
 typedef void (^LSAnimatorCompleteBlock)(void);
 
-static force_inline NSString *LSAnimatorChainAnimationKey(NSInteger index) {
+NS_INLINE NSString *LSAnimatorChainAnimationKey(NSInteger index) {
     return [NSString stringWithFormat:@"%@_%@", kLSAnimatorKey, @(index)];
 }
 
