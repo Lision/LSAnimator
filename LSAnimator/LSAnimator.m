@@ -165,11 +165,19 @@ NS_INLINE NSString *LSAnimatorChainAnimationKey(NSInteger index) {
 }
 
 - (UIColor *)colorWithCGColor:(CGColorRef)cgColor {
-    if (CGColorGetColorSpace(cgColor) != CGColorSpaceCreateDeviceRGB()) {
-        cgColor = CGColorCreateCopyByMatchingToColorSpace(CGColorSpaceCreateDeviceRGB(), kCGRenderingIntentDefault, cgColor, NULL);
+    CGColorSpaceRef deviceRGBColorSpace = CGColorSpaceCreateDeviceRGB();
+    if (!deviceRGBColorSpace) return nil;
+
+    BOOL isRGBColor = (CGColorGetColorSpace(cgColor) == deviceRGBColorSpace);
+    if (!isRGBColor) {
+        cgColor = CGColorCreateCopyByMatchingToColorSpace(deviceRGBColorSpace, kCGRenderingIntentDefault, cgColor, NULL);
     }
+    CGColorSpaceRelease(deviceRGBColorSpace);
     
     const CGFloat *components = CGColorGetComponents(cgColor);
+    if (!isRGBColor) {
+        CGColorRelease(cgColor);
+    }
     if (!components) return nil;
     
     return [UIColor colorWithRed:components[0] green:components[1] blue:components[2] alpha:components[3]];

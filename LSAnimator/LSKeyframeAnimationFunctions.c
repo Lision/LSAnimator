@@ -15,28 +15,28 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunsequenced"
 
-double LSKeyframeAnimationFunctionLinear(double t,double b, double c, double d) {
+double LSKeyframeAnimationFunctionLinear(double t, double b, double c, double d) {
     return c*(t/=d) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInQuad(double t,double b, double c, double d) {
+double LSKeyframeAnimationFunctionEaseInQuad(double t, double b, double c, double d) {
     return c*(t/=d)*t + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutQuad(double t,double b, double c, double d) {
+double LSKeyframeAnimationFunctionEaseOutQuad(double t, double b, double c, double d) {
     return -c *(t/=d)*(t-2) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInOutQuad(double t,double b, double c, double d) {
+double LSKeyframeAnimationFunctionEaseInOutQuad(double t, double b, double c, double d) {
     if ((t/=d/2) < 1) return c/2*t*t + b;
     return -c/2 * ((--t)*(t-2) - 1) + b;
 }
 
-double LSKeyframeAnimationFunctionEaseInCubic(double t,double b, double c, double d) {
+double LSKeyframeAnimationFunctionEaseInCubic(double t, double b, double c, double d) {
     return c*(t/=d)*t*t + b;
 }
 
-double LSKeyframeAnimationFunctionEaseOutCubic(double t,double b, double c, double d) {
+double LSKeyframeAnimationFunctionEaseOutCubic(double t, double b, double c, double d) {
     return c*((t=t/d-1)*t*t + 1) + b;
 }
 

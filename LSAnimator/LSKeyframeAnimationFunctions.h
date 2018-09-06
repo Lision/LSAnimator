@@ -11,14 +11,14 @@
 
 typedef double (*LSKeyframeAnimationFunction)(double, double, double, double);
 
-double LSKeyframeAnimationFunctionLinear(double t,double b, double c, double d);
+double LSKeyframeAnimationFunctionLinear(double t, double b, double c, double d);
 
-double LSKeyframeAnimationFunctionEaseInQuad(double t,double b, double c, double d);
-double LSKeyframeAnimationFunctionEaseOutQuad(double t,double b, double c, double d);
-double LSKeyframeAnimationFunctionEaseInOutQuad(double t,double b, double c, double d);
+double LSKeyframeAnimationFunctionEaseInQuad(double t, double b, double c, double d);
+double LSKeyframeAnimationFunctionEaseOutQuad(double t, double b, double c, double d);
+double LSKeyframeAnimationFunctionEaseInOutQuad(double t, double b, double c, double d);
 
-double LSKeyframeAnimationFunctionEaseInCubic(double t,double b, double c, double d);
-double LSKeyframeAnimationFunctionEaseOutCubic(double t,double b, double c, double d);
+double LSKeyframeAnimationFunctionEaseInCubic(double t, double b, double c, double d);
+double LSKeyframeAnimationFunctionEaseOutCubic(double t, double b, double c, double d);
 double LSKeyframeAnimationFunctionEaseInOutCubic(double t, double b, double c, double d);
 
 double LSKeyframeAnimationFunctionEaseInQuart(double t, double b, double c, double d);

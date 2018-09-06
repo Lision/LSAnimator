@@ -40,12 +40,10 @@
 
 + (instancetype)animationWithKeyPath:(NSString *)path {
     LSKeyframeAnimation *animation = [super animationWithKeyPath:path];
-    if (animation) {
-        animation.functionBlock = ^double(double t, double b, double c, double d) {
-            return LSKeyframeAnimationFunctionLinear(t, b, c, d);
-        };
-    }
-    
+    animation.functionBlock = ^double(double t, double b, double c, double d) {
+        return LSKeyframeAnimationFunctionLinear(t, b, c, d);
+    };
+
     return animation;
 }
 
