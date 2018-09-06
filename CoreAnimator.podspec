@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'CoreAnimator'
   s.summary          = 'Easy to Read and Write Multi-chain Animations Lib in Swift.'
-  s.version          = '2.1.3'
+  s.version          = '2.1.4'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Lision' => 'lisionmail@gmail.com' }
   s.social_media_url = 'https://lision.me/'
