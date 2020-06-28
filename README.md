@@ -13,6 +13,10 @@
 
 > This project is inspired by [JHChainableAnimations](https://github.com/jhurray/JHChainableAnimations)!
 
+# GitAd
+
+<a href="https://tracking.gitads.io/?repo=LSAnimator"><img src="https://images.gitads.io/LSAnimator" alt="GitAds"/></a>
+
 # Why Choose LSAnimator & CoreAnimator?
 
 You can write complex and easy-to-maintain animations in just a few lines of code by use LSAnimator(Objective-C) or CoreAnimator(Swift).
