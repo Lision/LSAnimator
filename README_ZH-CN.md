@@ -13,6 +13,8 @@
 
 # GitAd
 
+LSAnimator & CoreAnimator 由以下工具赞助；请通过查看并注册免费试用来帮助支持我们。
+
 <a href="https://tracking.gitads.io/?repo=LSAnimator"><img src="https://images.gitads.io/LSAnimator" alt="GitAds"/></a>
 
 # 为什么选择 LSAnimator？

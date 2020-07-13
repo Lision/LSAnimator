@@ -15,6 +15,8 @@
 
 # GitAd
 
+LSAnimator & CoreAnimator is being sponsored by the following tool; Please help to support us by taking a look and signing up to a free trial.
+
 <a href="https://tracking.gitads.io/?repo=LSAnimator"><img src="https://images.gitads.io/LSAnimator" alt="GitAds"/></a>
 
 # Why Choose LSAnimator & CoreAnimator?
