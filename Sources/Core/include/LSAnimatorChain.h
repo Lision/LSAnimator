@@ -1,0 +1,1 @@
+../../../LSAnimator/LSAnimatorChain.h
